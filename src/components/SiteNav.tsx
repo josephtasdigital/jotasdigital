@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import logoTransparent from "@/assets/logo-transparent.png";
 
 const navItems = [
   { label: "Work", href: "#work" },
@@ -14,10 +16,9 @@ const SiteNav = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl" data-gtm="site-header">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
-        <a href="#" className="flex items-center gap-2 text-primary font-display font-bold text-lg" data-gtm="logo">
-          <Terminal className="w-5 h-5" />
-          <span>data.eng</span>
-        </a>
+        <Link to="/" className="flex items-center gap-2" data-gtm="logo">
+          <img src={logoTransparent} alt="JosephTasDigital" className="h-8 w-auto" />
+        </Link>
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">
