@@ -1,12 +1,9 @@
-import matter from "gray-matter";
-
 export interface MarkdownContent {
   slug: string;
   frontmatter: Record<string, any>;
   content: string;
 }
 
-// Import all markdown files from content directories at build time
 const portfolioFiles = import.meta.glob("/content/portfolio/*.md", {
   query: "?raw",
   import: "default",
@@ -25,10 +22,37 @@ const playgroundFiles = import.meta.glob("/content/hidden-lab/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+function parseFrontmatter(raw: string): { data: Record<string, any>; content: string } {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) return { data: {}, content: raw.trim() };
+
+  const yamlBlock = match[1];
+  const content = match[2].trim();
+  const data: Record<string, any> = {};
+
+  for (const line of yamlBlock.split("\n")) {
+    const idx = line.indexOf(":");
+    if (idx === -1) continue;
+    const key = line.slice(0, idx).trim();
+    let val: any = line.slice(idx + 1).trim();
+    // Remove surrounding quotes
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    // Handle arrays like [a, b]
+    if (val.startsWith("[") && val.endsWith("]")) {
+      val = val.slice(1, -1).split(",").map((s: string) => s.trim().replace(/^["']|["']$/g, ""));
+    }
+    data[key] = val;
+  }
+
+  return { data, content };
+}
+
 function parseFiles(files: Record<string, string>): MarkdownContent[] {
   return Object.entries(files).map(([path, raw]) => {
     const slug = path.split("/").pop()?.replace(".md", "") ?? "";
-    const { data, content } = matter(raw);
+    const { data, content } = parseFrontmatter(raw);
     return { slug, frontmatter: data, content };
   });
 }
