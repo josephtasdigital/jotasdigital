@@ -20,26 +20,27 @@ export default async function handler(req, res) {
     
     // ARCHITECTURE CHECK: Did GitHub reject our keys?
     if (data.error) {
-      return res.status(200).send(`<h2>Authentication Failed</h2><p>GitHub says: ${data.error_description || data.error}</p><p>Check your Vercel Environment Variables!</p>`);
+      return res.status(200).send(`<h2>Authentication Failed</h2><p>GitHub says: ${data.error_description || data.error}</p>`);
     }
 
     const token = data.access_token;
 
-    // The Decap CMS Handshake Script
+    // THE UPGRADE: Forceful Delivery Script (Bypass the two-way handshake)
     const script = `
       <!DOCTYPE html>
       <html>
       <body>
         <script>
           (function() {
-            function receiveMessage(e) {
-              window.opener.postMessage(
-                'authorization:github:success:{"token":"${token}", "provider":"github"}',
-                e.origin
-              );
+            const message = 'authorization:github:success:{"token":"${token}", "provider":"github"}';
+            
+            // 1. Shove the token directly into the Decap CMS window
+            if (window.opener) {
+              window.opener.postMessage(message, "*");
             }
-            window.addEventListener("message", receiveMessage, false);
-            window.opener.postMessage("authorizing:github", "*");
+            
+            // 2. Immediately kill the popup window
+            window.close();
           })();
         </script>
       </body>
