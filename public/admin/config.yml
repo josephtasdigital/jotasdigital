@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  # --- COLLECTION 1: PROFESSIONAL PORTFOLIO ---
+  - name: "portfolio"
+    label: "Portfolio Items"
+    folder: "content/portfolio"
+    create: true
+    fields:
+      - {label: "Project Title", name: "title", widget: "string"}
+      - {label: "Asset Type", name: "type", widget: "select", options: ["Image Set", "PDF Document", "PowerPoint Embed"]}
+      - {label: "Main Showcase File", name: "featured_image", widget: "file"} # Handles .png, .jpeg, .pdf
+      - {label: "Additional Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Description", name: "body", widget: "markdown"}
+
+  # --- COLLECTION 2: BLOG SECTION ---
+  - name: "blog"
+    label: "Data Engineering Blog"
+    folder: "content/blog"
+    create: true
+    fields:
+      - {label: "Post Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  # --- COLLECTION 3: THE HIDDEN PLAYGROUND ---
+  - name: "playground"
+    label: "Project Bread (Testing)"
+    folder: "content/hidden-lab" # Different folder for safety
+    create: true
+    fields:
+      - {label: "Test Page Name", name: "title", widget: "string"}
+      - {label: "GTM Custom Event Name", name: "gtm_event", widget: "string"}
+      - {label: "DataLayer Payload (JSON)", name: "payload", widget: "code", default_language: "json"}
+      - {label: "Lab Notes", name: "body", widget: "markdown"}
