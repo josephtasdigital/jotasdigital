@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: josephtasdigital/jotasdigital # Your new Lovable repository
   branch: main
+  app_id: Ov23li0R1eu6jjlP2z18
 
 media_folder: "img"
 public_folder: "/img"
