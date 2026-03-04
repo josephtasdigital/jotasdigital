@@ -1,8 +1,9 @@
 backend:
   name: github
-  repo: josephtasdigital/jotasdigital # Your new Lovable repository
+  repo: josephtasdigital/jotasdigital
   branch: main
-  app_id: Ov23li0R1eu6jjlP2z18
+  base_url: https://josephtasdigital.com
+  auth_endpoint: api/auth
 
 media_folder: "img"
 public_folder: "/img"
