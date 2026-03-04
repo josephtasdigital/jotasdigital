@@ -2,8 +2,6 @@ backend:
   name: github
   repo: josephtasdigital/jotasdigital
   branch: main
-  base_url: https://josephtasdigital.com
-  auth_endpoint: api/auth
 
 media_folder: "img"
 public_folder: "/img"
