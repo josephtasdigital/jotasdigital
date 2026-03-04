@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import BlogPost from "./pages/BlogPost";
+import PortfolioItem from "./pages/PortfolioItem";
 import SandboxInternal from "./pages/SandboxInternal";
 import NotFound from "./pages/NotFound";
 
@@ -17,6 +19,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/portfolio/:slug" element={<PortfolioItem />} />
           <Route path="/sandbox-internal" element={<SandboxInternal />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
