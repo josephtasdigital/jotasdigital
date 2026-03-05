@@ -8,18 +8,20 @@ import { Textarea } from "@/components/ui/textarea";
 const ContactSection = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
     const form = e.currentTarget;
     const data = new FormData(form);
+    
     try {
       const res = await fetch("https://formspree.io/f/xnjgavkv", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
-if (res.ok) {
+
+      if (res.ok) {
         setStatus("success");
         
         // 1. Extract the visitor's submitted data
@@ -42,7 +44,16 @@ if (res.ok) {
         // 3. Clear the form and reset the button state
         form.reset();
         setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
       }
+    } catch {
+      // This catches total network failures
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
+  };
 
   return (
     <section id="contact" className="border-t border-border" data-gtm="contact-section">
