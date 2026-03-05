@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { DevModeProvider } from "./contexts/DevModeContext";
 import Index from "./pages/Index";
 import BlogPost from "./pages/BlogPost";
 import PortfolioItem from "./pages/PortfolioItem";
@@ -17,21 +18,23 @@ const queryClient = new QueryClient();
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/portfolio/:slug" element={<PortfolioItem />} />
-            <Route path="/playground" element={<Playground />} />
-            <Route path="/sandbox-internal/:type" element={<SandboxTest />} />
-            <Route path="/sandbox-internal" element={<SandboxInternal />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <DevModeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/portfolio/:slug" element={<PortfolioItem />} />
+              <Route path="/playground" element={<Playground />} />
+              <Route path="/sandbox-internal/:type" element={<SandboxTest />} />
+              <Route path="/sandbox-internal" element={<SandboxInternal />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </DevModeProvider>
     </QueryClientProvider>
   </HelmetProvider>
 );

@@ -1,6 +1,6 @@
 import logoBlue from "@/assets/logo-blue.png";
 import { Switch } from "@/components/ui/switch";
-import { useDevMode } from "@/hooks/use-dev-mode";
+import { useDevMode } from "@/contexts/DevModeContext";
 
 const Footer = () => {
   const [devMode, setDevMode] = useDevMode();
