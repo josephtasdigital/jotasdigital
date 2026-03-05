@@ -19,19 +19,30 @@ const ContactSection = () => {
         body: data,
         headers: { Accept: "application/json" },
       });
-      if (res.ok) {
+if (res.ok) {
         setStatus("success");
+        
+        // 1. Extract the visitor's submitted data
+        const submittedEmail = data.get("email");
+        const submittedName = data.get("name");
+
+        // 2. The GTM Sensor: Push the first-party data to the DataLayer
+        const w = window as any; // Prevents TypeScript errors in Vite
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          'event': 'form_submit_success',
+          'user_data': {
+            'email_address': submittedEmail,
+            'address': {
+              'first_name': submittedName
+            }
+          }
+        });
+
+        // 3. Clear the form and reset the button state
         form.reset();
         setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
       }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
-  };
 
   return (
     <section id="contact" className="border-t border-border" data-gtm="contact-section">
