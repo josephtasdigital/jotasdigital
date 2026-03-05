@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoTransparent from "@/assets/logo-transparent.png";
-import { useDevMode } from "@/hooks/use-dev-mode";
+import { useDevMode } from "@/contexts/DevModeContext";
 
 const baseNavItems = [
   { label: "Work", href: "#work" },

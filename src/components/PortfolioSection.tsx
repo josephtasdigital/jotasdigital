@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, FileImage, FileText, Presentation } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPortfolioItems } from "@/lib/markdown";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const fallbackItems = [
   {
@@ -40,64 +47,83 @@ const PortfolioSection = () => {
         <span className="section-label">// Portfolio</span>
         <h2 className="section-title">Selected Work</h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {items.map((item, i) => {
-            const fm = item.frontmatter;
-            const isDemo = item.slug.startsWith("_demo");
+        <div className="relative px-12">
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {items.map((item, i) => {
+                const fm = item.frontmatter;
+                const isDemo = item.slug.startsWith("_demo");
 
-            const card = (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 cursor-pointer bg-card/30"
-                data-gtm={`portfolio-${item.slug}`}
-              >
-                {/* Thumbnail */}
-                <div className="aspect-video bg-card overflow-hidden relative">
-                  {fm.featured_image ? (
-                    <img
-                      src={fm.featured_image}
-                      alt={fm.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      {typeIcons[fm.type] ?? <FileImage className="w-12 h-12 text-muted-foreground/30" />}
+                const card = (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="group border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 cursor-pointer bg-card/30 h-full"
+                    data-gtm={`portfolio-${item.slug}`}
+                  >
+                    {/* Thumbnail */}
+                    <div className="aspect-video bg-card overflow-hidden relative">
+                      {fm.featured_image && !fm.featured_image.endsWith(".pptx") && !fm.featured_image.endsWith(".pdf") ? (
+                        <img
+                          src={fm.featured_image}
+                          alt={fm.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-card">
+                          {fm.type === "PowerPoint Embed" ? (
+                            <Presentation className="w-12 h-12 text-warning/40" />
+                          ) : fm.type === "PDF Document" ? (
+                            <FileText className="w-12 h-12 text-primary/40" />
+                          ) : (
+                            <FileImage className="w-12 h-12 text-muted-foreground/30" />
+                          )}
+                          <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground/50">
+                            {fm.type}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
 
-                {/* Info */}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-primary">{typeIcons[fm.type] ?? <FileImage className="w-3.5 h-3.5" />}</span>
-                    <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {fm.type}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                    {fm.title}
-                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
-                  </h3>
-                  <p className="font-body text-sm text-muted-foreground mt-2 line-clamp-2">
-                    {item.content.slice(0, 140)}
-                  </p>
-                </div>
-              </motion.div>
-            );
+                    {/* Info */}
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-primary">{typeIcons[fm.type] ?? <FileImage className="w-3.5 h-3.5" />}</span>
+                        <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground">
+                          {fm.type}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
+                        {fm.title}
+                        <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground mt-2 line-clamp-2">
+                        {item.content.slice(0, 140)}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
 
-            return isDemo ? (
-              <div key={item.slug}>{card}</div>
-            ) : (
-              <Link key={item.slug} to={`/portfolio/${item.slug}`} className="block">
-                {card}
-              </Link>
-            );
-          })}
+                return (
+                  <CarouselItem key={item.slug} className="pl-4 md:basis-1/2">
+                    {isDemo ? (
+                      <div className="h-full">{card}</div>
+                    ) : (
+                      <Link to={`/portfolio/${item.slug}`} className="block h-full">
+                        {card}
+                      </Link>
+                    )}
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="border-border bg-card hover:bg-primary hover:text-primary-foreground" />
+            <CarouselNext className="border-border bg-card hover:bg-primary hover:text-primary-foreground" />
+          </Carousel>
         </div>
       </div>
     </section>
