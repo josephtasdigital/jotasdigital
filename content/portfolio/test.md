@@ -1,6 +1,7 @@
 ---
-title: test
-type: Image Set
-featured_image: /img/2026-03-03_16-00.png
+title: Yakanzeka.com Google Ads Enhanced Conversions setup as a Technical Study
+type: PDF Document
+featured_image: /img/Technical-Case-Study-of-Yakanzekacom.pdf
 ---
-set1
+
+Here, I'm explaining how I implemented Enhanced Conversions to a website that receives its forms via AJAX.
