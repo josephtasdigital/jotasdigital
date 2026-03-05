@@ -3,6 +3,7 @@ import { getPortfolioItem } from "@/lib/markdown";
 import { ArrowLeft, FileImage, FileText, Presentation } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
+import PdfViewer from "@/components/PdfViewer";
 
 const typeIconMap: Record<string, React.ReactNode> = {
   "Image Set": <FileImage className="w-5 h-5 text-primary" />,
@@ -83,16 +84,9 @@ const PortfolioItem = () => {
           </div>
         )}
 
-        {/* PDF viewer */}
+        {/* PDF viewer – native react-pdf to avoid iframe security blocks */}
         {mediaType === "pdf" && !embedUrl && (
-          <div className="bg-card border border-border rounded-sm overflow-hidden mb-8 border-glow">
-            <iframe
-              src={mediaSrc}
-              className="w-full"
-              style={{ minHeight: "80vh" }}
-              title={`${frontmatter.title} – PDF`}
-            />
-          </div>
+          <PdfViewer src={mediaSrc} title={frontmatter.title} />
         )}
 
         {/* PPTX – can't render natively; offer download + optional embed_url */}
