@@ -6,12 +6,31 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const ContactSection = () => {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setStatus("loading");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    try {
+      const res = await fetch("https://formspree.io/f/xnjgavkv", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
+      }
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
   };
 
   return (
@@ -60,37 +79,62 @@ const ContactSection = () => {
             data-gtm="contact-form"
           >
             <Input
+              name="name"
               placeholder="Name"
               className="bg-card border-border font-body focus:border-primary"
               required
+              disabled={status === "loading"}
               data-gtm="contact-name"
             />
             <Input
+              name="email"
               type="email"
               placeholder="Email"
               className="bg-card border-border font-body focus:border-primary"
               required
+              disabled={status === "loading"}
               data-gtm="contact-email"
             />
             <Textarea
+              name="message"
               placeholder="Tell me about your data challenge..."
               rows={5}
               className="bg-card border-border font-body focus:border-primary resize-none"
               required
+              disabled={status === "loading"}
               data-gtm="contact-message"
             />
-            <Button
-              type="submit"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display uppercase tracking-wider text-sm"
-              data-gtm="contact-submit"
-            >
-              {sent ? "Message Sent ✓" : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </>
-              )}
-            </Button>
+            {status === "success" ? (
+              <div className="w-full py-3 px-4 rounded-md bg-primary/10 border border-primary/30 text-center">
+                <span className="font-display text-sm text-primary tracking-wider uppercase">
+                  ✓ Message Sent Successfully!
+                </span>
+              </div>
+            ) : (
+              <Button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display uppercase tracking-wider text-sm"
+                data-gtm="contact-submit"
+              >
+                {status === "loading" ? (
+                  <>
+                    <svg className="w-4 h-4 mr-2 animate-spin" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Sending...
+                  </>
+                ) : status === "error" ? (
+                  "Failed — Try Again"
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Message
+                  </>
+                )}
+              </Button>
+            )}
           </motion.form>
         </div>
       </div>
