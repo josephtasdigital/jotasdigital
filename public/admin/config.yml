@@ -4,7 +4,7 @@ backend:
   branch: main
 
 media_folder: "img"
-public_folder: "/public"
+public_folder: "/img"
 
 collections:
   # --- COLLECTION 1: PROFESSIONAL PORTFOLIO ---
