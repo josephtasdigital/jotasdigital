@@ -19,6 +19,7 @@ const SiteNav = () => {
 
   const handleAnchor = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    setIsOpen(false);
     if (isHome) {
       document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     } else {
@@ -86,10 +87,7 @@ const SiteNav = () => {
                   <a
                     href={item.href}
                     className="font-display text-sm uppercase tracking-widest text-muted-foreground hover:text-primary block py-2"
-                    onClick={(e) => {
-                      handleAnchor(item.href)(e);
-                      setIsOpen(false);
-                    }}
+                    onClick={handleAnchor(item.href)}
                   >
                     {item.label}
                   </a>
