@@ -158,7 +158,7 @@ const BlogPost = () => {
           )}
         </header>
 
-        <div className="prose prose-invert prose-sm max-w-none font-body text-muted-foreground leading-relaxed space-y-2">
+        <div className="prose prose-invert prose-sm max-w-none font-body text-muted-foreground leading-relaxed space-y-2 [&_img]:max-w-full [&_img]:h-auto [&_img]:object-cover">
           {renderMarkdown(content)}
         </div>
       </article>

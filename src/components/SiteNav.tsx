@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoTransparent from "@/assets/logo-transparent.png";
-import { useDevMode } from "@/contexts/DevModeContext";
 
 const baseNavItems = [
   { label: "Work", href: "#work" },
@@ -13,7 +12,6 @@ const baseNavItems = [
 
 const SiteNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [devMode] = useDevMode();
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -48,17 +46,6 @@ const SiteNav = () => {
               </a>
             </li>
           ))}
-          {devMode && (
-            <li>
-              <Link
-                to="/playground"
-                className="font-display text-sm uppercase tracking-widest text-primary/70 hover:text-primary transition-colors duration-300"
-                data-gtm="nav-playground"
-              >
-                Playground
-              </Link>
-            </li>
-          )}
         </ul>
 
         {/* Mobile toggle */}
@@ -93,17 +80,6 @@ const SiteNav = () => {
                   </a>
                 </li>
               ))}
-              {devMode && (
-                <li>
-                  <Link
-                    to="/playground"
-                    className="font-display text-sm uppercase tracking-widest text-primary/70 hover:text-primary block py-2"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Playground
-                  </Link>
-                </li>
-              )}
             </ul>
           </motion.div>
         )}
