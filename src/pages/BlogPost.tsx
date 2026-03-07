@@ -4,6 +4,90 @@ import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 
+/** Very simple markdown-to-JSX: handles images, headings, bold, italic, links, paragraphs */
+function renderMarkdown(raw: string) {
+  const lines = raw.split("\n");
+  const elements: React.ReactNode[] = [];
+  let key = 0;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      elements.push(<br key={key++} />);
+      continue;
+    }
+
+    // Images: ![alt](src)
+    const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      elements.push(
+        <img
+          key={key++}
+          src={imgMatch[2]}
+          alt={imgMatch[1]}
+          className="w-full max-w-2xl mx-auto rounded-sm border border-border my-6"
+          loading="lazy"
+        />
+      );
+      continue;
+    }
+
+    // Headings
+    const headingMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      const text = headingMatch[2];
+      const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+      elements.push(
+        <Tag key={key++} className="font-display text-foreground font-bold mt-8 mb-3">
+          {text}
+        </Tag>
+      );
+      continue;
+    }
+
+    // Inline formatting within a paragraph
+    elements.push(<p key={key++}>{renderInline(trimmed)}</p>);
+  }
+
+  return elements;
+}
+
+function renderInline(text: string): React.ReactNode[] {
+  // Split on inline images, bold, italic, links
+  const parts: React.ReactNode[] = [];
+  const regex = /!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)]+)\)|\*\*(.+?)\*\*|\*(.+?)\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let k = 0;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    if (match[1] !== undefined) {
+      // inline image
+      parts.push(
+        <img key={k++} src={match[2]} alt={match[1]} className="inline-block max-h-64 rounded-sm border border-border my-2" loading="lazy" />
+      );
+    } else if (match[3] !== undefined) {
+      // link
+      parts.push(<a key={k++} href={match[4]} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{match[3]}</a>);
+    } else if (match[5] !== undefined) {
+      parts.push(<strong key={k++} className="text-foreground font-semibold">{match[5]}</strong>);
+    } else if (match[6] !== undefined) {
+      parts.push(<em key={k++}>{match[6]}</em>);
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+}
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getBlogPost(slug) : undefined;
@@ -74,8 +158,8 @@ const BlogPost = () => {
           )}
         </header>
 
-        <div className="prose prose-invert prose-sm max-w-none font-body text-muted-foreground leading-relaxed whitespace-pre-wrap">
-          {content}
+        <div className="prose prose-invert prose-sm max-w-none font-body text-muted-foreground leading-relaxed space-y-2">
+          {renderMarkdown(content)}
         </div>
       </article>
       <Footer />

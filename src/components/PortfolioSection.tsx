@@ -1,3 +1,4 @@
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileImage, FileText, Presentation } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 
 const fallbackItems = [
@@ -40,15 +42,31 @@ const typeIcons: Record<string, React.ReactNode> = {
 const PortfolioSection = () => {
   const mdItems = getPortfolioItems();
   const items = mdItems.length > 0 ? mdItems : fallbackItems;
+  const [api, setApi] = useState<CarouselApi>();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setActiveIndex(api.selectedScrollSnap());
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+    return () => { api.off("select", onSelect); };
+  }, [api, onSelect]);
+
+  const activeTitle = items[activeIndex]?.frontmatter.title ?? "Selected Work";
 
   return (
     <section id="work" className="border-t border-border" data-gtm="portfolio-section">
       <div className="section-container">
         <span className="section-label">// Portfolio</span>
-        <h2 className="section-title">Selected Work</h2>
+        <h2 className="section-title transition-all duration-300">{activeTitle}</h2>
 
         <div className="relative px-12">
-          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+          <Carousel opts={{ align: "start", loop: true }} setApi={setApi} className="w-full">
             <CarouselContent className="-ml-4">
               {items.map((item, i) => {
                 const fm = item.frontmatter;
@@ -63,7 +81,6 @@ const PortfolioSection = () => {
                     className="group border border-border rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 cursor-pointer bg-card/30 h-full"
                     data-gtm={`portfolio-${item.slug}`}
                   >
-                    {/* Thumbnail */}
                     <div className="aspect-video bg-card overflow-hidden relative">
                       {fm.featured_image && !fm.featured_image.endsWith(".pptx") && !fm.featured_image.endsWith(".pdf") ? (
                         <img
@@ -89,7 +106,6 @@ const PortfolioSection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
 
-                    {/* Info */}
                     <div className="p-5">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-primary">{typeIcons[fm.type] ?? <FileImage className="w-3.5 h-3.5" />}</span>
