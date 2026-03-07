@@ -1,9 +1,9 @@
 ---
 title: Test1
 type: Image Set
-featured_image: https://picsum.photos/id/9/1920/1280.webp
+featured_image: /img/1_Technical-Case-Study-of-Yakanzekacom.png
 gallery:
-  - /img/2026-03-03_16-00.png
+  - /img/2_Project-Governance-Agile-Framework-for-Tracking-Deployment.png
 ---
 
 aaa
