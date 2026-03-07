@@ -3,9 +3,11 @@ title: The hidden tipping point in Server-Side Tagging where "convenience" start
 date: 2026-03-05T11:10:00
 ---
 
-Most businesses and websites are setting up their Google tag manager Server-side system through a simplified and user-friendly service like Stape, we gotta admit it's quite popular, and its functionality is not arguable. They handle everything out of the box, like testing environments, load balancers, geo-routing, etc. 
+![](/img/pexels-rostislav-uzunov-30767251.jpg)
 
-At first, it may seem like a good investment. 
+Most businesses and websites are setting up their Google tag manager Server-side system through a simplified and user-friendly service like Stape, we gotta admit it's quite popular, and its functionality is not arguable. They handle everything out of the box, like testing environments, load balancers, geo-routing, etc.
+
+At first, it may seem like a good investment.
 But once you start seeing your traffic hitting 5 million, 10 or 20 million+ events per month?
 
 The math starts to completely change.
@@ -16,7 +18,7 @@ Building your own "Data Factory" using Google Cloud Run today literally means:
 
 Massive Cost Reduction: Let's say you have 15 million events quota per month that costs you over hundreds of euros per month. By creating your own custom cloud, you can reduce that amount down to a fraction of that cost.
 
-True Auto-Scaling: With Cloud Run there are instances that dynamically spin up from 0 to 10+ even during a Black friday spikes. Here, there is auto scaling, so no need to contact support to upgrade or downgrade your plan. 
+True Auto-Scaling: With Cloud Run there are instances that dynamically spin up from 0 to 10+ even during a Black friday spikes. Here, there is auto scaling, so no need to contact support to upgrade or downgrade your plan.
 
 First-Party Control: Being able to route your own container application load balancer, that sounds like a superpower to me, it can basically allow you to stamp your own geographic headers and serve scripts from your own subdomains. At the same time, keeping all the data secure and bypassing ad-blockers, which are more and more aggressive these days.
 
