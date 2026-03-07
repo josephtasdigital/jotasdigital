@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { Layers, Server, BarChart3, Settings2, LineChart, Link2, FileSearch, Zap } from "lucide-react";
 
 interface ServiceItem {
   title: string;
-  icon: React.ReactNode;
+  image: string;
 }
 
 interface ServiceTier {
@@ -13,6 +12,8 @@ interface ServiceTier {
   services: ServiceItem[];
 }
 
+const defaultImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80";
+
 const serviceTiers: ServiceTier[] = [
   {
     tier: "major",
@@ -21,7 +22,7 @@ const serviceTiers: ServiceTier[] = [
     services: [
       {
         title: "Total Remarketing Setup — Enhanced Conversions + Server-Side Tracking",
-        icon: <Layers className="w-6 h-6" />,
+        image: defaultImage,
       },
     ],
   },
@@ -30,18 +31,9 @@ const serviceTiers: ServiceTier[] = [
     label: "Minor Services",
     description: "Focused specialist setups",
     services: [
-      {
-        title: "Server-Side Tracking System Complete (Google Cloud)",
-        icon: <Server className="w-6 h-6" />,
-      },
-      {
-        title: "Server-Side Tracking System Complete (Stape)",
-        icon: <Server className="w-6 h-6" />,
-      },
-      {
-        title: "Enhanced Conversions Setup",
-        icon: <Zap className="w-6 h-6" />,
-      },
+      { title: "Server-Side Tracking System Complete (Google Cloud)", image: defaultImage },
+      { title: "Server-Side Tracking System Complete (Stape)", image: defaultImage },
+      { title: "Enhanced Conversions Setup", image: defaultImage },
     ],
   },
   {
@@ -49,22 +41,10 @@ const serviceTiers: ServiceTier[] = [
     label: "Nano Services",
     description: "Quick wins & foundational tasks",
     services: [
-      {
-        title: "GTM / GA4 / Ads Integration",
-        icon: <Settings2 className="w-6 h-6" />,
-      },
-      {
-        title: "Basic Conversion Tracking Setup",
-        icon: <BarChart3 className="w-6 h-6" />,
-      },
-      {
-        title: "Google Analytics Linking",
-        icon: <Link2 className="w-6 h-6" />,
-      },
-      {
-        title: "90-Days Analysis Report",
-        icon: <FileSearch className="w-6 h-6" />,
-      },
+      { title: "GTM / GA4 / Ads Integration", image: defaultImage },
+      { title: "Basic Conversion Tracking Setup", image: defaultImage },
+      { title: "Google Analytics Linking", image: defaultImage },
+      { title: "90-Days Analysis Report", image: defaultImage },
     ],
   },
 ];
@@ -99,14 +79,21 @@ const ServicesSection = () => {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
-                    transition={{ delay: (ti * 0.1) + (si * 0.06), duration: 0.45 }}
-                    className={`border rounded-sm p-5 transition-all duration-300 hover:border-primary/50 ${tierColors[tier.tier]}`}
+                    transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
+                    className={`border rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 ${tierColors[tier.tier]}`}
                     data-gtm={`service-${tier.tier}-${si}`}
                   >
-                    <div className="text-primary mb-3">{service.icon}</div>
-                    <h4 className="font-display text-sm font-semibold text-foreground leading-snug">
-                      {service.title}
-                    </h4>
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-40 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="p-5">
+                      <h4 className="font-display text-sm font-semibold text-foreground leading-snug">
+                        {service.title}
+                      </h4>
+                    </div>
                   </motion.div>
                 ))}
               </div>
