@@ -20,7 +20,21 @@ collections:
       - {label: "Additional Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
       - {label: "Description", name: "body", widget: "markdown"}
 
-  # --- COLLECTION 2: BLOG SECTION ---
+  # --- COLLECTION 2: SERVICES ---
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    fields:
+      - {label: "Service Title", name: "title", widget: "string"}
+      - {label: "Tier", name: "tier", widget: "select", options: ["major", "minor", "nano"]}
+      - {label: "Tier Label", name: "tier_label", widget: "string"}
+      - {label: "Tier Description", name: "tier_description", widget: "string"}
+      - {label: "Sort Order", name: "sort_order", widget: "number", value_type: "int"}
+      - {label: "Service Image", name: "service_image", widget: "image", required: false}
+      - {label: "Notes", name: "body", widget: "markdown", required: false}
+
+  # --- COLLECTION 3: BLOG SECTION ---
   - name: "blog"
     label: "Data Engineering Blog"
     folder: "content/blog"

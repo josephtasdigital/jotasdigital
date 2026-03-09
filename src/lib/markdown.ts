@@ -79,7 +79,17 @@ export function getBlogPosts(): MarkdownContent[] {
   });
 }
 
+export function getServiceItems(): MarkdownContent[] {
+  return parseFiles(serviceFiles).sort((a, b) => {
+    const sa = Number(a.frontmatter.sort_order ?? 99);
+    const sb = Number(b.frontmatter.sort_order ?? 99);
+    return sa - sb;
+  });
+}
+
 export function getPlaygroundItems(): MarkdownContent[] {
+  return parseFiles(playgroundFiles);
+}
   return parseFiles(playgroundFiles);
 }
 
