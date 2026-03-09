@@ -80,7 +80,7 @@ const ServicesSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
-                    className={`border border-border rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-transparent`}
+                    className="border border-transparent rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30"
                     data-gtm={`service-${tier.tier}-${si}`}
                   >
                     <img
