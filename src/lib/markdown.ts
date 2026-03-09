@@ -90,8 +90,6 @@ export function getServiceItems(): MarkdownContent[] {
 export function getPlaygroundItems(): MarkdownContent[] {
   return parseFiles(playgroundFiles);
 }
-  return parseFiles(playgroundFiles);
-}
 
 export function getPortfolioItem(slug: string): MarkdownContent | undefined {
   return getPortfolioItems().find((i) => i.slug === slug);
