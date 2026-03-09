@@ -71,7 +71,7 @@ const BlogSection = () => {
                       <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                     </h3>
                     <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                      {fm.excerpt ?? post.content.slice(0, 140)}
+                      {fm.excerpt ?? post.content.replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/[#*_~`>]/g, "").trim().slice(0, 140)}
                     </p>
                   </div>
                   <div className="flex items-center gap-4 shrink-0">

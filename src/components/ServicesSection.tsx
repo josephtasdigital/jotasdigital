@@ -84,7 +84,7 @@ const ServicesSection = () => {
                     data-gtm={`service-${tier.tier}-${si}`}
                   >
                     <img
-                      src={service.image}
+                      src={service.service_image_url}
                       alt={service.title}
                       className="w-full h-40 object-cover"
                       loading="lazy"

@@ -15,6 +15,7 @@ collections:
     fields:
       - {label: "Project Title", name: "title", widget: "string"}
       - {label: "Asset Type", name: "type", widget: "select", options: ["Image Set", "PDF Document", "PowerPoint Embed"]}
+      - {label: "Thumbnail Image", name: "thumbnail_image_url", widget: "image", required: false}
       - {label: "Main Showcase File", name: "featured_image", widget: "file"} # Handles .png, .jpeg, .pdf
       - {label: "Additional Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
       - {label: "Description", name: "body", widget: "markdown"}

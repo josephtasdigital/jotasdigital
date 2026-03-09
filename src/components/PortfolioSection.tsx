@@ -82,7 +82,14 @@ const PortfolioSection = () => {
                     data-gtm={`portfolio-${item.slug}`}
                   >
                     <div className="aspect-video bg-card overflow-hidden relative">
-                      {fm.featured_image && !fm.featured_image.endsWith(".pptx") && !fm.featured_image.endsWith(".pdf") ? (
+                      {fm.thumbnail_image_url ? (
+                        <img
+                          src={fm.thumbnail_image_url}
+                          alt={fm.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      ) : fm.featured_image && !fm.featured_image.endsWith(".pptx") && !fm.featured_image.endsWith(".pdf") ? (
                         <img
                           src={fm.featured_image}
                           alt={fm.title}
