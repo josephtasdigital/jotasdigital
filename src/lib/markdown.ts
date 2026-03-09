@@ -27,10 +27,6 @@ const playgroundFiles = import.meta.glob("/content/hidden-lab/*.md", {
   import: "default",
   eager: true,
 }) as Record<string, string>;
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
 
 function parseFrontmatter(raw: string): { data: Record<string, any>; content: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -45,11 +41,9 @@ function parseFrontmatter(raw: string): { data: Record<string, any>; content: st
     if (idx === -1) continue;
     const key = line.slice(0, idx).trim();
     let val: any = line.slice(idx + 1).trim();
-    // Remove surrounding quotes
     if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
     }
-    // Handle arrays like [a, b]
     if (val.startsWith("[") && val.endsWith("]")) {
       val = val.slice(1, -1).split(",").map((s: string) => s.trim().replace(/^["']|["']$/g, ""));
     }
