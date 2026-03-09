@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 interface ServiceItem {
   title: string;
-  image: string;
+  service_image_url: string;
 }
 
 interface ServiceTier {
