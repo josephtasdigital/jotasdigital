@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      services: {
+        Row: {
+          created_at: string
+          id: string
+          service_image_url: string | null
+          sort_order: number
+          tier: string
+          tier_description: string
+          tier_label: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          service_image_url?: string | null
+          sort_order?: number
+          tier?: string
+          tier_description?: string
+          tier_label?: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          service_image_url?: string | null
+          sort_order?: number
+          tier?: string
+          tier_description?: string
+          tier_label?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
