@@ -16,7 +16,17 @@ const blogFiles = import.meta.glob("/content/blog/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const serviceFiles = import.meta.glob("/content/services/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 const playgroundFiles = import.meta.glob("/content/hidden-lab/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
   query: "?raw",
   import: "default",
   eager: true,
