@@ -22,7 +22,7 @@ const serviceTiers: ServiceTier[] = [
     services: [
       {
         title: "Total Remarketing Setup — Enhanced Conversions + Server-Side Tracking",
-        image: defaultImage,
+        service_image_url: defaultImage,
       },
     ],
   },
@@ -31,9 +31,9 @@ const serviceTiers: ServiceTier[] = [
     label: "Minor Services",
     description: "Focused specialist setups",
     services: [
-      { title: "Server-Side Tracking System Complete (Google Cloud)", image: defaultImage },
-      { title: "Server-Side Tracking System Complete (Stape)", image: defaultImage },
-      { title: "Enhanced Conversions Setup", image: defaultImage },
+      { title: "Server-Side Tracking System Complete (Google Cloud)", service_image_url: defaultImage },
+      { title: "Server-Side Tracking System Complete (Stape)", service_image_url: defaultImage },
+      { title: "Enhanced Conversions Setup", service_image_url: defaultImage },
     ],
   },
   {
@@ -41,10 +41,10 @@ const serviceTiers: ServiceTier[] = [
     label: "Nano Services",
     description: "Quick wins & foundational tasks",
     services: [
-      { title: "GTM / GA4 / Ads Integration", image: defaultImage },
-      { title: "Basic Conversion Tracking Setup", image: defaultImage },
-      { title: "Google Analytics Linking", image: defaultImage },
-      { title: "90-Days Analysis Report", image: defaultImage },
+      { title: "GTM / GA4 / Ads Integration", service_image_url: defaultImage },
+      { title: "Basic Conversion Tracking Setup", service_image_url: defaultImage },
+      { title: "Google Analytics Linking", service_image_url: defaultImage },
+      { title: "90-Days Analysis Report", service_image_url: defaultImage },
     ],
   },
 ];
