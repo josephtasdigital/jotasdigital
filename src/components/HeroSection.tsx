@@ -33,16 +33,16 @@ const HeroSection = () => {
           </h1>
 
           <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Architecting pipelines, analytics systems, and measurement frameworks 
-            that turn raw data into actionable intelligence.
+            I build indestructible tracking systems. I help businesses bypass adblockers,
+            fix broken GA4 data, and implement Server-Side tagging so your marketing actually works.
           </p>
 
           {/* Capability pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-16">
             {[
-              { icon: Database, label: "Pipeline Architecture" },
-              { icon: Workflow, label: "ETL / ELT Systems" },
-              { icon: BarChart3, label: "Analytics & BI" },
+              { icon: Database, label: "SERVER-SIDE TRACKING" },
+              { icon: Workflow, label: "GA4 ARCHITECTURE" },
+              { icon: BarChart3, label: "CONVERSION API (CAPI)" },
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}
