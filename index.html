@@ -6,7 +6,6 @@
     <script>
   // Project Bread: The Native Stealth Sender
   document.addEventListener("DOMContentLoaded", function() {
-    // 1. Establish Identity (Check for GA cookie, or create anonymous ID)
     var clientId = 'anonymous_' + Math.floor(Math.random() * 1000000000);
     var cookieMatch = document.cookie.match(/_ga=([^;]+)/);
     
@@ -17,7 +16,6 @@
       }
     }
 
-    // 2. Package the Data
     var eventData = {
       event_name: 'page_view',
       page_location: window.location.href,
@@ -25,12 +23,12 @@
       client_id: clientId
     };
 
-    // 3. Drive the Unmarked Van to your Server
     fetch('https://bread.josephtasdigital.com/peanuts/crumbs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include', // <--- THE DEBUG UNLOCK KEY
       body: JSON.stringify(eventData)
     }).then(function(response) {
       console.log('Stealth Payload Delivered:', response.status);
