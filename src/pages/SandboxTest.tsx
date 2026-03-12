@@ -39,7 +39,7 @@ const SandboxTest = () => {
         {isForm && (
           <form onSubmit={handleFormSubmit} className="mt-8 w-full max-w-sm space-y-3">
             <input
-              name="test"
+              name="testformsubmit"
               placeholder="Type anything..."
               required
               className="w-full px-4 py-3 bg-card border border-border rounded-sm font-body text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
