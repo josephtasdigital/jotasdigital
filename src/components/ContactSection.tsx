@@ -68,8 +68,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             viewport={{ once: true }}
           >
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              Looking for a data engineer to architect your analytics infrastructure? 
-              Let's discuss your pipeline needs.
+              Most companies are losing 30% of their analytics to adblockers. 
+              I build first-party, server-side tracking pipelines that capture every click and bypass the noise. 
+              Let’s fix your broken data.
             </p>
 
             <div className="space-y-4">
