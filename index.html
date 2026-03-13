@@ -4,38 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-  // Project Bread: The Native Stealth Sender
-  document.addEventListener("DOMContentLoaded", function() {
-    var clientId = 'anonymous_' + Math.floor(Math.random() * 1000000000);
-    var cookieMatch = document.cookie.match(/_ga=([^;]+)/);
-    
-    if (cookieMatch && cookieMatch[1]) {
-      var parts = cookieMatch[1].split('.');
-      if (parts.length >= 2) {
-        clientId = parts.slice(-2).join('.');
+// Project Bread: The Native Stealth Sensor
+    document.addEventListener("DOMContentLoaded", function() {
+      var clientId = 'anonymous_' + Math.floor(Math.random() * 1000000000);
+      var cookieMatch = document.cookie.match(/_ga=([^;]+)/);
+      
+      if (cookieMatch && cookieMatch[1]) {
+        var parts = cookieMatch[1].split('.');
+        if (parts.length >= 2) {
+          clientId = parts.slice(-2).join('.');
+        }
       }
-    }
 
-    var eventData = {
-      event_name: 'page_view',
-      page_location: window.location.href,
-      page_title: document.title,
-      client_id: clientId
-    };
-
-    fetch('https://bread.josephtasdigital.com/peanuts/crumbs', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include', // <--- THE DEBUG UNLOCK KEY
-      body: JSON.stringify(eventData)
-    }).then(function(response) {
-      console.log('Stealth Payload Delivered:', response.status);
-    }).catch(function(error) {
-      console.error('Tunnel Blocked:', error);
+      // THE HANDOFF: Push the data to Web GTM instead of fetching
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'stealth_page_view',
+        'client_id': clientId
+      });
     });
-  });
 </script>
         <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
