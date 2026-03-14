@@ -6,3 +6,5 @@ tier_description: Complete solution for your enterprise
 sort_order: 1
 service_image: /img/pexels-rostislav-uzunov-30820142.jpg
 ---
+
+Approx. delivery: 5 days
