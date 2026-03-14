@@ -1,8 +1,10 @@
 ---
-title: "Data Pipeline Architecture"
-tier: "major"
-tier_label: "Major Services"
-tier_description: "End-to-end solutions for complex data challenges"
+title: Server-side tracking complete - Stape
+tier: major
+tier_label: Major Services
+tier_description: Recommended for the first time setup - faster delivery
 sort_order: 1
-service_image: "/img/pexels-muhammed-ensar-10725897.jpg"
+service_image: /img/pexels-pixabay-373543.jpg
 ---
+
+Approx. delivery: 2 days
