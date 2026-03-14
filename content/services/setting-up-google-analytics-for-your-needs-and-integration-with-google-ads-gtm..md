@@ -4,5 +4,5 @@ tier: nano
 tier_label: Nano Services
 tier_description: 'Approx. delivery time: 1 day'
 sort_order: 3
-service_image: /img/qwqewwe.jpg
+service_image: /img/services_integration-1.png
 ---
