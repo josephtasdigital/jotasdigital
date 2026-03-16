@@ -33,6 +33,7 @@ const App = () => (
               <Route path="/sandbox-internal" element={<SandboxInternal />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <CookieConsent />
           </BrowserRouter>
         </TooltipProvider>
       </DevModeProvider>

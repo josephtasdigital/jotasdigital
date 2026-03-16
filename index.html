@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
+<script>
 // Project Bread: The Native Stealth Sensor
     document.addEventListener("DOMContentLoaded", function() {
       var clientId = 'anonymous_' + Math.floor(Math.random() * 1000000000);
@@ -16,7 +16,48 @@
         }
       }
 
-      // THE HANDOFF: Push the data to Web GTM instead of fetching
+      // Read consent state from bread_consent_state cookie
+      function getConsentState() {
+        var defaults = {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        };
+        try {
+          var match = document.cookie.match(/(?:^|;\s*)bread_consent_state=([^;]*)/);
+          if (match && match[1]) {
+            return JSON.parse(decodeURIComponent(match[1]));
+          }
+        } catch(e) {}
+        return defaults;
+      }
+
+      var consentState = getConsentState();
+
+      var payload = {
+        event_name: 'page_view',
+        client_id: clientId,
+        page_location: window.location.href,
+        page_title: document.title,
+        consent: {
+          analytics_storage: consentState.analytics_storage,
+          ad_storage: consentState.ad_storage,
+          ad_user_data: consentState.ad_user_data,
+          ad_personalization: consentState.ad_personalization
+        }
+      };
+
+      fetch('https://bread.josephtasdigital.com/peanuts/crumbs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+      })
+      .then(function(response) { console.log('Payload delivered.'); })
+      .catch(function(error) { console.error('Delivery failed:', error); });
+
+      // Also push to dataLayer for GTM
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'stealth_page_view',
