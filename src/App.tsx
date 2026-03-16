@@ -16,6 +16,7 @@ import CookieConsent from "./components/CookieConsent";
 
 // 1. IMPORT YOUR NEW SENSOR HOOK HERE
 import { useStealthTracker } from "./hooks/useStealthTracker"; 
+import { useStealthEvents } from "./hooks/useStealthEvents";
 
 const queryClient = new QueryClient();
 
