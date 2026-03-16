@@ -100,6 +100,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             transition={{ delay: 0.1 }}
             className="space-y-4"
             data-gtm="contact-form"
+            data-stealth-event="generate_lead"
           >
             <Input
               name="name"
