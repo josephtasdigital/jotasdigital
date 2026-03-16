@@ -3,82 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script>
-// Project Bread: The Native Stealth Sensor
-    document.addEventListener("DOMContentLoaded", function() {
-      var clientId = 'anonymous_' + Math.floor(Math.random() * 1000000000);
-      var cookieMatch = document.cookie.match(/_ga=([^;]+)/);
-      
-      if (cookieMatch && cookieMatch[1]) {
-        var parts = cookieMatch[1].split('.');
-        if (parts.length >= 2) {
-          clientId = parts.slice(-2).join('.');
-        }
-      }
-
-      // Read consent state from bread_consent_state cookie
-      function getConsentState() {
-        var defaults = {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied'
-        };
-        try {
-          var match = document.cookie.match(/(?:^|;\s*)bread_consent_state=([^;]*)/);
-          if (match && match[1]) {
-            return JSON.parse(decodeURIComponent(match[1]));
-          }
-        } catch(e) {}
-        return defaults;
-      }
-
-      var consentState = getConsentState();
-
-      var payload = {
-        event_name: 'page_view',
-        client_id: clientId,
-        page_location: window.location.href,
-        page_title: document.title,
-        consent: {
-          analytics_storage: consentState.analytics_storage,
-          ad_storage: consentState.ad_storage,
-          ad_user_data: consentState.ad_user_data,
-          ad_personalization: consentState.ad_personalization
-        }
-      };
-
-      fetch('https://bread.josephtasdigital.com/peanuts/crumbs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(payload)
-      })
-      .then(function(response) { console.log('Payload delivered.'); })
-      .catch(function(error) { console.error('Delivery failed:', error); });
-
-      // Also push to dataLayer for GTM
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'event': 'stealth_page_view',
-        'client_id': clientId
-      });
-    });
-</script>
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://bread.josephtasdigital.com/butter/jam.js';f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KBTFXDBP');</script>
-<!-- End Google Tag Manager -->
-    <!-- TODO: Set the document title to the name of your application -->
+    
     <title>Data Engineer &amp; Analytics Specialist | Building Data Factories</title>
     <meta name="description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
     <meta name="author" content="data.eng" />
 
-    
-    
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/137f365a-7003-49e3-9566-21fda870bfb0?Expires=1772557771&amp;GoogleAccessId=go-api-on-aws%40gpt-engineer-390607.iam.gserviceaccount.com&amp;Signature=bAqMSdtBbENRzH%2B0p7%2BgCD4FMFVkrIE8WuYPQf4vqCofCa8KkQYpAJpO9%2F6EZWK%2BvNXUeWu0NUZ2esiXVjuxu8b0GfujoC3p27lcMUT1SwW5Bo6I903GaZ9eMNDMutifHoKGNBOC9nThyMa1%2BU4u9t0kbUzvDidpIQhFhXiFYgLzfYoYwFhVlGkLKCoXH3n4GbGvo4UUZiVe806STFNFX1ZZzOUp7oAGUZZnO44qjiLvRsP1oq2eXqpVyVyHkXkHAblel2WGX0%2FiX%2BI2gmAJJRyFF4ZIX%2BfrFHYXSWruFdKIEE4%2F9lSzTtyxYJDJe%2B0emr93d9X4gKvZ%2FPdiWmM7kA%3D%3D">
 
@@ -86,17 +15,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/137f365a-7003-49e3-9566-21fda870bfb0?Expires=1772557771&amp;GoogleAccessId=go-api-on-aws%40gpt-engineer-390607.iam.gserviceaccount.com&amp;Signature=bAqMSdtBbENRzH%2B0p7%2BgCD4FMFVkrIE8WuYPQf4vqCofCa8KkQYpAJpO9%2F6EZWK%2BvNXUeWu0NUZ2esiXVjuxu8b0GfujoC3p27lcMUT1SwW5Bo6I903GaZ9eMNDMutifHoKGNBOC9nThyMa1%2BU4u9t0kbUzvDidpIQhFhXiFYgLzfYoYwFhVlGkLKCoXH3n4GbGvo4UUZiVe806STFNFX1ZZzOUp7oAGUZZnO44qjiLvRsP1oq2eXqpVyVyHkXkHAblel2WGX0%2FiX%2BI2gmAJJRyFF4ZIX%2BfrFHYXSWruFdKIEE4%2F9lSzTtyxYJDJe%2B0emr93d9X4gKvZ%2FPdiWmM7kA%3D%3D">
     <meta property="og:title" content="Data Engineer &amp; Analytics Specialist | Building Data Factories">
-  <meta name="twitter:title" content="Data Engineer &amp; Analytics Specialist | Building Data Factories">
-  <meta property="og:description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
-  <meta name="twitter:description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
-
-</head>
+    <meta name="twitter:title" content="Data Engineer &amp; Analytics Specialist | Building Data Factories">
+    <meta property="og:description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
+    <meta name="twitter:description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
+  </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://bread.josephtasdigital.com/ns.html?id=GTM-KBTFXDBP"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
