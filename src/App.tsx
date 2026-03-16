@@ -23,6 +23,7 @@ const queryClient = new QueryClient();
 // 2. CREATE THE INVISIBLE SENSOR COMPONENT
 const StealthSensor = () => {
   useStealthTracker();
+  useStealthEvents();
   return null; // It renders nothing to the UI, just runs the logic
 };
 
