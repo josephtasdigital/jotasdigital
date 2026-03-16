@@ -12,6 +12,7 @@ import Playground from "./pages/Playground";
 import SandboxTest from "./pages/SandboxTest";
 import SandboxInternal from "./pages/SandboxInternal";
 import NotFound from "./pages/NotFound";
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
