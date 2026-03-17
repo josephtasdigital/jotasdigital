@@ -31,6 +31,15 @@ const surveyJson = {
   ],
   completeText: "Send Message",
   showQuestionNumbers: "off",
+  completedHtml: `
+    <div style="text-align: center; padding: 2rem 0;">
+      <h3 style="color: white; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; font-family: inherit;">I'll reach you very soon</h3>
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid hsl(var(--border)); padding: 0.75rem 1rem; border-radius: 6px; color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        Check your spam folder if you haven't received a confirmation
+      </div>
+    </div>
+  `,
 };
 
 const ContactSection = () => {
@@ -52,6 +61,13 @@ const ContactSection = () => {
         },
       });
     }
+
+    // Send to Formspree
+    fetch("https://formspree.io/f/xnjgavkv", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(submittedData),
+    }).catch(() => {});
   });
 
   return (
@@ -60,7 +76,7 @@ const ContactSection = () => {
         <span className="section-label">// Contact</span>
         <h2 className="section-title">Get In Touch</h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,6 +134,8 @@ const ContactSection = () => {
     font-family: inherit !important;
     padding: 0.75rem !important;
     transition: border-color 0.2s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .sd-input:hover, .sd-input:focus {
     border-color: hsl(var(--primary)) !important;
@@ -136,7 +154,9 @@ const ContactSection = () => {
     padding: 0 !important;
   }
             `}</style>
-            <Survey model={survey} />
+            <div className="bg-card border border-border rounded-lg p-6 w-full h-full">
+              <Survey model={survey} />
+            </div>
           </motion.div>
         </div>
       </div>
