@@ -1,59 +1,59 @@
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Send } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Mail, Github, Linkedin } from "lucide-react";
+import { Model } from "survey-core";
+import { Survey } from "survey-react-ui";
+import "survey-core/defaultV2.min.css";
+
+const glassTheme = {
+  themeName: "custom-glass",
+  colorPalette: "dark" as const,
+  isPanelless: true,
+  cssVariables: {
+    "--sjs-general-backcolor": "transparent",
+    "--sjs-general-backcolor-dim": "rgba(12, 14, 19, 0.5)",
+    "--sjs-general-backcolor-dim-light": "rgba(12, 14, 19, 0.3)",
+    "--sjs-primary-backcolor": "#ffffff",
+    "--sjs-primary-backcolor-light": "rgba(255, 255, 255, 0.1)",
+    "--sjs-primary-forecolor": "#0c0e13",
+    "--sjs-font-editorfont-color": "rgba(255, 255, 255, 0.9)",
+    "--sjs-font-questiontitle-color": "rgba(255, 255, 255, 0.9)",
+    "--sjs-border-default": "rgba(255, 255, 255, 0.1)",
+    "--sjs-border-inside": "rgba(255, 255, 255, 0.1)",
+    "--sjs-base-unit": "6px",
+    "--sjs-corner-radius": "8px",
+  },
+};
+
+const surveyJson = {
+  elements: [
+    { name: "name", type: "text", title: "Name", isRequired: true },
+    { name: "email", type: "text", inputType: "email", title: "Email", isRequired: true },
+    { name: "message", type: "comment", title: "Tell me about your data challenge...", isRequired: true },
+  ],
+  completeText: "Send Message",
+  showQuestionNumbers: "off",
+};
 
 const ContactSection = () => {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const survey = new Model(surveyJson);
+  survey.applyTheme(glassTheme);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    
-    try {
-      const res = await fetch("https://formspree.io/f/xnjgavkv", {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+  survey.onComplete.add((sender) => {
+    const submittedData = sender.data;
+
+    // @ts-ignore - Bypassing strict TS checks for our custom global tracker
+    if (window.BreadTracker) {
+      // @ts-ignore
+      window.BreadTracker.send("generate_lead", {
+        user_data: {
+          email_address: submittedData.email,
+          address: {
+            first_name: submittedData.name,
+          },
+        },
       });
-
-      if (res.ok) {
-        setStatus("success");
-        
-        // 1. Extract the visitor's submitted data
-        const submittedEmail = data.get("email");
-        const submittedName = data.get("name");
-
-        // 2. The Cinnamon Sensor: Send directly to the Unmarked Van on SUCCESS only
-        // @ts-ignore - Bypassing strict TS checks for our custom global tracker
-        if (window.BreadTracker) {
-          window.BreadTracker.send('generate_lead', {
-            user_data: {
-              email_address: submittedEmail,
-              address: {
-                first_name: submittedName
-              }
-            }
-          });
-        }
-
-        // 3. Clear the form and reset the button state
-        form.reset();
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch {
-      // This catches total network failures
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
     }
-  };
+  });
 
   return (
     <section id="contact" className="border-t border-border" data-gtm="contact-section">
@@ -68,9 +68,9 @@ const ContactSection = () => {
             viewport={{ once: true }}
           >
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              Most companies are losing 30% of their analytics to adblockers. 
-              I build first-party, server-side tracking pipelines that capture every click and bypass the noise. 
-              Let’s fix your broken data.
+              Most companies are losing 30% of their analytics to adblockers.
+              I build first-party, server-side tracking pipelines that capture every click and bypass the noise.
+              Let's fix your broken data.
             </p>
 
             <div className="space-y-4">
@@ -82,8 +82,7 @@ const ContactSection = () => {
                 <a
                   key={label}
                   href={href}
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                  data-gtm={`contact-${label.split(".")[0]}`}
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Icon className="w-4 h-4 text-primary" />
                   <span className="font-display text-sm">{label}</span>
@@ -92,73 +91,15 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          <motion.form
-            onSubmit={handleSubmit}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="space-y-4"
-            data-gtm="contact-form"
+            className="survey-container bg-card/50 backdrop-blur-md border border-border/50 rounded-lg p-2"
           >
-            <Input
-              name="name"
-              placeholder="Name"
-              className="bg-card border-border font-body focus:border-primary"
-              required
-              disabled={status === "loading"}
-              data-gtm="contact-name"
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="Email"
-              className="bg-card border-border font-body focus:border-primary"
-              required
-              disabled={status === "loading"}
-              data-gtm="contact-email"
-            />
-            <Textarea
-              name="message"
-              placeholder="Tell me about your data challenge..."
-              rows={5}
-              className="bg-card border-border font-body focus:border-primary resize-none"
-              required
-              disabled={status === "loading"}
-              data-gtm="contact-message"
-            />
-            {status === "success" ? (
-              <div className="w-full py-3 px-4 rounded-md bg-primary/10 border border-primary/30 text-center">
-                <span className="font-display text-sm text-primary tracking-wider uppercase">
-                  ✓ Message Sent Successfully!
-                </span>
-              </div>
-            ) : (
-              <Button
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-display uppercase tracking-wider text-sm"
-                data-gtm="contact-submit"
-              >
-                {status === "loading" ? (
-                  <>
-                    <svg className="w-4 h-4 mr-2 animate-spin" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    Sending...
-                  </>
-                ) : status === "error" ? (
-                  "Failed — Try Again"
-                ) : (
-                  <>
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            )}
-          </motion.form>
+            <Survey model={survey} />
+          </motion.div>
         </div>
       </div>
     </section>
