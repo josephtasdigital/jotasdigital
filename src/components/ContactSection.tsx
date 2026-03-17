@@ -95,7 +95,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="survey-container bg-card/50 backdrop-blur-md border border-border/50 rounded-lg p-2"
+            className="survey-container bg-card border border-border backdrop-blur-md rounded-lg p-2"
           >
             <Survey model={survey} />
           </motion.div>
