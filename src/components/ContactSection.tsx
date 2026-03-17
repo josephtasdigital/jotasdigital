@@ -134,6 +134,8 @@ const ContactSection = () => {
     font-family: inherit !important;
     padding: 0.75rem !important;
     transition: border-color 0.2s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .sd-input:hover, .sd-input:focus {
     border-color: hsl(var(--primary)) !important;
