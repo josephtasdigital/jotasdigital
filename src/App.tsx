@@ -14,18 +14,7 @@ import SandboxInternal from "./pages/SandboxInternal";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
-// 1. IMPORT YOUR NEW SENSOR HOOK HERE
-import { useStealthTracker } from "./hooks/useStealthTracker"; 
-import { useStealthEvents } from "./hooks/useStealthEvents";
-
 const queryClient = new QueryClient();
-
-// 2. CREATE THE INVISIBLE SENSOR COMPONENT
-const StealthSensor = () => {
-  useStealthTracker();
-  useStealthEvents();
-  return null; // It renders nothing to the UI, just runs the logic
-};
 
 const App = () => (
   <HelmetProvider>
@@ -35,9 +24,6 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* 3. INJECT THE SENSOR INSIDE THE BROWSER ROUTER */}
-            <StealthSensor />
-            
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
