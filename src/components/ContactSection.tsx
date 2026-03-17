@@ -61,6 +61,13 @@ const ContactSection = () => {
         },
       });
     }
+
+    // Send to Formspree
+    fetch("https://formspree.io/f/xnjgavkv", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(submittedData),
+    }).catch(() => {});
   });
 
   return (
