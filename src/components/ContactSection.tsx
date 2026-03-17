@@ -95,8 +95,47 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="survey-container bg-card border border-border backdrop-blur-md rounded-lg p-2"
+            className="w-full"
           >
+            <style>{`
+  .sd-root-modern, .sd-body, .sd-page, .sd-question {
+    background: transparent !important;
+    font-family: inherit !important;
+    padding: 0 !important;
+  }
+  .sd-question__title {
+    font-family: inherit !important;
+    color: hsl(var(--foreground)) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .sd-input {
+    background: transparent !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: 2px !important;
+    color: hsl(var(--foreground)) !important;
+    font-family: inherit !important;
+    padding: 0.75rem !important;
+    transition: border-color 0.2s ease !important;
+  }
+  .sd-input:hover, .sd-input:focus {
+    border-color: hsl(var(--primary)) !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .sd-question__required-text {
+    display: none !important;
+    color: #ef4444 !important;
+    margin-left: 4px !important;
+  }
+  .sd-question:focus-within .sd-question__required-text {
+    display: inline !important;
+  }
+  .sd-container-modern {
+    padding: 0 !important;
+  }
+            `}</style>
             <Survey model={survey} />
           </motion.div>
         </div>
