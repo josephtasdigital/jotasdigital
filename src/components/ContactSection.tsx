@@ -76,7 +76,7 @@ const ContactSection = () => {
         <span className="section-label">// Contact</span>
         <h2 className="section-title">Get In Touch</h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
