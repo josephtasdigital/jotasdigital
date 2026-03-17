@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
-import "survey-core/defaultV2.min.css";
+import "survey-core/survey-core.min.css";
 
 const glassTheme = {
   themeName: "custom-glass",
