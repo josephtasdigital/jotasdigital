@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 const ContactSection = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
     const form = e.currentTarget;
@@ -28,18 +28,18 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         const submittedEmail = data.get("email");
         const submittedName = data.get("name");
 
-        // 2. The GTM Sensor: Push the first-party data to the DataLayer
-        const w = window as any; // Prevents TypeScript errors in Vite
-        w.dataLayer = w.dataLayer || [];
-        w.dataLayer.push({
-          'event': 'form_submit_success',
-          'user_data': {
-            'email_address': submittedEmail,
-            'address': {
-              'first_name': submittedName
+        // 2. The Cinnamon Sensor: Send directly to the Unmarked Van on SUCCESS only
+        // @ts-ignore - Bypassing strict TS checks for our custom global tracker
+        if (window.BreadTracker) {
+          window.BreadTracker.send('generate_lead', {
+            user_data: {
+              email_address: submittedEmail,
+              address: {
+                first_name: submittedName
+              }
             }
-          }
-        });
+          });
+        }
 
         // 3. Clear the form and reset the button state
         form.reset();
@@ -100,7 +100,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             transition={{ delay: 0.1 }}
             className="space-y-4"
             data-gtm="contact-form"
-            data-stealth-event="generate_lead"
           >
             <Input
               name="name"
