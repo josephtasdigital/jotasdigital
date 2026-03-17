@@ -35,7 +35,7 @@ const surveyJson = {
 
 const ContactSection = () => {
   const survey = new Model(surveyJson);
-  survey.applyTheme(glassTheme);
+  survey.applyTheme(glassDarkTheme);
 
   survey.onComplete.add((sender) => {
     const submittedData = sender.data;
