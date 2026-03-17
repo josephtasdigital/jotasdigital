@@ -4,23 +4,22 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 
-const glassTheme = {
-  themeName: "custom-glass",
+const glassDarkTheme = {
+  themeName: "glass-dark",
   colorPalette: "dark" as const,
-  isPanelless: true,
   cssVariables: {
     "--sjs-general-backcolor": "transparent",
     "--sjs-general-backcolor-dim": "rgba(12, 14, 19, 0.5)",
     "--sjs-general-backcolor-dim-light": "rgba(12, 14, 19, 0.3)",
     "--sjs-primary-backcolor": "#ffffff",
-    "--sjs-primary-backcolor-light": "rgba(255, 255, 255, 0.1)",
     "--sjs-primary-forecolor": "#0c0e13",
+    "--sjs-primary-backcolor-light": "rgba(255, 255, 255, 0.1)",
+    "--sjs-base-unit": "6px",
+    "--sjs-corner-radius": "4px",
     "--sjs-font-editorfont-color": "rgba(255, 255, 255, 0.9)",
-    "--sjs-font-questiontitle-color": "rgba(255, 255, 255, 0.9)",
+    "--sjs-font-questiontitle-color": "rgba(255, 255, 255, 0.7)",
     "--sjs-border-default": "rgba(255, 255, 255, 0.1)",
     "--sjs-border-inside": "rgba(255, 255, 255, 0.1)",
-    "--sjs-base-unit": "6px",
-    "--sjs-corner-radius": "8px",
   },
 };
 
@@ -36,7 +35,7 @@ const surveyJson = {
 
 const ContactSection = () => {
   const survey = new Model(surveyJson);
-  survey.applyTheme(glassTheme);
+  survey.applyTheme(glassDarkTheme);
 
   survey.onComplete.add((sender) => {
     const submittedData = sender.data;
@@ -96,7 +95,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="survey-container bg-card/50 backdrop-blur-md border border-border/50 rounded-lg p-2"
+            className="survey-container bg-card border border-border backdrop-blur-md rounded-lg p-2"
           >
             <Survey model={survey} />
           </motion.div>
