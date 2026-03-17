@@ -4,23 +4,22 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 
-const glassTheme = {
-  themeName: "custom-glass",
+const glassDarkTheme = {
+  themeName: "glass-dark",
   colorPalette: "dark" as const,
-  isPanelless: true,
   cssVariables: {
     "--sjs-general-backcolor": "transparent",
     "--sjs-general-backcolor-dim": "rgba(12, 14, 19, 0.5)",
     "--sjs-general-backcolor-dim-light": "rgba(12, 14, 19, 0.3)",
     "--sjs-primary-backcolor": "#ffffff",
-    "--sjs-primary-backcolor-light": "rgba(255, 255, 255, 0.1)",
     "--sjs-primary-forecolor": "#0c0e13",
+    "--sjs-primary-backcolor-light": "rgba(255, 255, 255, 0.1)",
+    "--sjs-base-unit": "6px",
+    "--sjs-corner-radius": "4px",
     "--sjs-font-editorfont-color": "rgba(255, 255, 255, 0.9)",
-    "--sjs-font-questiontitle-color": "rgba(255, 255, 255, 0.9)",
+    "--sjs-font-questiontitle-color": "rgba(255, 255, 255, 0.7)",
     "--sjs-border-default": "rgba(255, 255, 255, 0.1)",
     "--sjs-border-inside": "rgba(255, 255, 255, 0.1)",
-    "--sjs-base-unit": "6px",
-    "--sjs-corner-radius": "8px",
   },
 };
 
