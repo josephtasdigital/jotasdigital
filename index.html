@@ -4,11 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<script 
-    async 
-    src="https://milk.josephtasdigital.com/cinnamon.js" 
-    data-client-id="JOTAS-MAIN-SITE"
-  ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+
+  </script>
+
+<script src="https://milk.josephtasdigital.com/cinnamon.js" async></script>
   <title>Data Engineer & Analytics Specialist | Building Data Factories</title>
   <meta name="description" content="Data Engineer specializing in pipeline architecture, ETL systems, and analytics infrastructure. Building data factories that turn raw data into actionable intelligence.">
   <meta name="author" content="data.eng" />
