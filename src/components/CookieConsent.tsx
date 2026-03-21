@@ -11,33 +11,66 @@ import {
   hasConsentCookie,
 } from "@/lib/cookie-consent";
 
+// DATA ENGINEER ADDITION: Tell TypeScript that GTM exists on the global window object
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 const CookieConsent = () => {
   const [visible, setVisible] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
   const [consent, setConsent] = useState<ConsentState>({ ...DEFAULT_CONSENT });
+
+  // DATA ENGINEER ADDITION: The engine that translates React state to Google commands
+  const pushToGTM = (state: ConsentState) => {
+    if (typeof window !== "undefined" && window.gtag) {
+      // 1. Update the official Google consent parameters
+      window.gtag("consent", "update", {
+        ad_storage: state.ad_storage,
+        analytics_storage: state.analytics_storage,
+        ad_user_data: state.ad_user_data,
+        ad_personalization: state.ad_personalization,
+      });
+
+      // 2. Fire the custom event trigger for Tag Manager
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "consent_updated" });
+    }
+  };
 
   useEffect(() => {
     if (!hasConsentCookie()) {
       // Small delay so it doesn't flash on load
       const t = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(t);
+    } else {
+      // DATA ENGINEER ADDITION: Initialization Check. 
+      // If they already have a cookie, grab it and immediately unlock GTM.
+      const savedState = getConsentState();
+      pushToGTM(savedState);
     }
   }, []);
 
   const handleAcceptAll = () => {
     setConsentState(ALL_GRANTED);
+    pushToGTM(ALL_GRANTED); // DATA ENGINEER ADDITION
     setVisible(false);
     setShowCustomize(false);
   };
 
   const handleDenyAll = () => {
     setConsentState({ ...DEFAULT_CONSENT });
+    pushToGTM(DEFAULT_CONSENT); // DATA ENGINEER ADDITION
     setVisible(false);
     setShowCustomize(false);
   };
 
   const handleSaveCustom = () => {
     setConsentState(consent);
+    pushToGTM(consent); // DATA ENGINEER ADDITION
     setVisible(false);
     setShowCustomize(false);
   };
