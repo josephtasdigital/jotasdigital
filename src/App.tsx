@@ -11,6 +11,7 @@ import PortfolioItem from "./pages/PortfolioItem";
 import Playground from "./pages/Playground";
 import SandboxTest from "./pages/SandboxTest";
 import SandboxInternal from "./pages/SandboxInternal";
+import JsSandbox from "./pages/JsSandbox";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/playground" element={<Playground />} />
               <Route path="/sandbox-internal/:type" element={<SandboxTest />} />
               <Route path="/sandbox-internal" element={<SandboxInternal />} />
+              <Route path="/js-sandbox" element={<JsSandbox />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieConsent />
