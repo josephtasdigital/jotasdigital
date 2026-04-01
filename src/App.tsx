@@ -32,6 +32,7 @@ const App = () => (
               <Route path="/playground" element={<Playground />} />
               <Route path="/sandbox-internal/:type" element={<SandboxTest />} />
               <Route path="/sandbox-internal" element={<SandboxInternal />} />
+              <Route path="/js-sandbox" element={<JsSandbox />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieConsent />

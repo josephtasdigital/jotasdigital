@@ -74,8 +74,19 @@ const ContactSection = () => {
   return (
     <section id="contact" className="border-t border-border" data-gtm="contact-section">
       <div className="section-container">
-        <span className="section-label">// Contact</span>
-        <h2 className="section-title">Get In Touch</h2>
+        <div className="flex items-center gap-4 mb-2">
+          <motion.div
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="w-14 h-14 rounded-full overflow-hidden border border-primary/30 shadow-[0_0_20px_rgba(0,229,255,0.1)] shrink-0"
+          >
+            <img src={placeholderPortrait} alt="Joseph Tas" className="w-full h-full object-cover object-top" loading="lazy" width={512} height={640} />
+          </motion.div>
+          <div>
+            <span className="section-label">// Contact</span>
+            <h2 className="section-title !mb-0">Get In Touch</h2>
+          </div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div

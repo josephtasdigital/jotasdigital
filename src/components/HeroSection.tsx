@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Database, Workflow, BarChart3 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import placeholderPortrait from "@/assets/placeholder-portrait.png";
 
 const HeroSection = () => {
   return (
@@ -26,11 +27,30 @@ const HeroSection = () => {
         >
           <span className="section-label">Data Engineer & Analytics Specialist</span>
 
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8">
-            <span className="text-foreground">Building</span>
-            <br />
-            <span className="text-primary text-glow">Data Factories</span>
-          </h1>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-8">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
+              <span className="text-foreground">Building</span>
+              <br />
+              <span className="text-primary text-glow">Data Factories</span>
+            </h1>
+
+            {/* Portrait photo */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="hidden md:block"
+            >
+              <div className="w-36 h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_30px_rgba(0,229,255,0.15)]">
+                <img
+                  src={placeholderPortrait}
+                  alt="Joseph Tas"
+                  className="w-full h-full object-cover object-top"
+                  width={512}
+                  height={640}
+                />
+              </div>
+            </motion.div>
+          </div>
 
           <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
             I build indestructible tracking systems. I help businesses bypass adblockers,
