@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import logoTransparent from "@/assets/logo-transparent.png";
 
 const baseNavItems = [
+  { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
