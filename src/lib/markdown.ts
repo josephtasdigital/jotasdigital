@@ -28,8 +28,20 @@ const playgroundFiles = import.meta.glob("/content/hidden-lab/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const jsShowcaseFiles = import.meta.glob("/content/js-showcase/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const siteSettingsFiles = import.meta.glob("/content/site-settings/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 function parseFrontmatter(raw: string): { data: Record<string, any>; content: string } {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, content: raw.trim() };
 
   const yamlBlock = match[1];
@@ -83,6 +95,16 @@ export function getServiceItems(): MarkdownContent[] {
 
 export function getPlaygroundItems(): MarkdownContent[] {
   return parseFiles(playgroundFiles);
+}
+
+export function getJsShowcaseItems(): MarkdownContent[] {
+  return parseFiles(jsShowcaseFiles);
+}
+
+export function getSiteSettings(): Record<string, any> {
+  const items = parseFiles(siteSettingsFiles);
+  const profile = items.find((i) => i.slug === "profile");
+  return profile?.frontmatter ?? {};
 }
 
 export function getPortfolioItem(slug: string): MarkdownContent | undefined {

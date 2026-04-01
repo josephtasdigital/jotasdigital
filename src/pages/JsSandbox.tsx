@@ -1,8 +1,10 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
+import { getJsShowcaseItems } from "@/lib/markdown";
 
 interface SandboxCard {
   id: string;
@@ -11,7 +13,8 @@ interface SandboxCard {
   code: string;
 }
 
-const sandboxCards: SandboxCard[] = [
+// Hardcoded fallback cards
+const fallbackCards: SandboxCard[] = [
   {
     id: "countdown",
     title: "Countdown Timer",
@@ -63,9 +66,23 @@ x.fillText(t,i*14,y*14);drops[i]=y*14>c.height&&Math.random()>.975?0:y+1})},33);
   },
 ];
 
+function getCards(): SandboxCard[] {
+  const cmsItems = getJsShowcaseItems();
+  if (cmsItems.length > 0) {
+    return cmsItems.map((item) => ({
+      id: item.slug,
+      title: item.frontmatter.title || item.slug,
+      description: item.frontmatter.description || "",
+      code: item.content || item.frontmatter.code || "",
+    }));
+  }
+  return fallbackCards;
+}
+
 const SandboxCardComponent = ({ card }: { card: SandboxCard }) => {
   const [revealed, setRevealed] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { t } = useTranslation();
 
   const handleReveal = useCallback(() => {
     setRevealed(true);
@@ -82,7 +99,6 @@ const SandboxCardComponent = ({ card }: { card: SandboxCard }) => {
       viewport={{ once: true }}
       className="relative border border-border rounded-sm overflow-hidden aspect-video bg-card/30"
     >
-      {/* Iframe always rendered when revealed */}
       {revealed && (
         <iframe
           ref={iframeRef}
@@ -93,7 +109,6 @@ const SandboxCardComponent = ({ card }: { card: SandboxCard }) => {
         />
       )}
 
-      {/* Blur overlay */}
       <AnimatePresence>
         {!revealed && (
           <motion.div
@@ -108,13 +123,12 @@ const SandboxCardComponent = ({ card }: { card: SandboxCard }) => {
               className="flex items-center gap-2 px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors font-display text-xs uppercase tracking-widest rounded-sm"
             >
               <Play className="w-4 h-4" />
-              Reveal — {card.title}
+              {t("sandbox.reveal")} — {card.title}
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Close button when revealed */}
       {revealed && (
         <button
           onClick={handleHide}
@@ -128,19 +142,22 @@ const SandboxCardComponent = ({ card }: { card: SandboxCard }) => {
 };
 
 const JsSandbox = () => {
+  const { t } = useTranslation();
+  const cards = getCards();
+
   return (
     <main className="min-h-screen bg-background">
       <SiteNav />
       <div className="pt-24 pb-16">
         <div className="section-container">
-          <span className="section-label">// Lab</span>
-          <h2 className="section-title">JavaScript Sandbox</h2>
+          <span className="section-label">{t("sandbox.label")}</span>
+          <h2 className="section-title">{t("sandbox.title")}</h2>
           <p className="font-body text-muted-foreground max-w-2xl mb-12">
-            Live-execution experiments. Each card runs in an isolated iframe — click to reveal and activate.
+            {t("sandbox.description")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sandboxCards.map((card) => (
+            {cards.map((card) => (
               <SandboxCardComponent key={card.id} card={card} />
             ))}
           </div>

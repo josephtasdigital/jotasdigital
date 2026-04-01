@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Database, Workflow, BarChart3 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
+import { getSiteSettings } from "@/lib/markdown";
 import placeholderPortrait from "@/assets/placeholder-portrait.png";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  const settings = getSiteSettings();
+  const heroPhoto = settings.hero_photo || placeholderPortrait;
+
   return (
     <section
       id="hero"
@@ -25,24 +31,24 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="section-label">Data Engineer & Analytics Specialist</span>
+          <span className="section-label">{t("hero.subtitle")}</span>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-8">
+          <div className="flex items-center justify-center gap-8 md:gap-12 mb-8">
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
-              <span className="text-foreground">Building</span>
+              <span className="text-foreground">{t("hero.title1")}</span>
               <br />
-              <span className="text-primary text-glow">Data Factories</span>
+              <span className="text-primary text-glow">{t("hero.title2")}</span>
             </h1>
 
             {/* Portrait photo */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="hidden md:block"
+              className="hidden md:block shrink-0"
             >
               <div className="w-36 h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_30px_rgba(0,229,255,0.15)]">
                 <img
-                  src={placeholderPortrait}
+                  src={heroPhoto}
                   alt="Joseph Tas"
                   className="w-full h-full object-cover object-top"
                   width={512}
@@ -53,16 +59,15 @@ const HeroSection = () => {
           </div>
 
           <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            I build indestructible tracking systems. I help businesses bypass adblockers,
-            fix broken GA4 data, and implement Server-Side tagging so your marketing actually works.
+            {t("hero.description")}
           </p>
 
           {/* Capability pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-16">
             {[
-              { icon: Database, label: "SERVER-SIDE TRACKING" },
-              { icon: Workflow, label: "GA4 ARCHITECTURE" },
-              { icon: BarChart3, label: "CONVERSION API (CAPI)" },
+              { icon: Database, label: t("hero.pill1") },
+              { icon: Workflow, label: t("hero.pill2") },
+              { icon: BarChart3, label: t("hero.pill3") },
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}
@@ -83,7 +88,7 @@ const HeroSection = () => {
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-display text-xs uppercase tracking-widest"
           data-gtm="hero-scroll-cta"
         >
-          Explore Work
+          {t("hero.cta")}
           <ArrowDown className="w-4 h-4 animate-bounce" />
         </motion.a>
       </div>

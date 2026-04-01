@@ -16,7 +16,7 @@ collections:
       - {label: "Project Title", name: "title", widget: "string"}
       - {label: "Asset Type", name: "type", widget: "select", options: ["Image Set", "PDF Document", "PowerPoint Embed"]}
       - {label: "Thumbnail Image", name: "thumbnail_image_url", widget: "image", required: false}
-      - {label: "Main Showcase File", name: "featured_image", widget: "file"} # Handles .png, .jpeg, .pdf
+      - {label: "Main Showcase File", name: "featured_image", widget: "file"}
       - {label: "Additional Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
       - {label: "Description", name: "body", widget: "markdown"}
 
@@ -44,13 +44,38 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Content", name: "body", widget: "markdown"}
 
-  # --- COLLECTION 3: THE HIDDEN PLAYGROUND ---
+  # --- COLLECTION 4: THE HIDDEN PLAYGROUND ---
   - name: "playground"
     label: "Project Bread (Testing)"
-    folder: "content/hidden-lab" # Different folder for safety
+    folder: "content/hidden-lab"
     create: true
     fields:
       - {label: "Test Page Name", name: "title", widget: "string"}
       - {label: "GTM Custom Event Name", name: "gtm_event", widget: "string"}
       - {label: "DataLayer Payload (JSON)", name: "payload", widget: "code", default_language: "json"}
       - {label: "Lab Notes", name: "body", widget: "markdown"}
+
+  # --- COLLECTION 5: JAVASCRIPT SHOWCASE ---
+  - name: "js-showcase"
+    label: "JavaScript Showcase"
+    folder: "content/js-showcase"
+    create: true
+    fields:
+      - {label: "Project Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "HTML/JS Code", name: "code", widget: "code", default_language: "html", output_code_only: true}
+      - {label: "Notes", name: "body", widget: "markdown", required: false}
+
+  # --- COLLECTION 6: SITE SETTINGS (Singleton-like) ---
+  - name: "site-settings"
+    label: "Site Settings"
+    folder: "content/site-settings"
+    create: false
+    files:
+      - name: "profile"
+        label: "Profile Photos"
+        file: "content/site-settings/profile.md"
+        fields:
+          - {label: "Title", name: "title", widget: "hidden", default: "Profile Photos"}
+          - {label: "Hero Section Photo", name: "hero_photo", widget: "image"}
+          - {label: "Contact Section Photo", name: "contact_photo", widget: "image"}
