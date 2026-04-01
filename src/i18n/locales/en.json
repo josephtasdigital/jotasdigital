@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Data Engineer & Analytics Specialist",
+    "title1": "Building",
+    "title2": "Data Factories",
+    "description": "I build indestructible tracking systems. I help businesses bypass adblockers, fix broken GA4 data, and implement Server-Side tagging so your marketing actually works.",
+    "pill1": "SERVER-SIDE TRACKING",
+    "pill2": "GA4 ARCHITECTURE",
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "Explore Work"
+  },
+  "contact": {
+    "label": "// Contact",
+    "title": "Get In Touch",
+    "description": "Most companies are losing 30% of their analytics to adblockers. I build first-party, server-side tracking pipelines that capture every click and bypass the noise. Let's fix your broken data.",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formMessage": "Tell me about your data challenge...",
+    "formSubmit": "Send Message",
+    "successTitle": "I'll reach you very soon",
+    "successNote": "Check your spam folder if you haven't received a confirmation"
+  },
+  "sandbox": {
+    "label": "// Lab",
+    "title": "JavaScript Sandbox",
+    "description": "Live-execution experiments. Each card runs in an isolated iframe — click to reveal and activate.",
+    "reveal": "Reveal"
+  }
+}

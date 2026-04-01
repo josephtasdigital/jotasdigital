@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "work": "Arbeiten",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "subtitle": "Dateningenieur & Analytics-Spezialist",
+    "title1": "Aufbau von",
+    "title2": "Datenfabriken",
+    "description": "Ich baue unzerstörbare Tracking-Systeme. Ich helfe Unternehmen, Adblocker zu umgehen, fehlerhafte GA4-Daten zu korrigieren und serverseitiges Tagging zu implementieren.",
+    "pill1": "SERVERSEITIGES TRACKING",
+    "pill2": "GA4-ARCHITEKTUR",
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "Arbeiten Erkunden"
+  },
+  "contact": {
+    "label": "// Kontakt",
+    "title": "Kontakt Aufnehmen",
+    "description": "Die meisten Unternehmen verlieren 30% ihrer Analytics-Daten durch Adblocker. Ich baue First-Party, serverseitige Tracking-Pipelines.",
+    "formName": "Name",
+    "formEmail": "E-Mail",
+    "formMessage": "Erzählen Sie mir von Ihrer Daten-Herausforderung...",
+    "formSubmit": "Nachricht Senden",
+    "successTitle": "Ich melde mich sehr bald",
+    "successNote": "Überprüfen Sie Ihren Spam-Ordner, falls Sie keine Bestätigung erhalten haben"
+  },
+  "sandbox": {
+    "label": "// Labor",
+    "title": "JavaScript-Sandbox",
+    "description": "Live-Ausführungsexperimente. Jede Karte läuft in einem isolierten iframe.",
+    "reveal": "Enthüllen"
+  }
+}

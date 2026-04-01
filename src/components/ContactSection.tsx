@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
+import { useTranslation } from "react-i18next";
 import "survey-core/survey-core.min.css";
+import { getSiteSettings } from "@/lib/markdown";
 import placeholderPortrait from "@/assets/placeholder-portrait.png";
 
 const glassDarkTheme = {
@@ -24,26 +26,30 @@ const glassDarkTheme = {
   },
 };
 
-const surveyJson = {
-  elements: [
-    { name: "name", type: "text", title: "Name", isRequired: true },
-    { name: "email", type: "text", inputType: "email", title: "Email", isRequired: true },
-    { name: "message", type: "comment", title: "Tell me about your data challenge...", isRequired: true },
-  ],
-  completeText: "Send Message",
-  showQuestionNumbers: "off",
-  completedHtml: `
-    <div style="text-align: center; padding: 2rem 0;">
-      <h3 style="color: white; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; font-family: inherit;">I'll reach you very soon</h3>
-      <div style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid hsl(var(--border)); padding: 0.75rem 1rem; border-radius: 6px; color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-        Check your spam folder if you haven't received a confirmation
-      </div>
-    </div>
-  `,
-};
-
 const ContactSection = () => {
+  const { t } = useTranslation();
+  const settings = getSiteSettings();
+  const contactPhoto = settings.contact_photo || placeholderPortrait;
+
+  const surveyJson = {
+    elements: [
+      { name: "name", type: "text", title: t("contact.formName"), isRequired: true },
+      { name: "email", type: "text", inputType: "email", title: t("contact.formEmail"), isRequired: true },
+      { name: "message", type: "comment", title: t("contact.formMessage"), isRequired: true },
+    ],
+    completeText: t("contact.formSubmit"),
+    showQuestionNumbers: "off",
+    completedHtml: `
+      <div style="text-align: center; padding: 2rem 0;">
+        <h3 style="color: white; font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; font-family: inherit;">${t("contact.successTitle")}</h3>
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid hsl(var(--border)); padding: 0.75rem 1rem; border-radius: 6px; color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          ${t("contact.successNote")}
+        </div>
+      </div>
+    `,
+  };
+
   const survey = new Model(surveyJson);
   survey.applyTheme(glassDarkTheme);
 
@@ -74,30 +80,28 @@ const ContactSection = () => {
   return (
     <section id="contact" className="border-t border-border" data-gtm="contact-section">
       <div className="section-container">
-        <div className="flex items-center gap-4 mb-2">
-          <motion.div
-            animate={{ y: [0, -4, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="w-14 h-14 rounded-full overflow-hidden border border-primary/30 shadow-[0_0_20px_rgba(0,229,255,0.1)] shrink-0"
-          >
-            <img src={placeholderPortrait} alt="Joseph Tas" className="w-full h-full object-cover object-top" loading="lazy" width={512} height={640} />
-          </motion.div>
-          <div>
-            <span className="section-label">// Contact</span>
-            <h2 className="section-title !mb-0">Get In Touch</h2>
-          </div>
-        </div>
-
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <div className="flex items-center gap-4 mb-2">
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="w-14 h-14 rounded-full overflow-hidden border border-primary/30 shadow-[0_0_20px_rgba(0,229,255,0.1)] shrink-0"
+              >
+                <img src={contactPhoto} alt="Joseph Tas" className="w-full h-full object-cover object-top" loading="lazy" width={512} height={640} />
+              </motion.div>
+              <div>
+                <span className="section-label">{t("contact.label")}</span>
+                <h2 className="section-title !mb-0">{t("contact.title")}</h2>
+              </div>
+            </div>
+
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              Most companies are losing 30% of their analytics to adblockers.
-              I build first-party, server-side tracking pipelines that capture every click and bypass the noise.
-              Let's fix your broken data.
+              {t("contact.description")}
             </p>
 
             <div className="space-y-4">

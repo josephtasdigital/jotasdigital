@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "Hizmetler",
+    "work": "Çalışmalar",
+    "blog": "Blog",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "subtitle": "Veri Mühendisi & Analitik Uzmanı",
+    "title1": "İnşa Ediyorum",
+    "title2": "Veri Fabrikaları",
+    "description": "Yıkılmaz izleme sistemleri kuruyorum. İşletmelerin reklam engelleyicileri atlamasına, bozuk GA4 verilerini düzeltmesine ve Sunucu Tarafı etiketleme uygulamasına yardımcı oluyorum.",
+    "pill1": "SUNUCU TARAFI İZLEME",
+    "pill2": "GA4 MİMARİSİ",
+    "pill3": "DÖNÜŞÜM API (CAPI)",
+    "cta": "Çalışmaları Keşfet"
+  },
+  "contact": {
+    "label": "// İletişim",
+    "title": "İletişime Geçin",
+    "description": "Çoğu şirket reklam engelleyiciler yüzünden analitik verilerinin %30'unu kaybediyor. Birinci taraf, sunucu tarafı izleme boru hatları kuruyorum.",
+    "formName": "İsim",
+    "formEmail": "E-posta",
+    "formMessage": "Veri zorluğunuzdan bahsedin...",
+    "formSubmit": "Mesaj Gönder",
+    "successTitle": "Çok yakında size ulaşacağım",
+    "successNote": "Onay almadıysanız spam klasörünüzü kontrol edin"
+  },
+  "sandbox": {
+    "label": "// Laboratuvar",
+    "title": "JavaScript Sandbox",
+    "description": "Canlı yürütme deneyleri. Her kart izole bir iframe içinde çalışır.",
+    "reveal": "Göster"
+  }
+}

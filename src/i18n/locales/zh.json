@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "服务",
+    "work": "作品",
+    "blog": "博客",
+    "contact": "联系"
+  },
+  "hero": {
+    "subtitle": "数据工程师 & 分析专家",
+    "title1": "构建",
+    "title2": "数据工厂",
+    "description": "我构建坚不可摧的追踪系统。我帮助企业绕过广告拦截器，修复损坏的GA4数据，并实施服务器端标签，让您的营销真正有效。",
+    "pill1": "服务器端追踪",
+    "pill2": "GA4 架构",
+    "pill3": "转化 API (CAPI)",
+    "cta": "探索作品"
+  },
+  "contact": {
+    "label": "// 联系",
+    "title": "联系我",
+    "description": "大多数公司因广告拦截器而损失30%的分析数据。我构建第一方、服务器端的追踪管道。",
+    "formName": "姓名",
+    "formEmail": "邮箱",
+    "formMessage": "告诉我您的数据挑战...",
+    "formSubmit": "发送消息",
+    "successTitle": "我会尽快联系您",
+    "successNote": "如果您未收到确认邮件，请检查垃圾邮件文件夹"
+  },
+  "sandbox": {
+    "label": "// 实验室",
+    "title": "JavaScript 沙箱",
+    "description": "实时执行实验。每张卡片在隔离的iframe中运行。",
+    "reveal": "揭示"
+  }
+}

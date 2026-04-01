@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "Servizi",
+    "work": "Lavori",
+    "blog": "Blog",
+    "contact": "Contatto"
+  },
+  "hero": {
+    "subtitle": "Ingegnere Dati & Specialista Analytics",
+    "title1": "Costruire",
+    "title2": "Fabbriche di Dati",
+    "description": "Costruisco sistemi di tracciamento indistruttibili. Aiuto le aziende a bypassare gli adblocker, correggere i dati GA4 e implementare il tagging lato server.",
+    "pill1": "TRACCIAMENTO LATO SERVER",
+    "pill2": "ARCHITETTURA GA4",
+    "pill3": "API DI CONVERSIONE (CAPI)",
+    "cta": "Esplora i Lavori"
+  },
+  "contact": {
+    "label": "// Contatto",
+    "title": "Contattami",
+    "description": "La maggior parte delle aziende perde il 30% dei dati analytics a causa degli adblocker. Costruisco pipeline di tracciamento first-party lato server.",
+    "formName": "Nome",
+    "formEmail": "Email",
+    "formMessage": "Parlami della tua sfida dati...",
+    "formSubmit": "Invia Messaggio",
+    "successTitle": "Ti ricontatterò molto presto",
+    "successNote": "Controlla la cartella spam se non hai ricevuto una conferma"
+  },
+  "sandbox": {
+    "label": "// Laboratorio",
+    "title": "Sandbox JavaScript",
+    "description": "Esperimenti in esecuzione live. Ogni scheda viene eseguita in un iframe isolato.",
+    "reveal": "Rivela"
+  }
+}
