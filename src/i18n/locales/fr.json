@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Travaux",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Ingénieur Data & Spécialiste Analytics",
+    "title1": "Construire des",
+    "title2": "Usines de Données",
+    "description": "Je construis des systèmes de suivi indestructibles. J'aide les entreprises à contourner les bloqueurs de publicités, corriger les données GA4 cassées et implémenter le suivi côté serveur.",
+    "pill1": "SUIVI CÔTÉ SERVEUR",
+    "pill2": "ARCHITECTURE GA4",
+    "pill3": "API DE CONVERSION (CAPI)",
+    "cta": "Explorer les Travaux"
+  },
+  "contact": {
+    "label": "// Contact",
+    "title": "Contactez-Moi",
+    "description": "La plupart des entreprises perdent 30% de leurs données analytiques à cause des bloqueurs de publicités. Je construis des pipelines de suivi first-party côté serveur.",
+    "formName": "Nom",
+    "formEmail": "Email",
+    "formMessage": "Parlez-moi de votre défi data...",
+    "formSubmit": "Envoyer",
+    "successTitle": "Je vous recontacterai très bientôt",
+    "successNote": "Vérifiez votre dossier spam si vous n'avez pas reçu de confirmation"
+  },
+  "sandbox": {
+    "label": "// Labo",
+    "title": "Bac à Sable JavaScript",
+    "description": "Expériences en exécution live. Chaque carte s'exécute dans un iframe isolé.",
+    "reveal": "Révéler"
+  }
+}
