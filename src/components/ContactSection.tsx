@@ -154,7 +154,7 @@ const ContactSection = () => {
     padding: 0 !important;
   }
             `}</style>
-            <div className="bg-card border border-border rounded-lg p-6 w-full h-full">
+            <div className="border border-border rounded-lg p-6 w-full h-full bg-transparent">
               <Survey model={survey} />
             </div>
           </motion.div>

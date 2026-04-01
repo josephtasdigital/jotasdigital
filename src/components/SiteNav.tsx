@@ -20,7 +20,15 @@ const SiteNav = () => {
     e.preventDefault();
     setIsOpen(false);
     if (isHome) {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      // Delay scroll slightly so mobile menu can close first
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) {
+          const headerOffset = 64; // fixed header height
+          const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 100);
     } else {
       window.location.href = "/" + href;
     }
