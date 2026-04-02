@@ -48,11 +48,30 @@ function parseFrontmatter(raw: string): { data: Record<string, any>; content: st
   const content = match[2].trim();
   const data: Record<string, any> = {};
 
-  for (const line of yamlBlock.split("\n")) {
+  const lines = yamlBlock.split("\n");
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
     const idx = line.indexOf(":");
-    if (idx === -1) continue;
+    if (idx === -1) { i++; continue; }
     const key = line.slice(0, idx).trim();
     let val: any = line.slice(idx + 1).trim();
+
+    // Handle YAML block scalar (| or >)
+    if (val === "|" || val === ">" || val === "|+" || val === "|-") {
+      const blockLines: string[] = [];
+      i++;
+      while (i < lines.length) {
+        const nextLine = lines[i];
+        // Block ends when we hit a non-indented line
+        if (nextLine.length > 0 && !nextLine.startsWith("  ") && !nextLine.startsWith("\t")) break;
+        blockLines.push(nextLine.replace(/^  /, ""));
+        i++;
+      }
+      data[key] = blockLines.join("\n").trim();
+      continue;
+    }
+
     if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
     }
@@ -60,6 +79,7 @@ function parseFrontmatter(raw: string): { data: Record<string, any>; content: st
       val = val.slice(1, -1).split(",").map((s: string) => s.trim().replace(/^["']|["']$/g, ""));
     }
     data[key] = val;
+    i++;
   }
 
   return { data, content };
