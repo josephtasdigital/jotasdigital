@@ -39,7 +39,7 @@ const HeroSection = () => {
         >
           <span className="section-label">{t("hero.subtitle")}</span>
 
-          <div className="flex items-center justify-center gap-8 md:gap-12 mb-8">
+          <div className="flex items-center justify-center gap-8 md:gap-12 mb-8 mx-auto w-fit">
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
               <span className="text-foreground">{t("hero.title1")}</span>
               <br />
