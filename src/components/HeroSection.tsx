@@ -31,7 +31,7 @@ const HeroSection = () => {
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-overlay opacity-20" />
 
-      <div className="relative z-10 section-container text-center">
+      <div className="relative z-10 section-container flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
