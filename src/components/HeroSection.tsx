@@ -16,9 +16,15 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-gtm="hero-section"
     >
-      {/* Background image */}
+      {/* Background image with breathing animation */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
+        <motion.img
+          src={heroBg}
+          alt=""
+          className="w-full h-full object-cover opacity-30"
+          animate={{ scale: [1, 1.05, 1], opacity: [0.25, 0.35, 0.25] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 
