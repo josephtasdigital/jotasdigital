@@ -27,11 +27,19 @@ const LocaleSync = ({ children }: { children: React.ReactNode }) => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
+    // Skip if navigated to admin path
+    if (lang === "admin") return;
     const locale = lang && supportedLocales.some((l) => l.code === lang) ? lang : "en";
     if (i18n.language !== locale) {
       i18n.changeLanguage(locale);
     }
   }, [lang, i18n]);
+
+  // If lang is "admin", don't render — let the browser handle it
+  if (lang === "admin") {
+    window.location.href = "/admin/";
+    return null;
+  }
 
   return <>{children}</>;
 };
