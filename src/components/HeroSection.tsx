@@ -16,43 +16,47 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-gtm="hero-section"
     >
-      {/* Background image with breathing animation */}
+      {/* Animated background layer */}
       <div className="absolute inset-0">
         <motion.img
           src={heroBg}
           alt=""
-          className="w-full h-full object-cover opacity-30"
-          animate={{ scale: [1, 1.05, 1], opacity: [0.25, 0.35, 0.25] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full object-cover opacity-20"
+          animate={{ scale: [1, 1.04, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
       </div>
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 grid-overlay opacity-20" />
+      {/* Subtle grid overlay */}
+      <div className="absolute inset-0 grid-overlay opacity-10" />
 
-      <div className="relative z-10 section-container flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <span className="section-label">{t("hero.subtitle")}</span>
+      {/* Floating glassmorphism accent shapes */}
+      <motion.div
+        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
+        animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-primary/5 blur-3xl"
+        animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-          <div className="flex items-center justify-center gap-8 md:gap-12 mb-8 mx-auto w-fit">
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
-              <span className="text-foreground">{t("hero.title1")}</span>
-              <br />
-              <span className="text-primary text-glow">{t("hero.title2")}</span>
-            </h1>
-
-            {/* Portrait photo */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="hidden md:block shrink-0"
-            >
-              <div className="w-36 h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_30px_rgba(0,229,255,0.15)]">
+      {/* Main content */}
+      <div className="relative z-10 section-container w-full">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center max-w-5xl mx-auto">
+          {/* Photo — shown first on mobile, second on desktop */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex justify-center md:order-2"
+          >
+            <div className="relative">
+              {/* Soft glow ring behind photo */}
+              <div className="absolute -inset-2 rounded-2xl bg-primary/10 blur-xl" />
+              <div className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
                 <img
                   src={heroPhoto}
                   alt="Joseph Tas"
@@ -61,42 +65,60 @@ const HeroSection = () => {
                   height={640}
                 />
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
-          <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            {t("hero.description")}
-          </p>
+          {/* Text block */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left md:order-1"
+          >
+            <span className="section-label">{t("hero.subtitle")}</span>
 
-          {/* Capability pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
-            {[
-              { icon: Database, label: t("hero.pill1") },
-              { icon: Workflow, label: t("hero.pill2") },
-              { icon: BarChart3, label: t("hero.pill3") },
-            ].map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 px-4 py-2 border border-border rounded-sm bg-card/50 backdrop-blur-sm"
-              >
-                <Icon className="w-4 h-4 text-primary" />
-                <span className="font-display text-xs uppercase tracking-wider text-secondary-foreground">{label}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] mb-6">
+              <span className="text-foreground">{t("hero.title1")}</span>
+              <br />
+              <span className="text-primary text-glow">{t("hero.title2")}</span>
+            </h1>
 
-        <motion.a
-          href="#work"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-display text-xs uppercase tracking-widest"
-          data-gtm="hero-scroll-cta"
-        >
-          {t("hero.cta")}
-          <ArrowDown className="w-4 h-4 animate-bounce" />
-        </motion.a>
+            <p className="font-body text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
+              {t("hero.description")}
+            </p>
+
+            {/* Capability pills */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-2.5 mb-10">
+              {[
+                { icon: Database, label: t("hero.pill1") },
+                { icon: Workflow, label: t("hero.pill2") },
+                { icon: BarChart3, label: t("hero.pill3") },
+              ].map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-2 px-3 py-1.5 border border-border/60 rounded-sm bg-card/40 backdrop-blur-sm"
+                >
+                  <Icon className="w-3.5 h-3.5 text-primary" />
+                  <span className="font-display text-[10px] uppercase tracking-wider text-secondary-foreground">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <motion.a
+              href="#work"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-display text-xs uppercase tracking-widest"
+              data-gtm="hero-scroll-cta"
+            >
+              {t("hero.cta")}
+              <ArrowDown className="w-4 h-4 animate-bounce" />
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
