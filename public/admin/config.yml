@@ -69,8 +69,6 @@ collections:
   # --- COLLECTION 6: SITE SETTINGS (Singleton-like) ---
   - name: "site-settings"
     label: "Site Settings"
-    folder: "content/site-settings"
-    create: false
     files:
       - name: "profile"
         label: "Profile Photos"
