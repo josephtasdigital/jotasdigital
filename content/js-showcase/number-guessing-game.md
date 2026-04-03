@@ -8,20 +8,71 @@ code: |-
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Number Guessing Game</title>
+      
+      <style>
+          body {
+              background-color: #0c0e13;
+          }
+
+
+          #game-container {
+              text-align: center;  
+              font-family: monospace; 
+              color: rgb(28, 229, 213); 
+              text-shadow: 0 0 5px rgb(28, 229, 213), 0 0 10px #0ff, 0 0 20px rgb(0, 139, 137), 0 0 30px rgb(0, 130, 182);
+          }
+
+
+          
+          .neon-btn {
+              background-image: linear-gradient(to right, #314755 0%, rgb(28, 229, 213) 51%, #314755 100%); 
+              margin: 10px; 
+              padding: 10px 15px; 
+              text-align: center; 
+              text-transform: uppercase; 
+              transition: 0.5s; 
+              background-size: 200% auto; 
+              color: white; 
+              box-shadow: 0 0 20px rgb(0, 130, 182); 
+              border-radius: 10px; 
+              border: none;
+              cursor: pointer;
+              text-decoration: none;
+          }
+
+
+          
+          .neon-btn:hover {
+              background-position: right center; /* Shifts the gradient to the right */
+              color: #fff;
+              text-decoration: none;
+          }
+
+
+          #guessInput {
+              padding: 5px; 
+              background: #111; 
+              color: rgb(28, 229, 213); 
+              border: 1px solid rgb(28, 229, 213);
+          }
+      </style>
   </head>
-  <body bgcolor = "#0c0e13" >
-      <div id="game-container" style="text-align: center; color: #00e5ff; font-family: monospace;">
-      <h3>Number Guesser</h3>
-      <p>Guess a number between 1 and 100</p>
+  <body>
       
-      <input type="number" id="guessInput" placeholder="Enter number..." style="padding: 5px; background: #111; color: #00e5ff; border: 1px solid #00e5ff;">
-      
-      <button id="submitBtn" style="padding: 5px 10px; background: #00e5ff; color: #000; cursor: pointer;">Guess</button>
-      
-      <p id="messageDisplay" style="margin-top: 15px; font-size: 1.2rem;"></p>
-  </div>
-  <script>
-      const minNumber = 1;
+      <div id="game-container">
+          <h3>Number Guesser</h3>
+          <p>Guess a number between 1 and 100</p>
+          
+          <input type="number" id="guessInput" placeholder="Enter number...">
+          
+          <button id="submitBtn" class="neon-btn">Guess</button>
+          
+          <p id="messageDisplay" style="margin-top: 15px; font-size: 1.2rem;"></p>
+      </div>
+
+
+      <script>
+             const minNumber = 1;
   const maxNumber = 100;
   const answer = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
 
@@ -71,9 +122,10 @@ code: |-
       }   
       guessInput.value = "";
   }
-  </script>
 
 
+  //josephtasdigital 2026
+      </script>
       
   </body>
   </html>
