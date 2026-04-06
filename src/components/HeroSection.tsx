@@ -10,6 +10,15 @@ const HeroSection = () => {
   const settings = getSiteSettings();
   const heroPhoto = settings.hero_photo || placeholderPortrait;
 
+  const handleScrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const el = document.getElementById("work");
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -44,7 +53,7 @@ const HeroSection = () => {
       />
 
       {/* Main content */}
-      <div className="relative z-10 section-container w-full">
+      <div className="relative z-10 section-container w-full flex flex-col items-center">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-center max-w-5xl mx-auto">
           {/* Photo — shown first on mobile, second on desktop */}
           <motion.div
@@ -54,7 +63,6 @@ const HeroSection = () => {
             className="flex justify-center md:order-2"
           >
             <div className="relative">
-              {/* Soft glow ring behind photo */}
               <div className="absolute -inset-2 rounded-2xl bg-primary/10 blur-xl" />
               <div className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
                 <img
@@ -75,7 +83,15 @@ const HeroSection = () => {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="flex flex-col items-center md:items-start text-center md:text-left md:order-1"
           >
-            <span className="section-label">{t("hero.subtitle")}</span>
+            {/* Name */}
+            <span className="font-display text-lg md:text-xl font-semibold text-foreground/90 tracking-wide mb-2">
+              Joseph Tas
+            </span>
+
+            {/* Subtitle — scaled up 50% */}
+            <span className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-primary mb-4 block">
+              {t("hero.subtitle")}
+            </span>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] mb-6">
               <span className="text-foreground">{t("hero.title1")}</span>
@@ -106,16 +122,18 @@ const HeroSection = () => {
               ))}
             </div>
 
+            {/* CTA — centered, enlarged 50%, fixed scroll */}
             <motion.a
               href="#work"
+              onClick={handleScrollToWork}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.5 }}
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-display text-xs uppercase tracking-widest"
+              className="inline-flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors font-display text-sm md:text-base uppercase tracking-widest w-full md:w-auto"
               data-gtm="hero-scroll-cta"
             >
               {t("hero.cta")}
-              <ArrowDown className="w-4 h-4 animate-bounce" />
+              <ArrowDown className="w-5 h-5 animate-bounce" />
             </motion.a>
           </motion.div>
         </div>

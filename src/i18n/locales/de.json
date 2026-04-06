@@ -15,6 +15,24 @@
     "pill3": "CONVERSION API (CAPI)",
     "cta": "Arbeiten Erkunden"
   },
+  "services": {
+    "label": "// Leistungen",
+    "heading": "Was Ich Liefere",
+    "formName": "Name",
+    "formEmail": "E-Mail",
+    "formSubmit": "Senden",
+    "modalTitle": "Interesse an {{service}}?",
+    "modalDescription": "Hinterlassen Sie Ihre Daten und ich melde mich, um diesen Service zu besprechen.",
+    "modalSuccess": "Danke für Ihr Interesse an diesem Service. Ich werde mich in Kürze bei Ihnen melden. Bitte überprüfen Sie auch Ihren Spam-Ordner."
+  },
+  "portfolio": {
+    "label": "// Portfolio",
+    "heading": "Ausgewählte Arbeiten"
+  },
+  "blog": {
+    "label": "// Blog",
+    "heading": "Technisches Schreiben"
+  },
   "contact": {
     "label": "// Kontakt",
     "title": "Kontakt Aufnehmen",

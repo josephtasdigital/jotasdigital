@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileImage, FileText, Presentation } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getPortfolioItems } from "@/lib/markdown";
 import {
   Carousel,
@@ -40,6 +41,7 @@ const typeIcons: Record<string, React.ReactNode> = {
 };
 
 const PortfolioSection = () => {
+  const { t } = useTranslation();
   const mdItems = getPortfolioItems();
   const items = mdItems.length > 0 ? mdItems : fallbackItems;
   const [api, setApi] = useState<CarouselApi>();
@@ -57,12 +59,12 @@ const PortfolioSection = () => {
     return () => { api.off("select", onSelect); };
   }, [api, onSelect]);
 
-  const activeTitle = items[activeIndex]?.frontmatter.title ?? "Selected Work";
+  const activeTitle = items[activeIndex]?.frontmatter.title ?? t("portfolio.heading");
 
   return (
     <section id="work" className="border-t border-border" data-gtm="portfolio-section">
       <div className="section-container">
-        <span className="section-label">// Portfolio</span>
+        <span className="section-label">{t("portfolio.label")}</span>
         <h2 className="section-title transition-all duration-300">{activeTitle}</h2>
 
         <div className="relative px-12">
@@ -83,19 +85,9 @@ const PortfolioSection = () => {
                   >
                     <div className="aspect-video bg-card overflow-hidden relative">
                       {fm.thumbnail_image_url ? (
-                        <img
-                          src={fm.thumbnail_image_url}
-                          alt={fm.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
+                        <img src={fm.thumbnail_image_url} alt={fm.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       ) : fm.featured_image && !fm.featured_image.endsWith(".pptx") && !fm.featured_image.endsWith(".pdf") ? (
-                        <img
-                          src={fm.featured_image}
-                          alt={fm.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
+                        <img src={fm.featured_image} alt={fm.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-card">
                           {fm.type === "PowerPoint Embed" ? (
@@ -105,9 +97,7 @@ const PortfolioSection = () => {
                           ) : (
                             <FileImage className="w-12 h-12 text-muted-foreground/30" />
                           )}
-                          <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground/50">
-                            {fm.type}
-                          </span>
+                          <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground/50">{fm.type}</span>
                         </div>
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -116,30 +106,20 @@ const PortfolioSection = () => {
                     <div className="p-5">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-primary">{typeIcons[fm.type] ?? <FileImage className="w-3.5 h-3.5" />}</span>
-                        <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground">
-                          {fm.type}
-                        </span>
+                        <span className="font-display text-[10px] uppercase tracking-wider text-muted-foreground">{fm.type}</span>
                       </div>
                       <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
                         {fm.title}
                         <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                       </h3>
-                      <p className="font-body text-sm text-muted-foreground mt-2 line-clamp-2">
-                        {item.content.slice(0, 140)}
-                      </p>
+                      <p className="font-body text-sm text-muted-foreground mt-2 line-clamp-2">{item.content.slice(0, 140)}</p>
                     </div>
                   </motion.div>
                 );
 
                 return (
                   <CarouselItem key={item.slug} className="pl-4 md:basis-1/2">
-                    {isDemo ? (
-                      <div className="h-full">{card}</div>
-                    ) : (
-                      <Link to={`/portfolio/${item.slug}`} className="block h-full">
-                        {card}
-                      </Link>
-                    )}
+                    {isDemo ? <div className="h-full">{card}</div> : <Link to={`/portfolio/${item.slug}`} className="block h-full">{card}</Link>}
                   </CarouselItem>
                 );
               })}

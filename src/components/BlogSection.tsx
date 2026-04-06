@@ -1,54 +1,37 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Clock, Calendar, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getBlogPosts } from "@/lib/markdown";
 
-// Fallback posts shown when no markdown files exist yet
 const fallbackPosts = [
   {
     slug: "_demo-1",
-    frontmatter: {
-      title: "Building Idempotent Data Pipelines",
-      excerpt: "How to design ETL systems that gracefully handle retries, duplicates, and partial failures without data corruption.",
-      date: "2026-02-15",
-      readTime: "8 min",
-      tags: ["Engineering", "ETL"],
-    },
+    frontmatter: { title: "Building Idempotent Data Pipelines", excerpt: "How to design ETL systems that gracefully handle retries, duplicates, and partial failures without data corruption.", date: "2026-02-15", readTime: "8 min", tags: ["Engineering", "ETL"] },
     content: "",
   },
   {
     slug: "_demo-2",
-    frontmatter: {
-      title: "GA4 Event Taxonomy: A Factory Approach",
-      excerpt: "Applying manufacturing logic to event naming conventions and measurement plan architecture.",
-      date: "2026-01-28",
-      readTime: "6 min",
-      tags: ["Analytics", "GA4"],
-    },
+    frontmatter: { title: "GA4 Event Taxonomy: A Factory Approach", excerpt: "Applying manufacturing logic to event naming conventions and measurement plan architecture.", date: "2026-01-28", readTime: "6 min", tags: ["Analytics", "GA4"] },
     content: "",
   },
   {
     slug: "_demo-3",
-    frontmatter: {
-      title: "dbt Models as Documentation",
-      excerpt: "Using your transformation layer as the single source of truth for business logic documentation.",
-      date: "2026-01-10",
-      readTime: "5 min",
-      tags: ["dbt", "Documentation"],
-    },
+    frontmatter: { title: "dbt Models as Documentation", excerpt: "Using your transformation layer as the single source of truth for business logic documentation.", date: "2026-01-10", readTime: "5 min", tags: ["dbt", "Documentation"] },
     content: "",
   },
 ];
 
 const BlogSection = () => {
+  const { t } = useTranslation();
   const mdPosts = getBlogPosts();
   const posts = mdPosts.length > 0 ? mdPosts : fallbackPosts;
 
   return (
     <section id="blog" className="border-t border-border" data-gtm="blog-section">
       <div className="section-container">
-        <span className="section-label">// Blog</span>
-        <h2 className="section-title">Technical Writing</h2>
+        <span className="section-label">{t("blog.label")}</span>
+        <h2 className="section-title">{t("blog.heading")}</h2>
 
         <div className="space-y-1">
           {posts.map((post, i) => {
@@ -105,9 +88,7 @@ const BlogSection = () => {
             return isDemo ? (
               <div key={post.slug}>{inner}</div>
             ) : (
-              <Link key={post.slug} to={`/blog/${post.slug}`} className="block">
-                {inner}
-              </Link>
+              <Link key={post.slug} to={`/blog/${post.slug}`} className="block">{inner}</Link>
             );
           })}
         </div>
