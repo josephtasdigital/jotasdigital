@@ -15,6 +15,24 @@
     "pill3": "CONVERSION API (CAPI)",
     "cta": "Explore Work"
   },
+  "services": {
+    "label": "// Services",
+    "heading": "What I Deliver",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formSubmit": "Send",
+    "modalTitle": "Interested in {{service}}?",
+    "modalDescription": "Leave your details and I'll reach out to discuss this service.",
+    "modalSuccess": "Thanks for the interest in this service, I will reach you out shortly to discuss further, be sure to check your spam folder."
+  },
+  "portfolio": {
+    "label": "// Portfolio",
+    "heading": "Selected Work"
+  },
+  "blog": {
+    "label": "// Blog",
+    "heading": "Technical Writing"
+  },
   "contact": {
     "label": "// Contact",
     "title": "Get In Touch",

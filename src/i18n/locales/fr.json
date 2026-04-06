@@ -15,6 +15,24 @@
     "pill3": "API DE CONVERSION (CAPI)",
     "cta": "Explorer les Travaux"
   },
+  "services": {
+    "label": "// Services",
+    "heading": "Ce Que Je Livre",
+    "formName": "Nom",
+    "formEmail": "Email",
+    "formSubmit": "Envoyer",
+    "modalTitle": "Intéressé par {{service}} ?",
+    "modalDescription": "Laissez vos coordonnées et je vous contacterai pour discuter de ce service.",
+    "modalSuccess": "Merci pour votre intérêt pour ce service, je vous contacterai sous peu pour en discuter davantage. Pensez à vérifier votre dossier spam."
+  },
+  "portfolio": {
+    "label": "// Portfolio",
+    "heading": "Travaux Sélectionnés"
+  },
+  "blog": {
+    "label": "// Blog",
+    "heading": "Rédaction Technique"
+  },
   "contact": {
     "label": "// Contact",
     "title": "Contactez-Moi",

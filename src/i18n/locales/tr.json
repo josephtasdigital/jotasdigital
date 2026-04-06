@@ -15,6 +15,24 @@
     "pill3": "DÖNÜŞÜM API (CAPI)",
     "cta": "Çalışmaları Keşfet"
   },
+  "services": {
+    "label": "// Hizmetler",
+    "heading": "Sunduklarım",
+    "formName": "İsim",
+    "formEmail": "E-posta",
+    "formSubmit": "Gönder",
+    "modalTitle": "{{service}} ile ilgileniyor musunuz?",
+    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti tartışmak için sizinle iletişime geçeyim.",
+    "modalSuccess": "Bu hizmete olan ilginiz için teşekkürler, en kısa sürede sizinle iletişime geçeceğim. Spam klasörünüzü kontrol etmeyi unutmayın."
+  },
+  "portfolio": {
+    "label": "// Portföy",
+    "heading": "Seçilmiş Çalışmalar"
+  },
+  "blog": {
+    "label": "// Blog",
+    "heading": "Teknik Yazılar"
+  },
   "contact": {
     "label": "// İletişim",
     "title": "İletişime Geçin",

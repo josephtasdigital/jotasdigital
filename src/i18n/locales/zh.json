@@ -15,6 +15,24 @@
     "pill3": "转化 API (CAPI)",
     "cta": "探索作品"
   },
+  "services": {
+    "label": "// 服务",
+    "heading": "我提供的服务",
+    "formName": "姓名",
+    "formEmail": "邮箱",
+    "formSubmit": "发送",
+    "modalTitle": "对 {{service}} 感兴趣？",
+    "modalDescription": "留下您的信息，我会联系您讨论此服务。",
+    "modalSuccess": "感谢您对此服务的兴趣，我会尽快与您联系进一步讨论。请务必检查您的垃圾邮件文件夹。"
+  },
+  "portfolio": {
+    "label": "// 作品集",
+    "heading": "精选作品"
+  },
+  "blog": {
+    "label": "// 博客",
+    "heading": "技术写作"
+  },
   "contact": {
     "label": "// 联系",
     "title": "联系我",
