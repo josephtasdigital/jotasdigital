@@ -6,7 +6,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "subtitle": "Data Engineer & Analytics Specialist",
+    "subtitle": "Marketing Data Infrastructure Engineer",
     "title1": "Building",
     "title2": "Data Factories",
     "description": "I build indestructible tracking systems. I help businesses bypass adblockers, fix broken GA4 data, and implement Server-Side tagging so your marketing actually works.",
@@ -18,7 +18,7 @@
   "whoami": {
     "label": "// WHO AM I",
     "heading": "Architecting the unseen.",
-    "bio1": "I am a Data Engineer operating out of Normandie. Most companies are bleeding 30% of their analytics to intelligent tracking prevention (ITP) and adblockers.",
+    "bio1": "I am a Data Engineer operating out of Normandie, France. Most companies are bleeding 30% of their analytics to intelligent tracking prevention (ITP) and adblockers.",
     "bio2": "I build serverless infrastructures using GCP, advanced JavaScript, and SQL to capture every click. My mission is simple: fix your broken data pipelines so your marketing actually works.",
     "highlight1": {
       "title": "Server-Side Tagging",
