@@ -41,7 +41,7 @@ const SiteNav = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl" data-gtm="site-header">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md" data-gtm="site-header">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
         <Link to={homePath} className="flex items-center gap-2" data-gtm="logo">
           <img src={logoTransparent} alt="JosephTasDigital" className="h-16 w-auto" />
