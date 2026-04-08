@@ -63,8 +63,8 @@
     "formEmail": "Email",
     "formMessage": "Tell me about your data challenge...",
     "formSubmit": "Send Message",
-    "successTitle": "I'll reach you very soon",
-    "successNote": "Check your spam folder if you haven't received a confirmation"
+    "successTitle": "I'll get back to you very soon",
+    "successNote": "Check your spam folder if you haven't received anything within 24 hours."
   },
   "sandbox": {
     "label": "// Lab",
