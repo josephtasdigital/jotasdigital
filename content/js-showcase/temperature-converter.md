@@ -8,15 +8,15 @@ code: |-
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Temperature Converter</title>
-      
+
       <style>
-          /* 1. Iframe Reset & Flexbox Centering */
+          
           html, body {
               margin: 0;
               padding: 0;
               width: 100%;
               height: 100%;
-              overflow: hidden; 
+              overflow: hidden;
               background-color: #0c0e13;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
               color: white;
@@ -28,19 +28,19 @@ code: |-
           /* 2. Responsive Form Container */
           form {
               text-align: center;
-              width: 95%; 
-              max-width: 340px; 
+              width: 95%;
+              max-width: 340px;
               background-color: #12151c;
               border-radius: 14px;
-              padding: 15px 10px; 
+              padding: 15px 10px;
               box-sizing: border-box;
               box-shadow: 5px 5px 15px rgb(96,102,117);
-          } 
+          }
 
           h2 {
               margin-top: 0;
               margin-bottom: 10px;
-              font-size: 1.25em; 
+              font-size: 1.25em;
               color: rgb(28, 229, 213);
               text-shadow: 0 0 5px rgb(14, 116, 107), 0 0 10px #0ff;
           }
@@ -83,9 +83,9 @@ code: |-
               text-shadow: 0 0 5px rgb(14, 116, 107);
           }
 
-          /* Unique styling for the Read-Only result box */
+          
           #resultbox {
-              background-color: #0c0e13; /* Darker to look locked */
+              background-color: #0c0e13;
               border-color: rgb(28, 229, 213); /* Cyan border to draw the eye */
           }
 
