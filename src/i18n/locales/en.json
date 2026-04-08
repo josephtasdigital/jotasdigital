@@ -16,25 +16,25 @@
     "cta": "Explore Work"
   },
   "whoami": {
-    "label": "// Who Am I",
-    "heading": "About Me",
-    "bio1": "I'm a Data Engineer & Analytics Specialist who architects resilient, server-side tracking infrastructure for brands that refuse to fly blind. My systems bypass adblockers, survive browser restrictions, and deliver the clean data your marketing team actually needs.",
-    "bio2": "From building custom GTM containers to deploying first-party data pipelines on cloud infrastructure, I operate at the intersection of marketing technology and data engineering — where precision meets scale.",
+    "label": "// WHO AM I",
+    "heading": "Architecting the unseen.",
+    "bio1": "I am a Data Engineer operating out of Normandie. Most companies are bleeding 30% of their analytics to intelligent tracking prevention (ITP) and adblockers.",
+    "bio2": "I build serverless infrastructures using GCP, advanced JavaScript, and SQL to capture every click. My mission is simple: fix your broken data pipelines so your marketing actually works.",
     "highlight1": {
-      "title": "Server-Side Infra",
-      "desc": "Custom-built tracking servers that bypass client-side limitations."
+      "title": "Server-Side Tagging",
+      "desc": "Routing data through secure cloud containers to bypass adblockers."
     },
     "highlight2": {
-      "title": "Data Pipelines",
-      "desc": "Automated ETL flows from raw events to actionable dashboards."
+      "title": "GCP Infrastructure",
+      "desc": "Building robust, scalable data pipelines on Google Cloud."
     },
     "highlight3": {
-      "title": "Global Scale",
-      "desc": "Multi-region deployments serving enterprise-grade analytics."
+      "title": "GA4 & CAPI Integration",
+      "desc": "Repairing broken analytics and engineering flawless server-to-server advertising payloads."
     },
     "highlight4": {
-      "title": "Real-Time Processing",
-      "desc": "Sub-second event processing for live campaign optimization."
+      "title": "Privacy Compliance",
+      "desc": "Strict adherence to European GDPR and DMA consent state architectures."
     }
   },
   "services": {
