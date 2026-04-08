@@ -8,7 +8,7 @@ code: |-
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Temperature Converter</title>
-      
+
       <style>
           /* 1. Iframe Reset & Flexbox Centering */
           html, body {
@@ -16,7 +16,7 @@ code: |-
               padding: 0;
               width: 100%;
               height: 100%;
-              overflow: hidden; 
+              overflow: hidden;
               background-color: #0c0e13;
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
               color: white;
@@ -28,14 +28,14 @@ code: |-
           /* 2. Responsive Form Container - TIGHTENED PADDING */
           form {
               text-align: center;
-              width: 95%; 
-              max-width: 340px; 
+              width: 95%;
+              max-width: 340px;
               background-color: #12151c;
               border-radius: 14px;
               padding: 10px; /* Reduced from 15px to save vertical space */
               box-sizing: border-box;
               box-shadow: 5px 5px 15px rgb(96,102,117);
-          } 
+          }
 
           /* TIGHTENED MARGINS & FONTS */
           h2 {
@@ -72,7 +72,7 @@ code: |-
               display: flex;
               justify-content: center;
               align-items: center;
-              gap: 8px; 
+              gap: 8px;
               margin-bottom: 10px; /* Reduced from 15px */
               margin-top: 4px;
           }
@@ -92,8 +92,8 @@ code: |-
           }
 
           #resultbox {
-              background-color: #0c0e13; 
-              border-color: rgb(28, 229, 213); 
+              background-color: #0c0e13;
+              border-color: rgb(28, 229, 213);
           }
 
           .arrow {
@@ -111,7 +111,7 @@ code: |-
               padding: 6px 20px;
               border-radius: 5px;
               cursor: pointer;
-              transition: 0.3s; 
+              transition: 0.3s;
               margin-top: 2px; /* Hugs the input boxes closer */
           }
 
@@ -124,10 +124,9 @@ code: |-
   <body>
 
       <form>
-          <h2>Temperature Converter</h2>
-          
-          <p class="texts">Select a conversion:</p>
-          
+
+          <p class="texts">Select a unit:</p>
+
           <div class="radio-group">
               <div>
                   <input type="radio" id="fahToCel" name="unit" checked>
@@ -138,15 +137,15 @@ code: |-
                   <label for="CelToFah">Celsius ➡️ Fahrenheit</label>
               </div>
           </div>
-          
+
           <p class="texts">Enter Value:</p>
-          
+
           <div class="input-group">
               <input type="number" id="textbox" class="input-box" value="0">
               <span class="arrow">➡️</span>
               <input type="text" id="resultbox" class="input-box" readonly placeholder="Result">
           </div>
-          
+
           <button type="button" id="convertBtn" onclick="convert()">Convert</button>
       </form>
 
@@ -154,26 +153,26 @@ code: |-
           const convFahToCel = document.getElementById("fahToCel");
           const convCelToFah = document.getElementById("CelToFah");
           const convTextbox = document.getElementById("textbox");
-          const resultBox = document.getElementById("resultbox"); 
+          const resultBox = document.getElementById("resultbox");
           let temp;
 
           function convert() {
               if(convCelToFah.checked){
                   temp = Number(convTextbox.value);
                   temp = temp * 9 / 5 + 32;
-                  resultBox.value = temp.toFixed(1) + "°F"; 
+                  resultBox.value = temp.toFixed(1) + "°F";
               }
               else if(convFahToCel.checked){
                   temp = Number(convTextbox.value);
                   temp = (temp - 32) * (5/9);
-                  resultBox.value = temp.toFixed(1) + "°C"; 
+                  resultBox.value = temp.toFixed(1) + "°C";
               }
               else {
                   resultBox.value = "Error";
               }
           }
       </script>
-      
+
   </body>
   </html>
 ---
