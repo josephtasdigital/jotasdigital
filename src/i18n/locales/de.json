@@ -15,6 +15,28 @@
     "pill3": "CONVERSION API (CAPI)",
     "cta": "Arbeiten Erkunden"
   },
+  "whoami": {
+    "label": "// Wer bin ich",
+    "heading": "Über Mich",
+    "bio1": "Ich bin ein Dateningenieur & Analytics-Spezialist, der robuste, serverseitige Tracking-Infrastruktur für Marken entwickelt, die sich nicht im Blindflug befinden wollen. Meine Systeme umgehen Adblocker, überstehen Browser-Einschränkungen und liefern die sauberen Daten, die Ihr Marketing-Team wirklich braucht.",
+    "bio2": "Von benutzerdefinierten GTM-Containern bis hin zum Einsatz von First-Party-Datenpipelines auf Cloud-Infrastruktur – ich arbeite an der Schnittstelle von Marketing-Technologie und Data Engineering.",
+    "highlight1": {
+      "title": "Serverseitige Infra",
+      "desc": "Maßgeschneiderte Tracking-Server, die clientseitige Einschränkungen umgehen."
+    },
+    "highlight2": {
+      "title": "Datenpipelines",
+      "desc": "Automatisierte ETL-Flows von Rohereignissen zu handlungsfähigen Dashboards."
+    },
+    "highlight3": {
+      "title": "Globale Skalierung",
+      "desc": "Multi-Region-Deployments für Enterprise-Analytics."
+    },
+    "highlight4": {
+      "title": "Echtzeitverarbeitung",
+      "desc": "Ereignisverarbeitung unter einer Sekunde für Live-Kampagnenoptimierung."
+    }
+  },
   "services": {
     "label": "// Leistungen",
     "heading": "Was Ich Liefere",
