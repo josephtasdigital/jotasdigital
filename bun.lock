@@ -1043,9 +1043,9 @@
 
     "supports-preserve-symlinks-flag": ["supports-preserve-symlinks-flag@1.0.0", "", {}, "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="],
 
-    "survey-core": ["survey-core@2.5.18", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/survey-core/-/survey-core-2.5.18.tgz", {}, "sha512-eorlj28E2GZtaH6q/7k1LQZvOlsWHwpElDRxldTAw8pFj3jEqQvYK3B8EQxVqCeX6oO31BLOZMdFtZvm4rq3bg=="],
+    "survey-core": ["survey-core@2.5.19", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/survey-core/-/survey-core-2.5.19.tgz", {}, "sha512-4esPxmePM3BBOh5OcsbqvZBFZ4D5Z4Ommw4IMsTF8bxAkMQLBsmMJr7v2o1B32LMqXxUaq2OtkIabwqcpWVogg=="],
 
-    "survey-react-ui": ["survey-react-ui@2.5.18", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/survey-react-ui/-/survey-react-ui-2.5.18.tgz", { "peerDependencies": { "react": "^16.5.0 || ^17.0.1 || ^18.1.0 || ^19.0.0", "react-dom": "^16.5.0 || ^17.0.1 || ^18.1.0 || ^19.0.0", "survey-core": "2.5.18" } }, "sha512-vYTeRkvjm4b5GeN5Pd+rgp3iAS8u3xokaNJ0sIdRXjiDRW4AQcpUWSHDZu7YhXppz55BziIuEtVWPi4Yj8hRHw=="],
+    "survey-react-ui": ["survey-react-ui@2.5.19", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/survey-react-ui/-/survey-react-ui-2.5.19.tgz", { "peerDependencies": { "react": "^16.5.0 || ^17.0.1 || ^18.1.0 || ^19.0.0", "react-dom": "^16.5.0 || ^17.0.1 || ^18.1.0 || ^19.0.0", "survey-core": "2.5.19" } }, "sha512-yBOyFy+4yWxpeDAPBJFGgzxbnzWe0p1LjWkvJvnkF84B8T+zWhw9wqmakdJjzy9eGMgywSGnn/JD0L6hy3Ta8Q=="],
 
     "symbol-tree": ["symbol-tree@3.2.4", "", {}, "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="],
 
