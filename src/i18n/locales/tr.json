@@ -7,8 +7,8 @@
   },
   "hero": {
     "subtitle": "Veri Mühendisi & Analitik Uzmanı",
-    "title1": "İnşa Ediyorum",
-    "title2": "Veri Fabrikaları",
+    "title1": "Veri Fabrikaları",
+    "title2": "İnşa Ediyorum",
     "description": "Yıkılmaz izleme sistemleri kuruyorum. İşletmelerin reklam engelleyicileri atlamasına, bozuk GA4 verilerini düzeltmesine ve Sunucu Tarafı etiketleme uygulamasına yardımcı oluyorum.",
     "pill1": "SUNUCU TARAFI İZLEME",
     "pill2": "GA4 MİMARİSİ",
@@ -18,23 +18,23 @@
   "whoami": {
     "label": "// Ben Kimim",
     "heading": "Hakkımda",
-    "bio1": "Kör uçuşu reddeden markalar için dayanıklı, sunucu tarafı izleme altyapısı tasarlayan bir Veri Mühendisi ve Analitik Uzmanıyım. Sistemlerim reklam engelleyicileri atlar, tarayıcı kısıtlamalarından etkilenmez ve pazarlama ekibinizin gerçekten ihtiyaç duyduğu temiz verileri sunar.",
-    "bio2": "Özel GTM konteynerlerinden bulut altyapısında birinci taraf veri hatlarına kadar, pazarlama teknolojisi ve veri mühendisliğinin kesişim noktasında çalışıyorum.",
+    "bio1": "Fransa'nın Normandiya bölgesinde çalışan bir Veri Mühendisiyim. Çoğu şirket, analitik verilerinin %30'unu akıllı izleme engelleme (ITP) ve reklam engelleyicilere kaybediyor.",
+    "bio2": "Ben ise her tıklamayı yakalamak için GCP, gelişmiş JavaScript ve SQL kullanarak sunucusuz altyapılar oluşturuyorum. Görevim basitçe bozuk veri boru hatlarınızı düzeltmek, böylece pazarlama mekanizmanızın gerçekten çalışmasını sağlıyorum.",
     "highlight1": {
-      "title": "Sunucu Tarafı Altyapı",
-      "desc": "İstemci tarafı sınırlamaları aşan özel izleme sunucuları."
+      "title": "Sunucu Tarafı Etiketleme",
+      "desc": "Reklam engelleyicileri atlatmak için verileri güvenli bulut kapsayıcıları üzerinden yönlendirmek."
     },
     "highlight2": {
-      "title": "Veri Hatları",
-      "desc": "Ham olaylardan eyleme dönüştürülebilir panolara otomatik ETL akışları."
+      "title": "GCP Altyapısı",
+      "desc": "Google Cloud üzerinde sağlam, ölçeklenebilir veri boru hatları oluşturmak."
     },
     "highlight3": {
-      "title": "Küresel Ölçek",
-      "desc": "Kurumsal düzeyde analitik sunan çok bölgeli dağıtımlar."
+      "title": "GA4 ve CAPI Entegrasyonu",
+      "desc": "Bozuk analitik sistemlerini onarmak ve kusursuz sunucu-sunucu reklam yükleri oluşturmak."
     },
     "highlight4": {
-      "title": "Gerçek Zamanlı İşleme",
-      "desc": "Canlı kampanya optimizasyonu için saniyenin altında olay işleme."
+      "title": "Gizlilik Uyumluluğu",
+      "desc": "Avrupa GDPR ve DMA rıza durumu mimarilerine sıkı sıkıya bağlı kalma."
     }
   },
   "services": {
@@ -44,12 +44,12 @@
     "formEmail": "E-posta",
     "formSubmit": "Gönder",
     "modalTitle": "{{service}} ile ilgileniyor musunuz?",
-    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti tartışmak için sizinle iletişime geçeyim.",
+    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti daha detaylı konuşmak için sizinle iletişime geçeyim.",
     "modalSuccess": "Bu hizmete olan ilginiz için teşekkürler, en kısa sürede sizinle iletişime geçeceğim. Spam klasörünüzü kontrol etmeyi unutmayın."
   },
   "portfolio": {
     "label": "// Portföy",
-    "heading": "Seçilmiş Çalışmalar"
+    "heading": "Başlıca Çalışmalar"
   },
   "blog": {
     "label": "// Blog",
@@ -58,13 +58,13 @@
   "contact": {
     "label": "// İletişim",
     "title": "İletişime Geçin",
-    "description": "Çoğu şirket reklam engelleyiciler yüzünden analitik verilerinin %30'unu kaybediyor. Birinci taraf, sunucu tarafı izleme boru hatları kuruyorum.",
+    "description": "Çoğu şirket reklam engelleyiciler yüzünden analitik verilerinin %30'unu kaybediyor. Birinci taraf, sunucu taraflı izleme boru hatları kuruyorum.",
     "formName": "İsim",
     "formEmail": "E-posta",
     "formMessage": "Veri zorluğunuzdan bahsedin...",
     "formSubmit": "Mesaj Gönder",
     "successTitle": "Çok yakında size ulaşacağım",
-    "successNote": "Onay almadıysanız spam klasörünüzü kontrol edin"
+    "successNote": "Onay mesajı almadıysanız spam klasörünüzü kontrol edin"
   },
   "sandbox": {
     "label": "// Laboratuvar",
