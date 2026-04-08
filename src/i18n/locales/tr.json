@@ -15,6 +15,28 @@
     "pill3": "DÖNÜŞÜM API (CAPI)",
     "cta": "Çalışmaları Keşfet"
   },
+  "whoami": {
+    "label": "// Ben Kimim",
+    "heading": "Hakkımda",
+    "bio1": "Kör uçuşu reddeden markalar için dayanıklı, sunucu tarafı izleme altyapısı tasarlayan bir Veri Mühendisi ve Analitik Uzmanıyım. Sistemlerim reklam engelleyicileri atlar, tarayıcı kısıtlamalarından etkilenmez ve pazarlama ekibinizin gerçekten ihtiyaç duyduğu temiz verileri sunar.",
+    "bio2": "Özel GTM konteynerlerinden bulut altyapısında birinci taraf veri hatlarına kadar, pazarlama teknolojisi ve veri mühendisliğinin kesişim noktasında çalışıyorum.",
+    "highlight1": {
+      "title": "Sunucu Tarafı Altyapı",
+      "desc": "İstemci tarafı sınırlamaları aşan özel izleme sunucuları."
+    },
+    "highlight2": {
+      "title": "Veri Hatları",
+      "desc": "Ham olaylardan eyleme dönüştürülebilir panolara otomatik ETL akışları."
+    },
+    "highlight3": {
+      "title": "Küresel Ölçek",
+      "desc": "Kurumsal düzeyde analitik sunan çok bölgeli dağıtımlar."
+    },
+    "highlight4": {
+      "title": "Gerçek Zamanlı İşleme",
+      "desc": "Canlı kampanya optimizasyonu için saniyenin altında olay işleme."
+    }
+  },
   "services": {
     "label": "// Hizmetler",
     "heading": "Sunduklarım",

@@ -15,6 +15,28 @@
     "pill3": "API DI CONVERSIONE (CAPI)",
     "cta": "Esplora i Lavori"
   },
+  "whoami": {
+    "label": "// Chi Sono",
+    "heading": "Su di Me",
+    "bio1": "Sono un Ingegnere Dati e Specialista Analytics che progetta infrastrutture di tracciamento resilienti e lato server per brand che rifiutano di volare alla cieca. I miei sistemi bypassano gli adblocker, resistono alle restrizioni dei browser e forniscono i dati puliti di cui il vostro team marketing ha veramente bisogno.",
+    "bio2": "Dalla costruzione di container GTM personalizzati al deploy di pipeline di dati first-party su infrastruttura cloud, opero all'intersezione tra tecnologia di marketing e data engineering.",
+    "highlight1": {
+      "title": "Infra Lato Server",
+      "desc": "Server di tracciamento su misura che superano i limiti lato client."
+    },
+    "highlight2": {
+      "title": "Pipeline Dati",
+      "desc": "Flussi ETL automatizzati da eventi grezzi a dashboard azionabili."
+    },
+    "highlight3": {
+      "title": "Scala Globale",
+      "desc": "Deploy multi-regione per analytics di livello enterprise."
+    },
+    "highlight4": {
+      "title": "Elaborazione in Tempo Reale",
+      "desc": "Elaborazione eventi sub-secondo per l'ottimizzazione live delle campagne."
+    }
+  },
   "services": {
     "label": "// Servizi",
     "heading": "Cosa Offro",

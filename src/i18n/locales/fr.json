@@ -15,6 +15,28 @@
     "pill3": "API DE CONVERSION (CAPI)",
     "cta": "Explorer les Travaux"
   },
+  "whoami": {
+    "label": "// Qui Suis-Je",
+    "heading": "À Propos de Moi",
+    "bio1": "Je suis un Ingénieur Data & Spécialiste Analytics qui conçoit des infrastructures de suivi résilientes côté serveur pour les marques qui refusent de voler à l'aveugle. Mes systèmes contournent les bloqueurs de publicités, résistent aux restrictions des navigateurs et fournissent les données propres dont votre équipe marketing a véritablement besoin.",
+    "bio2": "De la construction de conteneurs GTM personnalisés au déploiement de pipelines de données first-party sur infrastructure cloud, j'opère à l'intersection de la technologie marketing et de l'ingénierie des données.",
+    "highlight1": {
+      "title": "Infra Côté Serveur",
+      "desc": "Serveurs de suivi sur mesure qui contournent les limitations côté client."
+    },
+    "highlight2": {
+      "title": "Pipelines de Données",
+      "desc": "Flux ETL automatisés des événements bruts aux tableaux de bord actionnables."
+    },
+    "highlight3": {
+      "title": "Échelle Mondiale",
+      "desc": "Déploiements multi-régions pour des analytics de niveau entreprise."
+    },
+    "highlight4": {
+      "title": "Traitement en Temps Réel",
+      "desc": "Traitement d'événements en moins d'une seconde pour l'optimisation live des campagnes."
+    }
+  },
   "services": {
     "label": "// Services",
     "heading": "Ce Que Je Livre",
