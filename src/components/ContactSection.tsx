@@ -53,23 +53,44 @@ const ContactSection = () => {
   const survey = new Model(surveyJson);
   survey.applyTheme(glassDarkTheme);
 
-  survey.onComplete.add((sender) => {
-    const submittedData = sender.data;
+  survey.onComplete.add(async (sender) => {
+    const payload = {
+      name: sender.data.name,
+      email: sender.data.email,
+      message: sender.data.message,
+    };
+
+    console.log("Submitting payload:", payload);
+
+    // Send to SurveyJS API
+    const token = import.meta.env.VITE_SURVEYJS_TOKEN || "d18ed65b-304a-4631-8a32-d8d11e57b18e";
+    if (token) {
+      try {
+        const response = await fetch(`https://api.surveyjs.io/private/Surveys/postResult/${token}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) {
+          console.error("SurveyJS API error:", response.status);
+        } else {
+          console.log("SurveyJS submission successful");
+        }
+      } catch (err) {
+        console.error("SurveyJS submission failed:", err);
+      }
+    }
 
     // @ts-ignore - Bypassing strict TS checks for our custom global tracker
     if (window.BreadTracker) {
       // @ts-ignore
       window.BreadTracker.send("generate_lead", {
         user_data: {
-          email_address: submittedData.email,
-          address: {
-            first_name: submittedData.name,
-          },
+          email_address: payload.email,
+          address: { first_name: payload.name },
         },
       });
     }
-
-    // Data is captured via BreadTracker above — no third-party form service.
   });
 
   return (
