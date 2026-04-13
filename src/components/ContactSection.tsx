@@ -63,7 +63,7 @@ const ContactSection = () => {
     console.log("Submitting payload:", payload);
 
     // Send to SurveyJS API
-    const token = import.meta.env.VITE_SURVEYJS_TOKEN;
+    const token = import.meta.env.VITE_SURVEYJS_TOKEN || "d18ed65b-304a-4631-8a32-d8d11e57b18e";
     if (token) {
       try {
         const response = await fetch(`https://api.surveyjs.io/private/Surveys/postResult/${token}`, {
