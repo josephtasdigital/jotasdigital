@@ -14,7 +14,7 @@ import PortfolioItem from "./pages/PortfolioItem";
 import Playground from "./pages/Playground";
 import SandboxTest from "./pages/SandboxTest";
 import SandboxInternal from "./pages/SandboxInternal";
-import JsSandbox from "./pages/JsSandbox";
+
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -53,14 +53,12 @@ const AppRoutes = () => (
     <Route path="/playground" element={<LocaleSync><Playground /></LocaleSync>} />
     <Route path="/sandbox-internal/:type" element={<LocaleSync><SandboxTest /></LocaleSync>} />
     <Route path="/sandbox-internal" element={<LocaleSync><SandboxInternal /></LocaleSync>} />
-    <Route path="/js-sandbox" element={<LocaleSync><JsSandbox /></LocaleSync>} />
 
     {/* Localized routes */}
     <Route path="/:lang" element={<LocaleSync><Index /></LocaleSync>} />
     <Route path="/:lang/blog/:slug" element={<LocaleSync><BlogPost /></LocaleSync>} />
     <Route path="/:lang/portfolio/:slug" element={<LocaleSync><PortfolioItem /></LocaleSync>} />
     <Route path="/:lang/playground" element={<LocaleSync><Playground /></LocaleSync>} />
-    <Route path="/:lang/js-sandbox" element={<LocaleSync><JsSandbox /></LocaleSync>} />
 
     <Route path="*" element={<NotFound />} />
   </Routes>
