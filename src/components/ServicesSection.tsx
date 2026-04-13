@@ -88,26 +88,36 @@ const ServicesSection = () => {
 
       console.log("Submitting service payload:", payload);
 
-      // Send to SurveyJS API
       const token = import.meta.env.VITE_SURVEYJS_TOKEN || "d18ed65b-304a-4631-8a32-d8d11e57b18e";
-      if (token) {
-        try {
-          const response = await fetch(`https://api.surveyjs.io/private/Surveys/postResult/${token}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          if (!response.ok) {
-            console.error("SurveyJS API error:", response.status);
-          } else {
-            console.log("SurveyJS service submission successful");
-          }
-        } catch (err) {
-          console.error("SurveyJS submission failed:", err);
-        }
+      const formspreeUrl = import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/YOUR_FORM_ID";
+
+      const surveyPromise = fetch(`https://api.surveyjs.io/private/Surveys/postResult/${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const formspreePromise = fetch(formspreeUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const results = await Promise.allSettled([surveyPromise, formspreePromise]);
+
+      if (results[0].status === "fulfilled" && results[0].value.ok) {
+        console.log("SurveyJS service submission successful");
+      } else {
+        console.error("SurveyJS service submission failed:", results[0]);
       }
 
-      // @ts-ignore - BreadTracker integration
+      if (results[1].status === "rejected" || (results[1].status === "fulfilled" && !results[1].value.ok)) {
+        console.warn("Formspree service submission failed (ignored):", results[1]);
+      } else {
+        console.log("Formspree service submission successful");
+      }
+
+      // @ts-ignore
       if (window.BreadTracker) {
         // @ts-ignore
         window.BreadTracker.send("generate_lead", {
