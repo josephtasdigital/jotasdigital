@@ -79,16 +79,41 @@ const ServicesSection = () => {
     const survey = new Model(surveyJson);
     survey.applyTheme(glassDarkTheme);
 
-    survey.onComplete.add((sender) => {
-      const data = sender.data;
+    survey.onComplete.add(async (sender) => {
+      const payload = {
+        name: sender.data.name,
+        email: sender.data.email,
+        service: selectedService,
+      };
+
+      console.log("Submitting service payload:", payload);
+
+      // Send to SurveyJS API
+      const token = import.meta.env.VITE_SURVEYJS_TOKEN;
+      if (token) {
+        try {
+          const response = await fetch(`https://api.surveyjs.io/private/Surveys/postResult/${token}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!response.ok) {
+            console.error("SurveyJS API error:", response.status);
+          } else {
+            console.log("SurveyJS service submission successful");
+          }
+        } catch (err) {
+          console.error("SurveyJS submission failed:", err);
+        }
+      }
 
       // @ts-ignore - BreadTracker integration
       if (window.BreadTracker) {
         // @ts-ignore
         window.BreadTracker.send("generate_lead", {
           user_data: {
-            email_address: data.email,
-            address: { first_name: data.name },
+            email_address: payload.email,
+            address: { first_name: payload.name },
           },
           service_interest: selectedService,
         });
