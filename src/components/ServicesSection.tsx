@@ -189,15 +189,23 @@ const ServicesSection = () => {
               border-radius: 2px !important;
               color: hsl(var(--foreground)) !important;
               font-family: inherit !important;
-              padding: 0.75rem !important;
+              padding: 0.75rem 1rem !important;
+              height: 3rem !important;
               transition: border-color 0.2s ease !important;
               width: 100% !important;
               box-sizing: border-box !important;
+              font-size: 0.875rem !important;
             }
             .sd-input:hover, .sd-input:focus {
               border-color: hsl(var(--primary)) !important;
               outline: none !important;
               box-shadow: none !important;
+            }
+            .sd-comment-area .sd-input,
+            textarea.sd-input {
+              height: auto !important;
+              min-height: 120px !important;
+              resize: vertical !important;
             }
             .sd-question__required-text { display: none !important; }
             .sd-question:focus-within .sd-question__required-text { display: inline !important; }
