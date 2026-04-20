@@ -1,4 +1,5 @@
 import SiteNav from "@/components/SiteNav";
+import Scene3DBackground from "@/components/Scene3DBackground";
 import HeroSection from "@/components/HeroSection";
 import WhoAmISection from "@/components/WhoAmISection";
 import ServicesSection from "@/components/ServicesSection";
@@ -10,6 +11,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background" data-gtm="main-page">
+      <Scene3DBackground />
       <SiteNav />
       <HeroSection />
       <WhoAmISection />
