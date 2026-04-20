@@ -127,7 +127,7 @@ const Scene3DBackground: React.FC = () => {
       )}
 
       {/* Blur/shade overlay to keep it abstract behind text */}
-      <div className="absolute inset-0 backdrop-blur-sm bg-background/40" />
+      <div className="absolute inset-0 backdrop-blur-[2px] bg-background/20" />
     </div>
   );
 };
