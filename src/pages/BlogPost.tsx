@@ -39,7 +39,7 @@ function renderMarkdown(raw: string) {
       const text = headingMatch[2];
       const Tag = `h${level}` as keyof JSX.IntrinsicElements;
       elements.push(
-        <Tag key={key++} className="font-display text-foreground font-bold mt-8 mb-3">
+        <Tag key={String(key++)} className="font-display text-foreground font-bold mt-8 mb-3">
           {text}
         </Tag>
       );
