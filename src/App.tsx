@@ -73,7 +73,8 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <AppRoutes />
-            <CookieConsent />
+            {/* Cookie banner temporarily deactivated — keep import for future re-activation */}
+            {false && <CookieConsent />}
           </BrowserRouter>
         </TooltipProvider>
       </DevModeProvider>
