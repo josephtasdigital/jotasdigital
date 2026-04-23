@@ -37,7 +37,7 @@ function renderMarkdown(raw: string) {
     if (headingMatch) {
       const level = headingMatch[1].length;
       const text = headingMatch[2];
-      const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+      const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4';
       elements.push(
         <Tag key={String(key++)} className="font-display text-foreground font-bold mt-8 mb-3">
           {text}
