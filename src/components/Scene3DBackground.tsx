@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 // Module-level scroll tracker (updated by passive listener)
-const scrollState = { current: 0, progress: 0, sectionIndex: 0 };
+const scrollState = { current: 0, progress: 0, sectionIndex: 0, active: true };
 
 // --- Error boundary -----------------------------------------------------------
 class CanvasErrorBoundary extends Component<
