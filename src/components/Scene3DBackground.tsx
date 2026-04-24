@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 // Module-level scroll tracker (updated by passive listener)
-const scrollState = { current: 0, progress: 0, sectionIndex: 0 };
+const scrollState = { current: 0, progress: 0, sectionIndex: 0, active: true };
 
 // --- Error boundary -----------------------------------------------------------
 class CanvasErrorBoundary extends Component<
@@ -136,9 +136,8 @@ function Scene({ isMobile }: { isMobile: boolean }) {
   return (
     <>
       <fog attach="fog" args={["#0a0f1a", 5, 14]} />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.6} />
       <pointLight position={[5, 5, 5]} intensity={1.2} color="hsl(175, 80%, 50%)" />
-      <pointLight position={[-5, -3, -2]} intensity={0.6} color="hsl(175, 80%, 60%)" />
       <DottedShape detail={isMobile ? 0 : 1} />
     </>
   );
@@ -148,6 +147,7 @@ function Scene({ isMobile }: { isMobile: boolean }) {
 const Scene3DBackground: React.FC = () => {
   const isMobile = useIsMobile();
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -157,34 +157,51 @@ const Scene3DBackground: React.FC = () => {
     return () => mql.removeEventListener("change", listener);
   }, []);
 
+  // Observe Hero and Contact sections — only render Canvas when one is in view
+  useEffect(() => {
+    const ids = ["hero", "contact"];
+    const targets = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (!targets.length) return;
+
+    const visibility = new Map<Element, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => visibility.set(e.target, e.isIntersecting));
+        const anyVisible = Array.from(visibility.values()).some(Boolean);
+        setActive(anyVisible);
+        scrollState.active = anyVisible;
+      },
+      { rootMargin: "0px", threshold: 0.01 }
+    );
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     const computeSection = () => {
-      // Determine which section is closest to the viewport center
-      const sections = Array.from(
-        document.querySelectorAll<HTMLElement>("main > section, main > div > section, section[id]")
-      );
-      if (!sections.length) return 0;
+      // Only Hero (0) and Contact (1) drive shape choice now
+      const hero = document.getElementById("hero");
+      const contact = document.getElementById("contact");
+      if (!hero || !contact) return 0;
       const center = window.scrollY + window.innerHeight / 2;
-      let bestIdx = 0;
-      let bestDist = Infinity;
-      sections.forEach((s, i) => {
-        const top = s.offsetTop;
-        const mid = top + s.offsetHeight / 2;
-        const dist = Math.abs(center - mid);
-        if (dist < bestDist) {
-          bestDist = dist;
-          bestIdx = i;
-        }
-      });
-      return bestIdx;
+      const dHero = Math.abs(center - (hero.offsetTop + hero.offsetHeight / 2));
+      const dContact = Math.abs(center - (contact.offsetTop + contact.offsetHeight / 2));
+      return dContact < dHero ? 1 : 0;
     };
 
+    let ticking = false;
     const onScroll = () => {
-      const max =
-        document.documentElement.scrollHeight - window.innerHeight || 1;
-      scrollState.current = window.scrollY;
-      scrollState.progress = Math.min(1, Math.max(0, window.scrollY / max));
-      scrollState.sectionIndex = computeSection();
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight || 1;
+        scrollState.current = window.scrollY;
+        scrollState.progress = Math.min(1, Math.max(0, window.scrollY / max));
+        scrollState.sectionIndex = computeSection();
+        ticking = false;
+      });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -195,6 +212,8 @@ const Scene3DBackground: React.FC = () => {
     };
   }, []);
 
+  const showCanvas = !reducedMotion && active;
+
   return (
     <div
       aria-hidden="true"
@@ -203,21 +222,21 @@ const Scene3DBackground: React.FC = () => {
       {/* Fallback gradient — always rendered underneath */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-background to-slate-950" />
 
-      {!reducedMotion && (
+      {showCanvas && (
         <CanvasErrorBoundary>
           <Canvas
             style={{ width: "100vw", height: "100vh" }}
-            dpr={[1, 1.5]}
+            dpr={[1, isMobile ? 1 : 1.25]}
             camera={{ position: [0, 0, 6], fov: 55 }}
             performance={{ min: 0.5 }}
-            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
           >
             <Scene isMobile={isMobile} />
           </Canvas>
         </CanvasErrorBoundary>
       )}
 
-      {/* Lighter overlay — ~10% more transparent than before to boost shape visibility */}
+      {/* Lighter overlay — keeps shape visible without competing with text */}
       <div className="absolute inset-0 backdrop-blur-[2px] bg-background/10" />
     </div>
   );
