@@ -136,9 +136,8 @@ function Scene({ isMobile }: { isMobile: boolean }) {
   return (
     <>
       <fog attach="fog" args={["#0a0f1a", 5, 14]} />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.6} />
       <pointLight position={[5, 5, 5]} intensity={1.2} color="hsl(175, 80%, 50%)" />
-      <pointLight position={[-5, -3, -2]} intensity={0.6} color="hsl(175, 80%, 60%)" />
       <DottedShape detail={isMobile ? 0 : 1} />
     </>
   );
