@@ -118,11 +118,11 @@ function DottedShape({ detail }: { detail: 0 | 1 }) {
     <group ref={groupRef}>
       <points ref={pointsRef} geometry={geometry}>
         <pointsMaterial
-          color={new THREE.Color("hsl(175, 80%, 55%)")}
-          size={0.06}
+          color={new THREE.Color("hsl(175, 80%, 60%)")}
+          size={0.07}
           sizeAttenuation
           transparent
-          opacity={0.85}
+          opacity={0.95}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
         />
