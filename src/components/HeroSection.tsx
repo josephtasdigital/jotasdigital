@@ -25,16 +25,16 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-gtm="hero-section"
     >
-      {/* Animated background layer */}
-      <div className="absolute inset-0">
+      {/* Animated background layer (transparent so 3D shape shows through) */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
         <motion.img
           src={heroBg}
           alt=""
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-10"
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/30 to-background/60" />
       </div>
 
       {/* Subtle grid overlay */}
