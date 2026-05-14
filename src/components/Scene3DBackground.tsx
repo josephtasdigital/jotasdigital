@@ -88,17 +88,19 @@ function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
       targetSize = 0.06;
     } else {
       // contact: explosion -> collapse -> neutron star
-      if (p < 0.3) {
-        // mini explosion: rapid outward expand
-        const k = p / 0.3; // 0..1
+      // Phases tuned so neutron-star state locks in by the time the
+      // section is fully docked in the viewport (p ~ 0.7+).
+      if (p < 0.45) {
+        // mini explosion: rapid outward expand as section enters
+        const k = p / 0.45; // 0..1
         targetScatter = k * 1.2;
         targetScale = 1 + k * 0.35;
         targetOpacity = 0.95;
-      } else if (p < 0.55) {
+      } else if (p < 0.7) {
         // violent collapse inward
-        const k = (p - 0.3) / 0.25; // 0..1
+        const k = (p - 0.45) / 0.25; // 0..1
         const ease = k * k; // accelerating
-        targetScatter = 1.2 - ease * 1.7; // from 1.2 -> -0.5 (compress past base)
+        targetScatter = 1.2 - ease * 1.7; // 1.2 -> -0.5
         targetScale = 1.35 - ease * 1.0; // 1.35 -> 0.35
         targetOpacity = 0.95;
       } else {
@@ -106,7 +108,7 @@ function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
         targetScatter = -0.5;
         targetScale = 0.35;
         targetOpacity = 1.0;
-        targetSize = 0.075; // denser/brighter looking
+        targetSize = 0.075;
       }
     }
 
