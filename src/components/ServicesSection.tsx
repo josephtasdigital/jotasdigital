@@ -205,8 +205,34 @@ const ServicesSection = () => {
       </section>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="bg-card/95 backdrop-blur-xl border-border max-w-md">
+        <DialogContent className="bg-card/95 backdrop-blur-xl border-border max-w-md overflow-hidden">
+          {selectedImage && (
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg"
+              style={{ zIndex: 0 }}
+            >
+              <div
+                className="absolute inset-0 bg-center bg-cover service-modal-bg"
+                style={{
+                  backgroundImage: `url(${selectedImage})`,
+                  filter: "blur(14px)",
+                  opacity: 0.35,
+                  transform: "scale(1.15)",
+                }}
+              />
+              <div className="absolute inset-0 bg-card/40" />
+            </div>
+          )}
           <style>{`
+            @keyframes serviceModalPan {
+              0%   { transform: scale(1.15) translate3d(0, 0, 0); }
+              50%  { transform: scale(1.22) translate3d(-2%, 1%, 0); }
+              100% { transform: scale(1.15) translate3d(0, 0, 0); }
+            }
+            .service-modal-bg {
+              animation: serviceModalPan 18s ease-in-out infinite;
+            }
             .sd-root-modern, .sd-body, .sd-page, .sd-question {
               background: transparent !important;
               font-family: inherit !important;
@@ -220,7 +246,7 @@ const ServicesSection = () => {
               padding-bottom: 0.5rem !important;
             }
             .sd-input {
-              background: transparent !important;
+              background: rgba(12,14,19,0.6) !important;
               border: 1px solid hsl(var(--border)) !important;
               border-radius: 2px !important;
               color: hsl(var(--foreground)) !important;
@@ -247,15 +273,17 @@ const ServicesSection = () => {
             .sd-question:focus-within .sd-question__required-text { display: inline !important; }
             .sd-container-modern { padding: 0 !important; }
           `}</style>
-          <DialogHeader>
-            <DialogTitle className="font-display text-foreground text-lg">
-              {t("services.modalTitle", { service: selectedService })}
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground text-sm">
-              {t("services.modalDescription")}
-            </DialogDescription>
-          </DialogHeader>
-          {modalOpen && <Survey model={createSurveyModel()} />}
+          <div className="relative" style={{ zIndex: 1 }}>
+            <DialogHeader>
+              <DialogTitle className="font-display text-foreground text-lg">
+                {t("services.modalTitle", { service: selectedService })}
+              </DialogTitle>
+              <DialogDescription className="text-muted-foreground text-sm">
+                {t("services.modalDescription")}
+              </DialogDescription>
+            </DialogHeader>
+            {modalOpen && <Survey model={createSurveyModel()} />}
+          </div>
         </DialogContent>
       </Dialog>
     </>
