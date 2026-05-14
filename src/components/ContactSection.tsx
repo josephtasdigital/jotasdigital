@@ -126,7 +126,10 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <p className="font-body text-muted-foreground leading-relaxed mb-8">
+            <p
+              className="font-body leading-relaxed mb-8"
+              style={{ color: "#E2E8F0", textShadow: "0px 2px 4px rgba(0,0,0,0.6)" }}
+            >
               {t("contact.description")}
             </p>
 
