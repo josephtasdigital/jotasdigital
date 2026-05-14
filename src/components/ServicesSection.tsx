@@ -54,8 +54,11 @@ const ServicesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
-  const handleCardClick = useCallback((title: string) => {
+  const [selectedImage, setSelectedImage] = useState<string>("");
+
+  const handleCardClick = useCallback((title: string, image?: string) => {
     setSelectedService(title);
+    setSelectedImage(image || "");
     setModalOpen(true);
   }, []);
 
@@ -179,21 +182,19 @@ const ServicesSection = () => {
                       transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
                       className="border border-transparent rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
                       data-gtm={`service-${tier.tier}-${si}`}
-                      onClick={() => handleCardClick(item.frontmatter.title)}
+                      onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
                     >
                       {item.frontmatter.service_image && (
-                        <img
-                          src={item.frontmatter.service_image}
-                          alt={item.frontmatter.title}
-                          className="w-full h-40 object-cover"
-                          loading="lazy"
-                        />
+                        <div className="overflow-hidden">
+                          <img
+                            src={item.frontmatter.service_image}
+                            alt={item.frontmatter.title}
+                            className="w-full h-40 object-cover transition-transform duration-200 ease-in-out hover:scale-105"
+                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                            loading="lazy"
+                          />
+                        </div>
                       )}
-                      <div className="p-5">
-                        <h4 className="font-display text-sm font-semibold text-foreground leading-snug">
-                          {item.frontmatter.title}
-                        </h4>
-                      </div>
                     </motion.div>
                   ))}
                 </div>
