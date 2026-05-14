@@ -88,17 +88,19 @@ function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
       targetSize = 0.06;
     } else {
       // contact: explosion -> collapse -> neutron star
-      if (p < 0.3) {
-        // mini explosion: rapid outward expand
-        const k = p / 0.3; // 0..1
+      // Phases tuned so neutron-star state locks in by the time the
+      // section is fully docked in the viewport (p ~ 0.7+).
+      if (p < 0.45) {
+        // mini explosion: rapid outward expand as section enters
+        const k = p / 0.45; // 0..1
         targetScatter = k * 1.2;
         targetScale = 1 + k * 0.35;
         targetOpacity = 0.95;
-      } else if (p < 0.55) {
+      } else if (p < 0.7) {
         // violent collapse inward
-        const k = (p - 0.3) / 0.25; // 0..1
+        const k = (p - 0.45) / 0.25; // 0..1
         const ease = k * k; // accelerating
-        targetScatter = 1.2 - ease * 1.7; // from 1.2 -> -0.5 (compress past base)
+        targetScatter = 1.2 - ease * 1.7; // 1.2 -> -0.5
         targetScale = 1.35 - ease * 1.0; // 1.35 -> 0.35
         targetOpacity = 0.95;
       } else {
@@ -106,7 +108,7 @@ function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
         targetScatter = -0.5;
         targetScale = 0.35;
         targetOpacity = 1.0;
-        targetSize = 0.075; // denser/brighter looking
+        targetSize = 0.075;
       }
     }
 
@@ -190,11 +192,14 @@ function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
           const distance = Math.abs(sectionCenter - viewportCenter);
           progressRef.current = Math.min(1, distance / (vh * 0.9));
         } else {
-          // contact: progress from when section top hits bottom of viewport
-          // until section bottom reaches top of viewport
-          const total = rect.height + vh;
+          // contact: anchor progress to section TOP crossing the viewport.
+          // 0 = section top at viewport bottom (just entering)
+          // 1 = section top at viewport top (fully docked)
+          // This makes the explosion+collapse happen as the section scrolls
+          // into view, so by the time the form is fully visible the globe
+          // is already a small neutron star.
           const traveled = vh - rect.top;
-          progressRef.current = Math.max(0, Math.min(1, traveled / total));
+          progressRef.current = Math.max(0, Math.min(1, traveled / vh));
         }
         ticking = false;
       });
