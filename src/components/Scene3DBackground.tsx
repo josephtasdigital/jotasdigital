@@ -18,21 +18,24 @@ class CanvasErrorBoundary extends Component<{ children: ReactNode }, { hasError:
   }
 }
 
-// --- Particle globe (Fibonacci sphere point cloud) ---------------------------
+// --- Particle globe ---------------------------------------------------------
+type Mode = "hero" | "contact";
+
 type GlobeProps = {
-  // 0 = fully formed/visible, 1 = fully scattered/invisible
-  dispersionRef: React.MutableRefObject<number>;
+  // Hero: 0 = formed/visible, 1 = scattered/invisible
+  // Contact: 0 = entry, 1 = end-of-section (drives explosion -> neutron star)
+  progressRef: React.MutableRefObject<number>;
   isMobile: boolean;
+  mode: Mode;
 };
 
-function ParticleGlobe({ dispersionRef, isMobile }: GlobeProps) {
+function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
   const pointsRef = useRef<THREE.Points>(null);
   const matRef = useRef<THREE.PointsMaterial>(null);
 
   const count = isMobile ? 1400 : 2600;
   const radius = 2.2;
 
-  // Base positions on a Fibonacci sphere + per-point outward direction for scatter
   const { basePositions, directions } = useMemo(() => {
     const base = new Float32Array(count * 3);
     const dirs = new Float32Array(count * 3);
@@ -53,7 +56,6 @@ function ParticleGlobe({ dispersionRef, isMobile }: GlobeProps) {
     return { basePositions: base, directions: dirs };
   }, [count]);
 
-  // Live position buffer (mutated each frame)
   const livePositions = useMemo(() => new Float32Array(basePositions), [basePositions]);
 
   const geometry = useMemo(() => {
@@ -62,18 +64,61 @@ function ParticleGlobe({ dispersionRef, isMobile }: GlobeProps) {
     return g;
   }, [livePositions]);
 
+  // Smoothed values
+  const smoothScatter = useRef(0);
+  const smoothScale = useRef(1);
+  const smoothOpacity = useRef(0.95);
+
   useFrame((_, delta) => {
     if (!pointsRef.current) return;
-    // Continuous Y-axis rotation
-    pointsRef.current.rotation.y += delta * 0.12;
+    pointsRef.current.rotation.y += delta * 0.15;
 
-    const d = dispersionRef.current; // 0..1
-    // Scale slightly up as it scatters
-    const scale = 1 + d * 0.6;
-    pointsRef.current.scale.setScalar(scale);
+    const p = Math.max(0, Math.min(1, progressRef.current));
 
-    // Scatter points outward along their normal as d grows
-    const scatter = d * 1.5;
+    let targetScatter = 0;
+    let targetScale = 1;
+    let targetOpacity = 0.95;
+    let targetSize = 0.06;
+
+    if (mode === "hero") {
+      // existing behavior: outward scatter + fade as you scroll away
+      targetScatter = p * 1.5;
+      targetScale = 1 + p * 0.6;
+      targetOpacity = Math.max(0, 1 - p) * 0.95;
+      targetSize = 0.06;
+    } else {
+      // contact: explosion -> collapse -> neutron star
+      if (p < 0.3) {
+        // mini explosion: rapid outward expand
+        const k = p / 0.3; // 0..1
+        targetScatter = k * 1.2;
+        targetScale = 1 + k * 0.35;
+        targetOpacity = 0.95;
+      } else if (p < 0.55) {
+        // violent collapse inward
+        const k = (p - 0.3) / 0.25; // 0..1
+        const ease = k * k; // accelerating
+        targetScatter = 1.2 - ease * 1.7; // from 1.2 -> -0.5 (compress past base)
+        targetScale = 1.35 - ease * 1.0; // 1.35 -> 0.35
+        targetOpacity = 0.95;
+      } else {
+        // dense neutron star — stable, rotating
+        targetScatter = -0.5;
+        targetScale = 0.35;
+        targetOpacity = 1.0;
+        targetSize = 0.075; // denser/brighter looking
+      }
+    }
+
+    // smooth toward target
+    const lerp = Math.min(1, delta * 6);
+    smoothScatter.current += (targetScatter - smoothScatter.current) * lerp;
+    smoothScale.current += (targetScale - smoothScale.current) * lerp;
+    smoothOpacity.current += (targetOpacity - smoothOpacity.current) * lerp;
+
+    pointsRef.current.scale.setScalar(smoothScale.current);
+
+    const scatter = smoothScatter.current;
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       livePositions[i3] = basePositions[i3] + directions[i3] * scatter;
@@ -83,7 +128,8 @@ function ParticleGlobe({ dispersionRef, isMobile }: GlobeProps) {
     (geometry.getAttribute("position") as THREE.BufferAttribute).needsUpdate = true;
 
     if (matRef.current) {
-      matRef.current.opacity = Math.max(0, 1 - d) * 0.95;
+      matRef.current.opacity = smoothOpacity.current;
+      matRef.current.size = targetSize;
     }
   });
 
@@ -107,14 +153,14 @@ function ParticleGlobe({ dispersionRef, isMobile }: GlobeProps) {
 type InstanceProps = {
   targetId: string;
   isMobile: boolean;
+  mode: Mode;
 };
 
-function GlobeInstance({ targetId, isMobile }: InstanceProps) {
-  const dispersionRef = useRef(0);
+function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
+  const progressRef = useRef(0);
   const [active, setActive] = useState(false);
   const [containerRect, setContainerRect] = useState<{ top: number; height: number } | null>(null);
 
-  // Track section position + visibility
   useEffect(() => {
     const el = document.getElementById(targetId);
     if (!el) return;
@@ -137,26 +183,35 @@ function GlobeInstance({ targetId, isMobile }: InstanceProps) {
       ticking = true;
       requestAnimationFrame(() => {
         const rect = el.getBoundingClientRect();
-        // dispersion: 0 when section center is at viewport center, grows as it leaves
-        const sectionCenter = rect.top + rect.height / 2;
-        const viewportCenter = window.innerHeight / 2;
-        const distance = Math.abs(sectionCenter - viewportCenter);
-        const norm = Math.min(1, distance / (window.innerHeight * 0.9));
-        dispersionRef.current = norm;
+        const vh = window.innerHeight;
+        if (mode === "hero") {
+          const sectionCenter = rect.top + rect.height / 2;
+          const viewportCenter = vh / 2;
+          const distance = Math.abs(sectionCenter - viewportCenter);
+          progressRef.current = Math.min(1, distance / (vh * 0.9));
+        } else {
+          // contact: progress from when section top hits bottom of viewport
+          // until section bottom reaches top of viewport
+          const total = rect.height + vh;
+          const traveled = vh - rect.top;
+          progressRef.current = Math.max(0, Math.min(1, traveled / total));
+        }
         ticking = false;
       });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", () => {
+    const onResize = () => {
       measure();
       onScroll();
-    });
+    };
+    window.addEventListener("resize", onResize);
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
-  }, [targetId]);
+  }, [targetId, mode]);
 
   if (!containerRect) return null;
 
@@ -176,7 +231,7 @@ function GlobeInstance({ targetId, isMobile }: InstanceProps) {
             gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
           >
             <ambientLight intensity={0.6} />
-            <ParticleGlobe dispersionRef={dispersionRef} isMobile={isMobile} />
+            <ParticleGlobe progressRef={progressRef} isMobile={isMobile} mode={mode} />
           </Canvas>
         </CanvasErrorBoundary>
       )}
@@ -201,8 +256,8 @@ const Scene3DBackground: React.FC = () => {
 
   return (
     <>
-      <GlobeInstance targetId="hero" isMobile={isMobile} />
-      <GlobeInstance targetId="contact" isMobile={isMobile} />
+      <GlobeInstance targetId="hero" isMobile={isMobile} mode="hero" />
+      <GlobeInstance targetId="contact" isMobile={isMobile} mode="contact" />
     </>
   );
 };
