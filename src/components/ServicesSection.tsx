@@ -54,8 +54,11 @@ const ServicesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
-  const handleCardClick = useCallback((title: string) => {
+  const [selectedImage, setSelectedImage] = useState<string>("");
+
+  const handleCardClick = useCallback((title: string, image?: string) => {
     setSelectedService(title);
+    setSelectedImage(image || "");
     setModalOpen(true);
   }, []);
 
@@ -179,21 +182,19 @@ const ServicesSection = () => {
                       transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
                       className="border border-transparent rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
                       data-gtm={`service-${tier.tier}-${si}`}
-                      onClick={() => handleCardClick(item.frontmatter.title)}
+                      onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
                     >
                       {item.frontmatter.service_image && (
-                        <img
-                          src={item.frontmatter.service_image}
-                          alt={item.frontmatter.title}
-                          className="w-full h-40 object-cover"
-                          loading="lazy"
-                        />
+                        <div className="overflow-hidden">
+                          <img
+                            src={item.frontmatter.service_image}
+                            alt={item.frontmatter.title}
+                            className="w-full h-40 object-cover transition-transform duration-200 ease-in-out hover:scale-105"
+                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                            loading="lazy"
+                          />
+                        </div>
                       )}
-                      <div className="p-5">
-                        <h4 className="font-display text-sm font-semibold text-foreground leading-snug">
-                          {item.frontmatter.title}
-                        </h4>
-                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -204,8 +205,34 @@ const ServicesSection = () => {
       </section>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="bg-card/95 backdrop-blur-xl border-border max-w-md">
+        <DialogContent className="bg-card/95 backdrop-blur-xl border-border max-w-md overflow-hidden">
+          {selectedImage && (
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg"
+              style={{ zIndex: 0 }}
+            >
+              <div
+                className="absolute inset-0 bg-center bg-cover service-modal-bg"
+                style={{
+                  backgroundImage: `url(${selectedImage})`,
+                  filter: "blur(14px)",
+                  opacity: 0.35,
+                  transform: "scale(1.15)",
+                }}
+              />
+              <div className="absolute inset-0 bg-card/40" />
+            </div>
+          )}
           <style>{`
+            @keyframes serviceModalPan {
+              0%   { transform: scale(1.15) translate3d(0, 0, 0); }
+              50%  { transform: scale(1.22) translate3d(-2%, 1%, 0); }
+              100% { transform: scale(1.15) translate3d(0, 0, 0); }
+            }
+            .service-modal-bg {
+              animation: serviceModalPan 18s ease-in-out infinite;
+            }
             .sd-root-modern, .sd-body, .sd-page, .sd-question {
               background: transparent !important;
               font-family: inherit !important;
@@ -219,7 +246,7 @@ const ServicesSection = () => {
               padding-bottom: 0.5rem !important;
             }
             .sd-input {
-              background: transparent !important;
+              background: rgba(12,14,19,0.6) !important;
               border: 1px solid hsl(var(--border)) !important;
               border-radius: 2px !important;
               color: hsl(var(--foreground)) !important;
@@ -246,15 +273,17 @@ const ServicesSection = () => {
             .sd-question:focus-within .sd-question__required-text { display: inline !important; }
             .sd-container-modern { padding: 0 !important; }
           `}</style>
-          <DialogHeader>
-            <DialogTitle className="font-display text-foreground text-lg">
-              {t("services.modalTitle", { service: selectedService })}
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground text-sm">
-              {t("services.modalDescription")}
-            </DialogDescription>
-          </DialogHeader>
-          {modalOpen && <Survey model={createSurveyModel()} />}
+          <div className="relative" style={{ zIndex: 1 }}>
+            <DialogHeader>
+              <DialogTitle className="font-display text-foreground text-lg">
+                {t("services.modalTitle", { service: selectedService })}
+              </DialogTitle>
+              <DialogDescription className="text-muted-foreground text-sm">
+                {t("services.modalDescription")}
+              </DialogDescription>
+            </DialogHeader>
+            {modalOpen && <Survey model={createSurveyModel()} />}
+          </div>
         </DialogContent>
       </Dialog>
     </>

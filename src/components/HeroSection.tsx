@@ -99,7 +99,10 @@ const HeroSection = () => {
               <span className="text-primary text-glow">{t("hero.title2")}</span>
             </h1>
 
-            <p className="font-body text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
+            <p
+              className="font-body text-base md:text-lg max-w-lg mb-8 leading-relaxed"
+              style={{ color: "#E2E8F0", textShadow: "0px 2px 4px rgba(0,0,0,0.6)" }}
+            >
               {t("hero.description")}
             </p>
 
