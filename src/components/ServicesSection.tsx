@@ -180,7 +180,8 @@ const ServicesSection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                   {tier.items.map((item, si) => {
                     const overlayText =
-                      serviceOverlayText[item.slug] ?? defaultServiceOverlayText;
+                      (item.frontmatter.hover_text as string | undefined)?.trim() ||
+                      defaultServiceOverlayText;
                     return (
                       <motion.div
                         key={item.slug}
