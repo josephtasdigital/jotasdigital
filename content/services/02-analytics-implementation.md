@@ -1,5 +1,5 @@
 ---
-title: Total remarketing setup with enhanced conversions + Server-side tracking
+title: Total remarketing setup  / Server-side tracking Setup & Enhanced Conversions / CAPI
 tier: major
 tier_label: Major Services
 tier_description: Complete solution for your enterprise
