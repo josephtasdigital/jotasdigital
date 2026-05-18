@@ -22,6 +22,24 @@ interface GroupedTier {
 
 const tierOrder = ["major", "minor", "nano"];
 
+// ---------------------------------------------------------------------------
+// Hover overlay text per service card.
+// EDIT THESE STRINGS to customize the text that appears on hover.
+// Keys are markdown slugs (filename without .md). Unknown slugs fall back
+// to `defaultServiceOverlayText`.
+// ---------------------------------------------------------------------------
+const defaultServiceOverlayText = "Edit this text";
+const serviceOverlayText: Record<string, string> = {
+  "01-data-pipeline-architecture": "Edit this text",
+  "02-analytics-implementation": "Edit this text",
+  "03-dashboard-development": "Edit this text",
+  "google-ads-90-days-analysis-reporting-and-optimization-strategy-consultancy": "Edit this text",
+  "integration-of-google-ads-enhanced-conversions-for-your-own-server-side-tracking-system": "Edit this text",
+  "setting-up-and-testing-basic-conversion-tracking-between-gtm-and-google-ads-including-javascript-code-insertion-guide.": "Edit this text",
+  "setting-up-google-analytics-for-your-needs-and-integration-with-google-ads-gtm.": "Edit this text",
+  "test": "Edit this text",
+};
+
 const fallbackItems = [
   { slug: "_demo-1", frontmatter: { title: "Data Pipeline Architecture", tier: "major", tier_label: "Major Services", tier_description: "End-to-end solutions for complex data challenges", sort_order: 1, service_image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" }, content: "" },
   { slug: "_demo-2", frontmatter: { title: "Analytics Implementation", tier: "major", tier_label: "Major Services", tier_description: "End-to-end solutions for complex data challenges", sort_order: 2, service_image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" }, content: "" },
