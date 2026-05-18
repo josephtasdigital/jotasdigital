@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logoTransparent from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import AuditModal from "@/components/AuditModal";
 import { getLocaleFromPath, localePath } from "@/i18n";
 
 const SiteNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [auditOpen, setAuditOpen] = useState(false);
   const { t } = useTranslation();
   const location = useLocation();
   const locale = getLocaleFromPath(location.pathname);
