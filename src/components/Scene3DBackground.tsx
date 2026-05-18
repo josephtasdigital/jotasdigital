@@ -66,6 +66,12 @@ function ParticleGlobe({ progressRef, isMobile }: GlobeProps) {
     return g;
   }, [livePositions]);
 
+  // Smoothed values
+  const smoothScatter = useRef(0);
+  const smoothScale = useRef(1);
+  const smoothOpacity = useRef(0.95);
+  const smoothRotSpeed = useRef(0.15);
+
   // Timeline (single seamless ramp, no explosion):
   // Phase 1 (0.00 - 0.40):  grow from normal to Red Giant max
   // Phase 2 (0.40 - 0.50):  hold at max (steady state)
