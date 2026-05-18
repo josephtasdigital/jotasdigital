@@ -3,7 +3,9 @@
     "services": "Servizi",
     "work": "Lavori",
     "blog": "Blog",
-    "contact": "Contatto"
+    "contact": "Contatto",
+    "auditCta": "Ottieni il tuo audit gratuito",
+    "auditCtaShort": "Audit gratuito"
   },
   "hero": {
     "subtitle": "Ingegnere Dati & Specialista Analytics",
@@ -71,5 +73,21 @@
     "title": "Sandbox JavaScript",
     "description": "Esperimenti in esecuzione live. Ogni scheda viene eseguita in un iframe isolato.",
     "reveal": "Rivela"
+  },
+  "audit": {
+    "title": "Ottieni il tuo audit gratuito",
+    "description": "Parlami del tuo sito. Analizzerò il tuo setup di tracciamento e analytics e tornerò con una strategia su misura.",
+    "fieldName": "Il tuo nome",
+    "fieldEmail": "Indirizzo email",
+    "fieldWebsite": "URL del sito web",
+    "fieldDetails": "Descrivi brevemente la tua sfida data / tracciamento",
+    "submit": "Richiedi il mio audit gratuito",
+    "submitting": "Invio...",
+    "errorMessage": "Qualcosa è andato storto. Riprova o scrivimi direttamente.",
+    "successHeading": "Richiesta ricevuta",
+    "successMessage": "Il tuo sito è ora sotto audit, ti contatterò via email non appena avrò completato la revisione e preparato una strategia con un'offerta ragionevole.",
+    "linkedinPrompt": "Sarò felice di averti come contatto su LinkedIn",
+    "linkedinButton": "Connettiti su LinkedIn",
+    "backHome": "Torna alla pagina principale"
   }
 }

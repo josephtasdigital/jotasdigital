@@ -3,7 +3,25 @@
     "services": "Services",
     "work": "Work",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "auditCta": "Get your free audit",
+    "auditCtaShort": "Free audit"
+  },
+  "audit": {
+    "title": "Get your free audit",
+    "description": "Tell me about your site. I'll review your tracking and analytics setup and come back with a tailored strategy.",
+    "fieldName": "Your name",
+    "fieldEmail": "Email address",
+    "fieldWebsite": "Website URL",
+    "fieldDetails": "Briefly describe your data / tracking challenge",
+    "submit": "Request my free audit",
+    "submitting": "Sending...",
+    "errorMessage": "Something went wrong. Please try again or email me directly.",
+    "successHeading": "Request received",
+    "successMessage": "Your website is now under audit, I will reach you via your email once I finish review and implement a strategy with a reasonable offer.",
+    "linkedinPrompt": "I'll be happy to have you as a connection through LinkedIn",
+    "linkedinButton": "Connect on LinkedIn",
+    "backHome": "Take me back to the main page"
   },
   "hero": {
     "subtitle": "Marketing Data Infrastructure Engineer",

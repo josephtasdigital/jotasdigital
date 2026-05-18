@@ -3,7 +3,9 @@
     "services": "Leistungen",
     "work": "Arbeiten",
     "blog": "Blog",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "auditCta": "Kostenloses Audit anfordern",
+    "auditCtaShort": "Gratis-Audit"
   },
   "hero": {
     "subtitle": "Dateningenieur & Analytics-Spezialist",
@@ -71,5 +73,21 @@
     "title": "JavaScript-Sandbox",
     "description": "Live-Ausführungsexperimente. Jede Karte läuft in einem isolierten iframe.",
     "reveal": "Enthüllen"
+  },
+  "audit": {
+    "title": "Kostenloses Audit anfordern",
+    "description": "Erzählen Sie mir von Ihrer Website. Ich überprüfe Ihr Tracking- und Analytics-Setup und melde mich mit einer maßgeschneiderten Strategie zurück.",
+    "fieldName": "Ihr Name",
+    "fieldEmail": "E-Mail-Adresse",
+    "fieldWebsite": "Website-URL",
+    "fieldDetails": "Beschreiben Sie kurz Ihre Daten- / Tracking-Herausforderung",
+    "submit": "Mein kostenloses Audit anfordern",
+    "submitting": "Wird gesendet...",
+    "errorMessage": "Etwas ist schiefgelaufen. Bitte erneut versuchen oder mich direkt per E-Mail kontaktieren.",
+    "successHeading": "Anfrage erhalten",
+    "successMessage": "Ihre Website wird jetzt geprüft. Ich melde mich per E-Mail, sobald die Analyse abgeschlossen ist und eine Strategie mit einem fairen Angebot bereitsteht.",
+    "linkedinPrompt": "Ich freue mich, Sie als Kontakt auf LinkedIn zu haben",
+    "linkedinButton": "Auf LinkedIn vernetzen",
+    "backHome": "Zurück zur Hauptseite"
   }
 }

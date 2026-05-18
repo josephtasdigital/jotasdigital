@@ -72,12 +72,14 @@ function ParticleGlobe({ progressRef, isMobile }: GlobeProps) {
   const smoothOpacity = useRef(0.95);
   const smoothRotSpeed = useRef(0.15);
 
-  // Targets for each phase
-  // Phase 1 (0 - 0.30):  scale 1 → 1.6 (Red Giant grow), scatter 0 → 1.5
-  // Phase 2 (0.30 - 0.75): hold Red Giant
-  // Phase 3 (0.75 - 0.90): contraction → 0.5 scale, scatter → 0
-  // Phase 4 (0.90 - 0.95): explosion spike (+20% then violent collapse to 0.1)
-  // Phase 5 (0.95 - 1.00): neutron star, tiny dense, faster spin
+  // Timeline (single seamless ramp, no explosion):
+  // Phase 1 (0.00 - 0.40):  grow from normal to Red Giant max
+  // Phase 2 (0.40 - 0.50):  hold at max (steady state)
+  // Phase 3 (0.50 - 1.00):  smooth linear shrink into Neutron Star
+  //
+  // Progress mapping (computed in parent):
+  //   scrollY in [0, blogTop]            -> p in [0.00, 0.50]
+  //   scrollY in [blogTop, scrollMax]    -> p in [0.50, 1.00]
 
   useFrame((_, delta) => {
     if (!pointsRef.current) return;
@@ -90,55 +92,30 @@ function ParticleGlobe({ progressRef, isMobile }: GlobeProps) {
     let targetSize = 0.06;
     let targetRotSpeed = 0.15;
 
-    if (p < 0.30) {
-      // Phase 1: grow to Red Giant
-      const k = smoothstep(p / 0.30);
+    if (p < 0.40) {
+      // Phase 1: smooth grow to Red Giant
+      const k = smoothstep(p / 0.40);
       targetScatter = lerp(0, 1.5, k);
       targetScale = lerp(1.0, 1.6, k);
       targetOpacity = 0.95;
       targetSize = 0.06;
-      targetRotSpeed = 0.15;
-    } else if (p < 0.75) {
+      targetRotSpeed = lerp(0.15, 0.18, k);
+    } else if (p < 0.50) {
       // Phase 2: hold Red Giant
       targetScatter = 1.5;
       targetScale = 1.6;
       targetOpacity = 0.95;
       targetSize = 0.06;
       targetRotSpeed = 0.18;
-    } else if (p < 0.90) {
-      // Phase 3: smooth contraction
-      const k = smoothstep((p - 0.75) / 0.15);
-      targetScatter = lerp(1.5, 0.0, k);
-      targetScale = lerp(1.6, 0.5, k);
-      targetOpacity = lerp(0.95, 1.0, k);
-      targetSize = lerp(0.06, 0.07, k);
-      targetRotSpeed = lerp(0.18, 0.3, k);
-    } else if (p < 0.95) {
-      // Phase 4: explosion spike then violent collapse
-      const k = (p - 0.90) / 0.05; // 0 → 1
-      if (k < 0.4) {
-        // Rapid expand (+20%)
-        const e = k / 0.4;
-        targetScatter = lerp(0.0, 0.6, e);
-        targetScale = lerp(0.5, 1.92, e); // 1.6 * 1.20
-        targetSize = lerp(0.07, 0.085, e);
-      } else {
-        // Violent collapse down to 10% of original (0.1 scale)
-        const e = (k - 0.4) / 0.6;
-        const ee = e * e; // accelerate inward
-        targetScatter = lerp(0.6, -0.6, ee);
-        targetScale = lerp(1.92, 0.1, ee);
-        targetSize = lerp(0.085, 0.08, ee);
-      }
-      targetOpacity = 1.0;
-      targetRotSpeed = lerp(0.3, 0.6, k);
     } else {
-      // Phase 5: Neutron Star — dense, tiny, faster spin
-      targetScatter = -0.6;
-      targetScale = 0.1;
-      targetOpacity = 1.0;
-      targetSize = 0.085;
-      targetRotSpeed = 0.9;
+      // Phase 3: seamless linear shrink to Neutron Star across the
+      // entire remainder of the page (starts at blog section).
+      const k = (p - 0.50) / 0.50; // linear 0 → 1
+      targetScatter = lerp(1.5, -0.6, k);
+      targetScale = lerp(1.6, 0.1, k);
+      targetOpacity = lerp(0.95, 1.0, k);
+      targetSize = lerp(0.06, 0.085, k);
+      targetRotSpeed = lerp(0.18, 0.9, k);
     }
 
     const sm = Math.min(1, delta * 7);
@@ -201,8 +178,26 @@ const Scene3DBackground: React.FC = () => {
     let ticking = false;
     const compute = () => {
       const doc = document.documentElement;
-      const scrollable = (doc.scrollHeight - window.innerHeight) || 1;
-      const p = window.scrollY / scrollable;
+      const scrollMax = (doc.scrollHeight - window.innerHeight) || 1;
+      const y = window.scrollY;
+
+      // Anchor the shrink phase to the start of the Blog section so the
+      // globe begins collapsing into the neutron star exactly when the
+      // "Technical Writing" heading enters the viewport.
+      const blogEl = document.getElementById("blog");
+      const blogTop = blogEl
+        ? blogEl.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35
+        : scrollMax * 0.6;
+
+      let p: number;
+      if (y < blogTop) {
+        // 0 → 0.5 grows / holds Red Giant
+        p = (y / Math.max(1, blogTop)) * 0.5;
+      } else {
+        // 0.5 → 1.0 linear shrink across the rest of the page
+        p = 0.5 + ((y - blogTop) / Math.max(1, scrollMax - blogTop)) * 0.5;
+      }
+
       progressRef.current = Math.max(0, Math.min(1, p));
       ticking = false;
     };

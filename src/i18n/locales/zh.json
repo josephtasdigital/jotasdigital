@@ -3,7 +3,9 @@
     "services": "服务",
     "work": "作品",
     "blog": "博客",
-    "contact": "联系"
+    "contact": "联系",
+    "auditCta": "获取免费审计",
+    "auditCtaShort": "免费审计"
   },
   "hero": {
     "subtitle": "数据工程师 & 分析专家",
@@ -71,5 +73,21 @@
     "title": "JavaScript 沙箱",
     "description": "实时执行实验。每张卡片在隔离的iframe中运行。",
     "reveal": "揭示"
+  },
+  "audit": {
+    "title": "获取您的免费审计",
+    "description": "告诉我您的网站情况。我将检查您的跟踪和分析设置,并提供量身定制的策略。",
+    "fieldName": "您的姓名",
+    "fieldEmail": "电子邮箱",
+    "fieldWebsite": "网站网址",
+    "fieldDetails": "简要描述您的数据 / 跟踪挑战",
+    "submit": "申请我的免费审计",
+    "submitting": "发送中...",
+    "errorMessage": "出现问题。请重试或直接给我发邮件。",
+    "successHeading": "请求已收到",
+    "successMessage": "您的网站正在审计中,完成审查并制定合理报价的策略后,我会通过邮件与您联系。",
+    "linkedinPrompt": "很高兴在 LinkedIn 上与您建立联系",
+    "linkedinButton": "在 LinkedIn 上联系",
+    "backHome": "返回主页"
   }
 }

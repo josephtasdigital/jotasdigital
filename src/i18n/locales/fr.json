@@ -3,7 +3,9 @@
     "services": "Services",
     "work": "Travaux",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "auditCta": "Obtenez votre audit gratuit",
+    "auditCtaShort": "Audit gratuit"
   },
   "hero": {
     "subtitle": "Ingénieur Data & Spécialiste Analytics",
@@ -71,5 +73,21 @@
     "title": "Bac à Sable JavaScript",
     "description": "Expériences en exécution live. Chaque carte s'exécute dans un iframe isolé.",
     "reveal": "Révéler"
+  },
+  "audit": {
+    "title": "Obtenez votre audit gratuit",
+    "description": "Parlez-moi de votre site. Je vais analyser votre suivi et vos analytics, puis revenir avec une stratégie sur mesure.",
+    "fieldName": "Votre nom",
+    "fieldEmail": "Adresse e-mail",
+    "fieldWebsite": "URL du site web",
+    "fieldDetails": "Décrivez brièvement votre défi data / suivi",
+    "submit": "Demander mon audit gratuit",
+    "submitting": "Envoi...",
+    "errorMessage": "Une erreur s'est produite. Réessayez ou envoyez-moi un e-mail directement.",
+    "successHeading": "Demande reçue",
+    "successMessage": "Votre site est maintenant en cours d'audit. Je vous contacterai par e-mail dès que j'aurai terminé l'analyse et préparé une stratégie avec une offre raisonnable.",
+    "linkedinPrompt": "Je serai ravi de vous avoir comme contact sur LinkedIn",
+    "linkedinButton": "Se connecter sur LinkedIn",
+    "backHome": "Retour à la page principale"
   }
 }
