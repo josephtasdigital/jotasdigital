@@ -65,11 +65,33 @@ const SiteNav = () => {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={() => setAuditOpen(true)}
+            data-gtm="header-audit-cta"
+            className="group relative inline-flex items-center gap-2 h-9 px-4 rounded-sm font-display text-xs uppercase tracking-widest text-primary-foreground bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] transition-all duration-500 hover:bg-[position:100%_0] hover:shadow-[0_0_24px_rgba(0,229,255,0.55)] overflow-hidden"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span className="relative z-10">{t("nav.auditCta")}</span>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+            />
+          </button>
           <LanguageSwitcher />
         </div>
 
         {/* Mobile toggle */}
         <div className="flex md:hidden items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setAuditOpen(true)}
+            data-gtm="header-audit-cta-mobile"
+            className="inline-flex items-center gap-1 h-8 px-3 rounded-sm font-display text-[10px] uppercase tracking-widest text-primary-foreground bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] transition-all duration-500 hover:bg-[position:100%_0]"
+          >
+            <Sparkles className="w-3 h-3" />
+            {t("nav.auditCtaShort")}
+          </button>
           <LanguageSwitcher />
           <button
             className="text-foreground"
@@ -81,6 +103,8 @@ const SiteNav = () => {
           </button>
         </div>
       </nav>
+
+      <AuditModal open={auditOpen} onOpenChange={setAuditOpen} />
 
       {/* Mobile menu */}
       <AnimatePresence>
