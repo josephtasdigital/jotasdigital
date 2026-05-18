@@ -237,12 +237,33 @@ function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
 
   if (!containerRect) return null;
 
+  // Hero stays section-bound (scroll-away fade).
+  // Contact uses a viewport-sized fixed canvas so the Red Giant + mini-
+  // explosion are never clipped on tablet/mobile screens. It is only
+  // mounted while the contact section is intersecting the viewport.
+  const containerStyle: React.CSSProperties =
+    mode === "contact"
+      ? {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: -1,
+        }
+      : {
+          top: containerRect.top,
+          height: containerRect.height,
+          zIndex: -1,
+        };
+
+  const containerClass =
+    mode === "contact"
+      ? "pointer-events-none"
+      : "absolute left-0 right-0 pointer-events-none overflow-hidden";
+
   return (
-    <div
-      aria-hidden="true"
-      className="absolute left-0 right-0 pointer-events-none overflow-hidden"
-      style={{ top: containerRect.top, height: containerRect.height, zIndex: -1 }}
-    >
+    <div aria-hidden="true" className={containerClass} style={containerStyle}>
       {active && (
         <CanvasErrorBoundary>
           <Canvas
