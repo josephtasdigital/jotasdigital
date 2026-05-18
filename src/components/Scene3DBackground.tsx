@@ -178,8 +178,26 @@ const Scene3DBackground: React.FC = () => {
     let ticking = false;
     const compute = () => {
       const doc = document.documentElement;
-      const scrollable = (doc.scrollHeight - window.innerHeight) || 1;
-      const p = window.scrollY / scrollable;
+      const scrollMax = (doc.scrollHeight - window.innerHeight) || 1;
+      const y = window.scrollY;
+
+      // Anchor the shrink phase to the start of the Blog section so the
+      // globe begins collapsing into the neutron star exactly when the
+      // "Technical Writing" heading enters the viewport.
+      const blogEl = document.getElementById("blog");
+      const blogTop = blogEl
+        ? blogEl.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35
+        : scrollMax * 0.6;
+
+      let p: number;
+      if (y < blogTop) {
+        // 0 → 0.5 grows / holds Red Giant
+        p = (y / Math.max(1, blogTop)) * 0.5;
+      } else {
+        // 0.5 → 1.0 linear shrink across the rest of the page
+        p = 0.5 + ((y - blogTop) / Math.max(1, scrollMax - blogTop)) * 0.5;
+      }
+
       progressRef.current = Math.max(0, Math.min(1, p));
       ticking = false;
     };
