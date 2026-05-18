@@ -3,7 +3,9 @@
     "services": "Hizmetler",
     "work": "Çalışmalar",
     "blog": "Blog",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "auditCta": "Ücretsiz denetim al",
+    "auditCtaShort": "Ücretsiz denetim"
   },
   "hero": {
     "subtitle": "Veri Mühendisi & Analitik Uzmanı",
@@ -71,5 +73,21 @@
     "title": "JavaScript Sandbox",
     "description": "Canlı yürütme deneyleri. Her kart izole bir iframe içinde çalışır.",
     "reveal": "Göster"
+  },
+  "audit": {
+    "title": "Ücretsiz denetiminizi alın",
+    "description": "Bana sitenizden bahsedin. Takip ve analiz kurulumunuzu inceleyip size özel bir strateji ile döneceğim.",
+    "fieldName": "Adınız",
+    "fieldEmail": "E-posta adresi",
+    "fieldWebsite": "Web sitesi URL'si",
+    "fieldDetails": "Veri / takip sorununuzu kısaca açıklayın",
+    "submit": "Ücretsiz denetimimi talep et",
+    "submitting": "Gönderiliyor...",
+    "errorMessage": "Bir şeyler ters gitti. Tekrar deneyin veya bana doğrudan e-posta gönderin.",
+    "successHeading": "Talep alındı",
+    "successMessage": "Web siteniz şu anda inceleme altında. İncelemeyi tamamlayıp makul bir teklifle strateji hazırladığımda size e-posta yoluyla ulaşacağım.",
+    "linkedinPrompt": "Sizi LinkedIn'de bağlantım olarak görmekten mutluluk duyarım",
+    "linkedinButton": "LinkedIn'de bağlan",
+    "backHome": "Ana sayfaya dön"
   }
 }
