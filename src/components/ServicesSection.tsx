@@ -22,6 +22,24 @@ interface GroupedTier {
 
 const tierOrder = ["major", "minor", "nano"];
 
+// ---------------------------------------------------------------------------
+// Hover overlay text per service card.
+// EDIT THESE STRINGS to customize the text that appears on hover.
+// Keys are markdown slugs (filename without .md). Unknown slugs fall back
+// to `defaultServiceOverlayText`.
+// ---------------------------------------------------------------------------
+const defaultServiceOverlayText = "Edit this text";
+const serviceOverlayText: Record<string, string> = {
+  "01-data-pipeline-architecture": "Edit this text",
+  "02-analytics-implementation": "Edit this text",
+  "03-dashboard-development": "Edit this text",
+  "google-ads-90-days-analysis-reporting-and-optimization-strategy-consultancy": "Edit this text",
+  "integration-of-google-ads-enhanced-conversions-for-your-own-server-side-tracking-system": "Edit this text",
+  "setting-up-and-testing-basic-conversion-tracking-between-gtm-and-google-ads-including-javascript-code-insertion-guide.": "Edit this text",
+  "setting-up-google-analytics-for-your-needs-and-integration-with-google-ads-gtm.": "Edit this text",
+  "test": "Edit this text",
+};
+
 const fallbackItems = [
   { slug: "_demo-1", frontmatter: { title: "Data Pipeline Architecture", tier: "major", tier_label: "Major Services", tier_description: "End-to-end solutions for complex data challenges", sort_order: 1, service_image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" }, content: "" },
   { slug: "_demo-2", frontmatter: { title: "Analytics Implementation", tier: "major", tier_label: "Major Services", tier_description: "End-to-end solutions for complex data challenges", sort_order: 2, service_image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" }, content: "" },
@@ -172,31 +190,49 @@ const ServicesSection = () => {
                   <p className="font-body text-xs text-muted-foreground">{tier.description}</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {tier.items.map((item, si) => (
-                    <motion.div
-                      key={item.slug}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
-                      className="border border-transparent rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
-                      data-gtm={`service-${tier.tier}-${si}`}
-                      onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
-                    >
-                      {item.frontmatter.service_image && (
-                        <div className="overflow-hidden">
-                          <img
-                            src={item.frontmatter.service_image}
-                            alt={item.frontmatter.title}
-                            className="w-full h-40 object-cover transition-transform duration-200 ease-in-out hover:scale-105"
-                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                    </motion.div>
-                  ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {tier.items.map((item, si) => {
+                    const overlayText =
+                      serviceOverlayText[item.slug] ?? defaultServiceOverlayText;
+                    return (
+                      <motion.div
+                        key={item.slug}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
+                        className="group relative border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
+                        data-gtm={`service-${tier.tier}-${si}`}
+                        onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
+                      >
+                        {item.frontmatter.service_image && (
+                          <div className="relative overflow-hidden rounded-2xl">
+                            <img
+                              src={item.frontmatter.service_image}
+                              alt={item.frontmatter.title}
+                              className="w-full h-52 sm:h-56 object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:blur-md group-hover:brightness-[0.55]"
+                              style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                              loading="lazy"
+                            />
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            >
+                              <span
+                                className="font-display text-center text-base sm:text-lg text-white"
+                                style={{
+                                  textShadow:
+                                    "0 2px 12px rgba(0,0,0,0.85), 0 0 18px rgba(0, 229, 255, 0.35)",
+                                }}
+                              >
+                                {overlayText}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             ))}

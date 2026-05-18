@@ -87,28 +87,46 @@ function ParticleGlobe({ progressRef, isMobile, mode }: GlobeProps) {
       targetOpacity = Math.max(0, 1 - p) * 0.95;
       targetSize = 0.06;
     } else {
-      // contact: explosion -> collapse -> neutron star
-      // Phases tuned so neutron-star state locks in by the time the
-      // section is fully docked in the viewport (p ~ 0.7+).
-      if (p < 0.45) {
-        // mini explosion: rapid outward expand as section enters
-        const k = p / 0.45; // 0..1
-        targetScatter = k * 1.2;
-        targetScale = 1 + k * 0.35;
-        targetOpacity = 0.95;
-      } else if (p < 0.7) {
-        // violent collapse inward
-        const k = (p - 0.45) / 0.25; // 0..1
-        const ease = k * k; // accelerating
-        targetScatter = 1.2 - ease * 1.7; // 1.2 -> -0.5
-        targetScale = 1.35 - ease * 1.0; // 1.35 -> 0.35
-        targetOpacity = 0.95;
+      // contact: starts at "Red Giant" (matches the Hero end-state but visible),
+      // shrinks through the footer, mini-explosion at the bottom, settles into
+      // a small rotating "Neutron Star".
+      const RED_GIANT = { scatter: 1.5, scale: 1.6, size: 0.06, opacity: 0.95 };
+      const SHRUNK = { scatter: 0.0, scale: 0.5, size: 0.065, opacity: 0.95 };
+      const EXPLODE = { scatter: 0.55, scale: 1.25, size: 0.08, opacity: 1.0 };
+      const NEUTRON = { scatter: -0.5, scale: 0.35, size: 0.075, opacity: 1.0 };
+
+      const lerpVal = (a: number, b: number, k: number) => a + (b - a) * k;
+
+      if (p < 0.15) {
+        // Hold Red Giant while the top of the footer enters the viewport.
+        targetScatter = RED_GIANT.scatter;
+        targetScale = RED_GIANT.scale;
+        targetOpacity = RED_GIANT.opacity;
+        targetSize = RED_GIANT.size;
+      } else if (p < 0.75) {
+        // Rapid shrink inward as we scroll through the footer.
+        const k = (p - 0.15) / 0.6;
+        const ease = k * k * (3 - 2 * k); // smoothstep
+        targetScatter = lerpVal(RED_GIANT.scatter, SHRUNK.scatter, ease);
+        targetScale = lerpVal(RED_GIANT.scale, SHRUNK.scale, ease);
+        targetOpacity = lerpVal(RED_GIANT.opacity, SHRUNK.opacity, ease);
+        targetSize = lerpVal(RED_GIANT.size, SHRUNK.size, ease);
+      } else if (p < 0.88) {
+        // Mini explosion: rapid pop-out.
+        const k = (p - 0.75) / 0.13;
+        const pulse = Math.sin(k * Math.PI); // 0 -> 1 -> 0
+        targetScatter = lerpVal(SHRUNK.scatter, EXPLODE.scatter, pulse);
+        targetScale = lerpVal(SHRUNK.scale, EXPLODE.scale, pulse);
+        targetOpacity = lerpVal(SHRUNK.opacity, EXPLODE.opacity, pulse);
+        targetSize = lerpVal(SHRUNK.size, EXPLODE.size, pulse);
       } else {
-        // dense neutron star — stable, rotating
-        targetScatter = -0.5;
-        targetScale = 0.35;
-        targetOpacity = 1.0;
-        targetSize = 0.075;
+        // Settle into dense neutron star — stable, rotating.
+        const k = Math.min(1, (p - 0.88) / 0.12);
+        const ease = k * k * (3 - 2 * k);
+        targetScatter = lerpVal(EXPLODE.scatter, NEUTRON.scatter, ease);
+        targetScale = lerpVal(EXPLODE.scale, NEUTRON.scale, ease);
+        targetOpacity = lerpVal(EXPLODE.opacity, NEUTRON.opacity, ease);
+        targetSize = lerpVal(EXPLODE.size, NEUTRON.size, ease);
       }
     }
 
@@ -192,14 +210,13 @@ function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
           const distance = Math.abs(sectionCenter - viewportCenter);
           progressRef.current = Math.min(1, distance / (vh * 0.9));
         } else {
-          // contact: anchor progress to section TOP crossing the viewport.
-          // 0 = section top at viewport bottom (just entering)
-          // 1 = section top at viewport top (fully docked)
-          // This makes the explosion+collapse happen as the section scrolls
-          // into view, so by the time the form is fully visible the globe
-          // is already a small neutron star.
+          // contact: progress is strictly anchored to the footer container.
+          // p = 0 → top of section just enters the viewport (Red Giant state)
+          // p = 1 → bottom of section reaches bottom of viewport (Neutron Star
+          //         after the mini-explosion).
           const traveled = vh - rect.top;
-          progressRef.current = Math.max(0, Math.min(1, traveled / vh));
+          const total = vh + rect.height;
+          progressRef.current = Math.max(0, Math.min(1, traveled / total));
         }
         ticking = false;
       });
@@ -220,12 +237,33 @@ function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
 
   if (!containerRect) return null;
 
+  // Hero stays section-bound (scroll-away fade).
+  // Contact uses a viewport-sized fixed canvas so the Red Giant + mini-
+  // explosion are never clipped on tablet/mobile screens. It is only
+  // mounted while the contact section is intersecting the viewport.
+  const containerStyle: React.CSSProperties =
+    mode === "contact"
+      ? {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: -1,
+        }
+      : {
+          top: containerRect.top,
+          height: containerRect.height,
+          zIndex: -1,
+        };
+
+  const containerClass =
+    mode === "contact"
+      ? "pointer-events-none"
+      : "absolute left-0 right-0 pointer-events-none overflow-hidden";
+
   return (
-    <div
-      aria-hidden="true"
-      className="absolute left-0 right-0 pointer-events-none overflow-hidden"
-      style={{ top: containerRect.top, height: containerRect.height, zIndex: -1 }}
-    >
+    <div aria-hidden="true" className={containerClass} style={containerStyle}>
       {active && (
         <CanvasErrorBoundary>
           <Canvas
