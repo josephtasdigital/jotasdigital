@@ -190,31 +190,49 @@ const ServicesSection = () => {
                   <p className="font-body text-xs text-muted-foreground">{tier.description}</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {tier.items.map((item, si) => (
-                    <motion.div
-                      key={item.slug}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
-                      className="border border-transparent rounded-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
-                      data-gtm={`service-${tier.tier}-${si}`}
-                      onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
-                    >
-                      {item.frontmatter.service_image && (
-                        <div className="overflow-hidden">
-                          <img
-                            src={item.frontmatter.service_image}
-                            alt={item.frontmatter.title}
-                            className="w-full h-40 object-cover transition-transform duration-200 ease-in-out hover:scale-105"
-                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                    </motion.div>
-                  ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {tier.items.map((item, si) => {
+                    const overlayText =
+                      serviceOverlayText[item.slug] ?? defaultServiceOverlayText;
+                    return (
+                      <motion.div
+                        key={item.slug}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
+                        className="group relative border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
+                        data-gtm={`service-${tier.tier}-${si}`}
+                        onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
+                      >
+                        {item.frontmatter.service_image && (
+                          <div className="relative overflow-hidden rounded-2xl">
+                            <img
+                              src={item.frontmatter.service_image}
+                              alt={item.frontmatter.title}
+                              className="w-full h-52 sm:h-56 object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:blur-md group-hover:brightness-[0.55]"
+                              style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                              loading="lazy"
+                            />
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            >
+                              <span
+                                className="font-display text-center text-base sm:text-lg text-white"
+                                style={{
+                                  textShadow:
+                                    "0 2px 12px rgba(0,0,0,0.85), 0 0 18px rgba(0, 229, 255, 0.35)",
+                                }}
+                              >
+                                {overlayText}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
