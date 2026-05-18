@@ -210,14 +210,13 @@ function GlobeInstance({ targetId, isMobile, mode }: InstanceProps) {
           const distance = Math.abs(sectionCenter - viewportCenter);
           progressRef.current = Math.min(1, distance / (vh * 0.9));
         } else {
-          // contact: anchor progress to section TOP crossing the viewport.
-          // 0 = section top at viewport bottom (just entering)
-          // 1 = section top at viewport top (fully docked)
-          // This makes the explosion+collapse happen as the section scrolls
-          // into view, so by the time the form is fully visible the globe
-          // is already a small neutron star.
+          // contact: progress is strictly anchored to the footer container.
+          // p = 0 → top of section just enters the viewport (Red Giant state)
+          // p = 1 → bottom of section reaches bottom of viewport (Neutron Star
+          //         after the mini-explosion).
           const traveled = vh - rect.top;
-          progressRef.current = Math.max(0, Math.min(1, traveled / vh));
+          const total = vh + rect.height;
+          progressRef.current = Math.max(0, Math.min(1, traveled / total));
         }
         ticking = false;
       });
