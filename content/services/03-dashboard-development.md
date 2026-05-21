@@ -5,7 +5,7 @@ tier_label: Minor Services
 tier_description: Save more & get more with Google Cloud
 sort_order: 3
 service_image: /img/SST with google tracking and custom javascripts.png
-animated_asset: /img/system-regular-63-settings-cog-hover-cog-1.webp
+animated_asset: ''
 hover_text: Server-side tracking using custom Google Cloud containers- Custom Solutions against adblockers
 ---
 
