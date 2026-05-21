@@ -242,13 +242,14 @@ const ServicesSection = () => {
       </section>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="bg-card/95 backdrop-blur-xl border-border max-w-md overflow-hidden">
-          {selectedImage && (
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg"
-              style={{ zIndex: 0 }}
-            >
+        <DialogContent className="bg-card/80 backdrop-blur-xl border-border max-w-md overflow-hidden">
+          {/* Blurred backdrop thumbnail — applied uniformly to every service modal */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg"
+            style={{ zIndex: 0 }}
+          >
+            {selectedImage ? (
               <div
                 className="absolute inset-0 bg-center bg-cover service-modal-bg"
                 style={{
@@ -258,9 +259,21 @@ const ServicesSection = () => {
                   transform: "scale(1.15)",
                 }}
               />
-              <div className="absolute inset-0 bg-card/40" />
-            </div>
-          )}
+            ) : (
+              <div
+                className="absolute inset-0 service-modal-bg"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.25), transparent 60%), radial-gradient(circle at 70% 70%, hsl(var(--primary) / 0.18), transparent 65%)",
+                  filter: "blur(14px)",
+                  opacity: 0.5,
+                  transform: "scale(1.15)",
+                }}
+              />
+            )}
+            <div className="absolute inset-0 bg-card/40" />
+          </div>
+
           <style>{`
             @keyframes serviceModalPan {
               0%   { transform: scale(1.15) translate3d(0, 0, 0); }
