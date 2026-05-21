@@ -5,6 +5,7 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 import { getServiceItems } from "@/lib/markdown";
+import AnimatedAsset from "@/components/AnimatedAsset";
 import {
   Dialog,
   DialogContent,
