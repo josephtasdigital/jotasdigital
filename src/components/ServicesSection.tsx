@@ -5,6 +5,7 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 import { getServiceItems } from "@/lib/markdown";
+import AnimatedAsset from "@/components/AnimatedAsset";
 import {
   Dialog,
   DialogContent,
@@ -201,7 +202,19 @@ const ServicesSection = () => {
                               className="w-full h-52 sm:h-56 object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:blur-md group-hover:brightness-[0.55]"
                               style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
                               loading="lazy"
+                              decoding="async"
                             />
+                            {item.frontmatter.animated_asset && (
+                              <AnimatedAsset
+                                src={item.frontmatter.animated_asset as string}
+                                alt=""
+                                width={56}
+                                height={56}
+                                aria-hidden="true"
+                                containerClassName="absolute top-3 right-3 pointer-events-none drop-shadow-[0_0_12px_rgba(0,229,255,0.35)] transition-transform duration-500 group-hover:scale-110"
+                              />
+                            )}
+
                             <div
                               aria-hidden="true"
                               className="absolute inset-0 flex items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
