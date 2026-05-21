@@ -35,6 +35,7 @@ collections:
       - {label: "Tier Description", name: "tier_description", widget: "string"}
       - {label: "Sort Order", name: "sort_order", widget: "number", value_type: "int"}
       - {label: "Service Image", name: "service_image", widget: "image", required: false}
+      - {label: "Animated Asset (GIF/WebP/PNG)", name: "animated_asset", widget: "image", required: false, hint: "Optional animated icon (GIF, animated WebP, or PNG) shown as an overlay icon on the service card."}
       - {label: "Hover Text", name: "hover_text", widget: "string", required: false, hint: "Text shown on top of the image when hovering this service card."}
       - {label: "Notes", name: "body", widget: "markdown", required: false}
 
