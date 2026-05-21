@@ -73,8 +73,13 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <AppRoutes />
-            {/* Cookie banner temporarily deactivated — keep import for future re-activation */}
-            {false && <CookieConsent />}
+            {/*
+              Cookie Consent Banner — DORMANT.
+              GDPR / Google Consent Mode v2 compliant banner is built and wired
+              (Accept All / Deny All / Customize → gtag('consent','update',...)).
+              To activate site-wide, flip the flag below to `true`.
+            */}
+            {isConsentBannerActive && <CookieConsent />}
           </BrowserRouter>
         </TooltipProvider>
       </DevModeProvider>
