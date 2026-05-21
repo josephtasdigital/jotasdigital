@@ -6,6 +6,9 @@ backend:
 media_folder: "public/img"
 public_folder: "/img"
 
+# Media uploads (PNG, WebP, GIF, SVG) are stored under public/img/
+# and served from /img/ at runtime.
+
 collections:
   # --- COLLECTION 1: PROFESSIONAL PORTFOLIO ---
   - name: "portfolio"
