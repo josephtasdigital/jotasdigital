@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "@/lib/markdown";
 import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
@@ -108,9 +109,30 @@ const BlogPost = () => {
   }
 
   const { frontmatter, content } = post;
+  const excerpt: string =
+    (frontmatter.excerpt as string) ||
+    content.replace(/[#*_>`!\[\]()]/g, "").trim().slice(0, 155);
+  const canonical = `https://jotasdigital.lovable.app/blog/${slug}`;
 
   return (
     <main className="min-h-screen bg-background">
+      <Helmet>
+        <title>{`${frontmatter.title} — Joseph Tas`}</title>
+        <meta name="description" content={excerpt} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={excerpt} />
+        <meta property="og:url" content={canonical} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: frontmatter.title,
+          datePublished: frontmatter.date,
+          author: { "@type": "Person", name: frontmatter.author || "Joseph Tas" },
+          mainEntityOfPage: canonical,
+        })}</script>
+      </Helmet>
       <SiteNav />
       <article className="section-container pt-32 max-w-3xl mx-auto">
         <Link

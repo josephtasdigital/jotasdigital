@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { getPortfolioItem } from "@/lib/markdown";
 import { ArrowLeft, FileImage, FileText, Presentation } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
@@ -44,9 +45,31 @@ const PortfolioItem = () => {
   const mediaSrc = frontmatter.featured_image || "";
   const mediaType = getMediaType(mediaSrc);
   const embedUrl = frontmatter.embed_url || "";
+  const description: string =
+    (frontmatter.description as string) ||
+    content.replace(/[#*_>`!\[\]()]/g, "").trim().slice(0, 155) ||
+    `${frontmatter.title} — portfolio project by Joseph Tas.`;
+  const canonical = `https://jotasdigital.lovable.app/portfolio/${slug}`;
 
   return (
     <main className="min-h-screen bg-background">
+      <Helmet>
+        <title>{`${frontmatter.title} — Portfolio | Joseph Tas`}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: frontmatter.title,
+          description,
+          url: canonical,
+          author: { "@type": "Person", name: "Joseph Tas" },
+        })}</script>
+      </Helmet>
       <SiteNav />
       <div className="section-container pt-32 max-w-4xl mx-auto">
         <Link
