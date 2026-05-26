@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "@/lib/markdown";
 import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
