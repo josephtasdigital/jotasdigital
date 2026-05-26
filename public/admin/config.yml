@@ -39,6 +39,18 @@ collections:
       - {label: "Hover Text", name: "hover_text", widget: "string", required: false, hint: "Text shown on top of the image when hovering this service card."}
       - {label: "Notes", name: "body", widget: "markdown", required: false}
 
+  # --- COLLECTION 5: PARTNER OFFERS ---
+  - name: "partner-offers"
+    label: "Partner Offers"
+    folder: "content/partner-offers"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", required: false}
+      - {label: "Notes", name: "body", widget: "markdown", required: false}
+
   # --- COLLECTION 3: BLOG SECTION ---
   - name: "blog"
     label: "Data Engineering Blog"
