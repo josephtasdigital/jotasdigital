@@ -34,6 +34,12 @@ const jsShowcaseFiles = import.meta.glob("/content/js-showcase/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const partnerOfferFiles = import.meta.glob("/content/partner-offers/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 const siteSettingsFiles = import.meta.glob("/content/site-settings/*.md", {
   query: "?raw",
   import: "default",
@@ -119,6 +125,14 @@ export function getPlaygroundItems(): MarkdownContent[] {
 
 export function getJsShowcaseItems(): MarkdownContent[] {
   return parseFiles(jsShowcaseFiles);
+}
+
+export function getPartnerOffers(): MarkdownContent[] {
+  return parseFiles(partnerOfferFiles).sort((a, b) => {
+    const sa = Number(a.frontmatter.sort_order ?? 99);
+    const sb = Number(b.frontmatter.sort_order ?? 99);
+    return sa - sb;
+  });
 }
 
 export function getSiteSettings(): Record<string, any> {
