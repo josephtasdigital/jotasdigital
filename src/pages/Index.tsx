@@ -3,6 +3,7 @@ import Scene3DBackground from "@/components/Scene3DBackground";
 import HeroSection from "@/components/HeroSection";
 import WhoAmISection from "@/components/WhoAmISection";
 import ServicesSection from "@/components/ServicesSection";
+import PartnerOffers from "@/components/PartnerOffers";
 import PortfolioSection from "@/components/PortfolioSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -16,6 +17,7 @@ const Index = () => {
       <HeroSection />
       <WhoAmISection />
       <ServicesSection />
+      <PartnerOffers />
       <PortfolioSection />
       <BlogSection />
       <ContactSection />
