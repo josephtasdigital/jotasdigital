@@ -1,0 +1,12 @@
+# Joseph Tas Digital
+
+> Data engineer and analytics specialist. ETL pipelines, data factories, and
+> analytics infrastructure that turn raw data into actionable intelligence.
+
+## Pages
+
+- [Home](/): Services, portfolio, blog, and contact.
+- [Blog](/#blog): Articles on data, analytics, consent, and marketing.
+- [Portfolio](/#work): Selected technical case studies and projects.
+- [Services](/#services): Data engineering and analytics offerings.
+- [Contact](/#contact): Get in touch for projects and audits.
