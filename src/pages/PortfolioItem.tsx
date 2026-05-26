@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { getPortfolioItem } from "@/lib/markdown";
 import { ArrowLeft, FileImage, FileText, Presentation } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
