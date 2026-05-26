@@ -127,6 +127,14 @@ export function getJsShowcaseItems(): MarkdownContent[] {
   return parseFiles(jsShowcaseFiles);
 }
 
+export function getPartnerOffers(): MarkdownContent[] {
+  return parseFiles(partnerOfferFiles).sort((a, b) => {
+    const sa = Number(a.frontmatter.sort_order ?? 99);
+    const sb = Number(b.frontmatter.sort_order ?? 99);
+    return sa - sb;
+  });
+}
+
 export function getSiteSettings(): Record<string, any> {
   const items = parseFiles(siteSettingsFiles);
   const profile = items.find((i) => i.slug === "profile");
