@@ -34,6 +34,12 @@ const jsShowcaseFiles = import.meta.glob("/content/js-showcase/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const partnerOfferFiles = import.meta.glob("/content/partner-offers/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 const siteSettingsFiles = import.meta.glob("/content/site-settings/*.md", {
   query: "?raw",
   import: "default",
