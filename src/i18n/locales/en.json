@@ -18,7 +18,7 @@
     "submitting": "Sending...",
     "errorMessage": "Something went wrong. Please try again or email me directly.",
     "successHeading": "Request received",
-    "successMessage": "Your website is now under audit, I will reach out to you via your email once I finish reviewing and implementing a strategy with a reasonable offer.",
+    "successMessage": "Your website is now under audit. I will reach out to you via your email once I finish reviewing and implementing a strategy with a reasonable offer.",
     "linkedinPrompt": "I'll be happy to have you as a connection through LinkedIn",
     "linkedinButton": "Connect on LinkedIn",
     "backHome": "Take me back to the main page."
@@ -31,7 +31,7 @@
     "pill1": "SERVER-SIDE TRACKING",
     "pill2": "GA4 ARCHITECTURE",
     "pill3": "CONVERSION API (CAPI)",
-    "cta": "Explore my services"
+    "cta": "Explore my Projects"
   },
   "whoami": {
     "label": "// WHO AM I",
@@ -63,7 +63,7 @@
     "formSubmit": "Send",
     "modalTitle": "Interested in {{service}}?",
     "modalDescription": "Leave your details and I'll reach out to discuss this service.",
-    "modalSuccess": "Thanks for the interest in this service, I will reach you out shortly to discuss further, be sure to check your spam folder."
+    "modalSuccess": "Thanks for your interest in this service, I will reach out to you shortly to discuss further. Be sure to check your spam folder."
   },
   "portfolio": {
     "label": "// Portfolio",
@@ -76,7 +76,7 @@
   "contact": {
     "label": "// Contact",
     "title": "Get In Touch",
-    "description": "Contact me directly to put an end being one of those companies that are losing 30% of their analytics to adblockers. I build first-party, server-side tracking pipelines that capture every click and bypass the noise. Let's fix your broken data.",
+    "description": "Contact me directly to put an end to being one of those companies that are losing 30% of their analytics to adblockers. I will build first-party, server-side tracking pipelines for you that will capture every click and bypass the noise. Let's fix your broken data.",
     "formName": "Name",
     "formEmail": "Email",
     "formMessage": "Tell me about your data challenge...",
