@@ -81,8 +81,13 @@ function ParticleGlobe({ progressRef, isMobile }: GlobeProps) {
   //   scrollY in [0, blogTop]            -> p in [0.00, 0.50]
   //   scrollY in [blogTop, scrollMax]    -> p in [0.50, 1.00]
 
-  useFrame((_, delta) => {
+  const lastElapsed = useRef(0);
+  useFrame((state) => {
     if (!pointsRef.current) return;
+
+    const elapsed = state.clock.getElapsedTime();
+    const delta = Math.min(0.1, elapsed - lastElapsed.current);
+    lastElapsed.current = elapsed;
 
     const p = Math.max(0, Math.min(1, progressRef.current));
 
