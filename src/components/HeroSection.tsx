@@ -93,14 +93,14 @@ const HeroSection = () => {
               {t("hero.subtitle")}
             </span>
 
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-6 text-balance">
               <span className="text-foreground">{t("hero.title1")}</span>
               <br />
               <span className="text-primary text-glow">{t("hero.title2")}</span>
             </h1>
 
             <p
-              className="font-body text-base md:text-lg max-w-lg mb-8 leading-relaxed"
+              className="font-body text-base md:text-lg max-w-2xl mb-8 leading-relaxed text-balance"
               style={{ color: "#E2E8F0", textShadow: "0px 2px 4px rgba(0,0,0,0.6)" }}
             >
               {t("hero.description")}
