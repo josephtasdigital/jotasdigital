@@ -32,7 +32,7 @@ const SiteNav = () => {
       setTimeout(() => {
         const el = document.querySelector(href);
         if (el) {
-          const headerOffset = 64;
+          const headerOffset = window.innerWidth >= 1024 ? 128 : window.innerWidth >= 768 ? 112 : 80;
           const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
           window.scrollTo({ top, behavior: "smooth" });
         }
