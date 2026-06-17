@@ -51,6 +51,17 @@ collections:
       - {label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", required: false}
       - {label: "Notes", name: "body", widget: "markdown", required: false}
 
+  # --- COLLECTION: WORKFLOW TOOL STACK ---
+  - name: "workflow-tools"
+    label: "Workflow Tool Stack"
+    folder: "content/workflow-tools"
+    create: true
+    fields:
+      - {label: "Tool Name", name: "title", widget: "string"}
+      - {label: "Logo / Image", name: "image", widget: "image", required: false}
+      - {label: "External URL", name: "url", widget: "string", required: false}
+      - {label: "Sort Order", name: "sort_order", widget: "number", value_type: "int", required: false}
+
   # --- COLLECTION 3: BLOG SECTION ---
   - name: "blog"
     label: "Data Engineering Blog"

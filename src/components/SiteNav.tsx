@@ -32,7 +32,7 @@ const SiteNav = () => {
       setTimeout(() => {
         const el = document.querySelector(href);
         if (el) {
-          const headerOffset = 64;
+          const headerOffset = window.innerWidth >= 1024 ? 128 : window.innerWidth >= 768 ? 112 : 80;
           const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
           window.scrollTo({ top, behavior: "smooth" });
         }
@@ -44,9 +44,9 @@ const SiteNav = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md" data-gtm="site-header">
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <nav className="max-w-6xl mx-auto px-6 h-20 md:h-28 lg:h-32 flex items-center justify-between" aria-label="Main navigation">
         <Link to={homePath} className="flex items-center gap-2" data-gtm="logo">
-          <img src={logoTransparent} alt="JosephTasDigital" className="h-14 md:h-20 lg:h-24 w-auto object-contain" width={2200} height={850} />
+          <img src={logoTransparent} alt="JosephTasDigital" className="h-16 md:h-24 lg:h-32 xl:h-36 w-auto object-contain" width={2200} height={850} />
         </Link>
 
         {/* Desktop */}
