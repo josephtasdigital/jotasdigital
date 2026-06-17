@@ -9,3 +9,5 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+
+Sveltia CMS is also integrated and running flawlessly.
