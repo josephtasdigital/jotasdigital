@@ -33,6 +33,7 @@ const Index = () => {
       <SiteNav />
       <HeroSection />
       <WhoAmISection />
+      <WorkflowToolStack />
       <ServicesSection />
       <PartnerOffers />
       <PortfolioSection />
