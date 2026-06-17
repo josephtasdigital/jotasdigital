@@ -46,6 +46,21 @@ const siteSettingsFiles = import.meta.glob("/content/site-settings/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const workflowToolFiles = import.meta.glob("/content/workflow-tools/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+export function getWorkflowTools(): MarkdownContent[] {
+  return parseFiles(workflowToolFiles).sort((a, b) => {
+    const sa = Number(a.frontmatter.sort_order ?? 99);
+    const sb = Number(b.frontmatter.sort_order ?? 99);
+    return sa - sb;
+  });
+}
+
+
 function parseFrontmatter(raw: string): { data: Record<string, any>; content: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, content: raw.trim() };
