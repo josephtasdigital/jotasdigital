@@ -14,7 +14,8 @@ const HeroSection = () => {
     e.preventDefault();
     const el = document.getElementById("work");
     if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 64;
+      const offset = window.innerWidth >= 1024 ? 128 : window.innerWidth >= 768 ? 112 : 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
     }
   };
