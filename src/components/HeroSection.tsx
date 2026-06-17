@@ -106,24 +106,8 @@ const HeroSection = () => {
               {t("hero.description")}
             </p>
 
-            {/* Capability pills */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-2.5 mb-10">
-              {[
-                { icon: Database, label: t("hero.pill1") },
-                { icon: Workflow, label: t("hero.pill2") },
-                { icon: BarChart3, label: t("hero.pill3") },
-              ].map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-2 px-3 py-1.5 border border-border/60 rounded-sm bg-card/40 backdrop-blur-sm"
-                >
-                  <Icon className="w-3.5 h-3.5 text-primary" />
-                  <span className="font-display text-[10px] uppercase tracking-wider text-secondary-foreground">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {/* Capability pills removed per design update */}
+
 
             {/* CTA — centered, enlarged 50%, fixed scroll */}
             <motion.a
