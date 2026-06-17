@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Scene3DBackground from "@/components/Scene3DBackground";
 import HeroSection from "@/components/HeroSection";
 import WhoAmISection from "@/components/WhoAmISection";
+import WorkflowToolStack from "@/components/WorkflowToolStack";
 import ServicesSection from "@/components/ServicesSection";
 import PartnerOffers from "@/components/PartnerOffers";
 import PortfolioSection from "@/components/PortfolioSection";
