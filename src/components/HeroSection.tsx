@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Database, Workflow, BarChart3 } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
 import { getSiteSettings } from "@/lib/markdown";
