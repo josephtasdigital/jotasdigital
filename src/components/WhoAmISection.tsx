@@ -26,10 +26,10 @@ const WhoAmISection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="font-body text-muted-foreground leading-relaxed mb-6">
+            <p className="font-body text-foreground leading-relaxed mb-6">
               {t("whoami.bio1")}
             </p>
-            <p className="font-body text-muted-foreground leading-relaxed">
+            <p className="font-body text-foreground leading-relaxed">
               {t("whoami.bio2")}
             </p>
           </motion.div>
@@ -49,7 +49,7 @@ const WhoAmISection = () => {
                 <h4 className="font-display text-sm font-semibold text-foreground mb-1">
                   {t(`${key}.title`)}
                 </h4>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">
+                <p className="font-body text-xs text-foreground leading-relaxed">
                   {t(`${key}.desc`)}
                 </p>
               </motion.div>
