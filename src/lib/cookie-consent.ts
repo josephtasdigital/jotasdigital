@@ -5,8 +5,11 @@ export interface ConsentState {
   ad_personalization: 'granted' | 'denied';
 }
 
-const COOKIE_NAME = 'bread_consent_state';
-const COOKIE_DAYS = 365;
+// Persisted in localStorage so the banner does not reappear on subsequent
+// page loads or SPA route changes.
+const STORAGE_KEY = 'bread_consent_state';
+// Legacy cookie name — read once for backward compatibility, then migrated.
+const LEGACY_COOKIE_NAME = 'bread_consent_state';
 
 export const DEFAULT_CONSENT: ConsentState = {
   analytics_storage: 'denied',
@@ -22,24 +25,58 @@ export const ALL_GRANTED: ConsentState = {
   ad_personalization: 'granted',
 };
 
-export function getConsentState(): ConsentState {
+function readLegacyCookie(): ConsentState | null {
+  if (typeof document === 'undefined') return null;
   try {
-    const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${COOKIE_NAME}=([^;]*)`));
+    const match = document.cookie.match(
+      new RegExp(`(?:^|;\\s*)${LEGACY_COOKIE_NAME}=([^;]*)`)
+    );
     if (match && match[1]) {
-      return JSON.parse(decodeURIComponent(match[1]));
+      return JSON.parse(decodeURIComponent(match[1])) as ConsentState;
     }
   } catch {
     // ignore parse errors
+  }
+  return null;
+}
+
+export function getConsentState(): ConsentState {
+  if (typeof window === 'undefined') return { ...DEFAULT_CONSENT };
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw) as ConsentState;
+  } catch {
+    // ignore
+  }
+  // Migrate legacy cookie value, if present, into localStorage.
+  const legacy = readLegacyCookie();
+  if (legacy) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(legacy));
+    } catch {
+      // ignore
+    }
+    return legacy;
   }
   return { ...DEFAULT_CONSENT };
 }
 
 export function setConsentState(state: ConsentState): void {
-  const expires = new Date(Date.now() + COOKIE_DAYS * 864e5).toUTCString();
-  const value = encodeURIComponent(JSON.stringify(state));
-  document.cookie = `${COOKIE_NAME}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // ignore quota / privacy mode errors
+  }
 }
 
 export function hasConsentCookie(): boolean {
-  return document.cookie.includes(COOKIE_NAME);
+  if (typeof window === 'undefined') return false;
+  try {
+    if (window.localStorage.getItem(STORAGE_KEY) !== null) return true;
+  } catch {
+    // ignore
+  }
+  // Honor legacy cookie so returning users aren't re-prompted.
+  return readLegacyCookie() !== null;
 }

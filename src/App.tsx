@@ -27,7 +27,7 @@ const queryClient = new QueryClient();
 // Set to `true` to render the GDPR / Google Consent Mode v2 banner site-wide.
 // Kept `false` while the banner remains in dormant infrastructure mode.
 // ────────────────────────────────────────────────────────────────────────────
-const isConsentBannerActive = false;
+const isConsentBannerActive = true;
 
 const LocaleSync = ({ children }: { children: React.ReactNode }) => {
   const { lang } = useParams<{ lang?: string }>();
