@@ -1,9 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Model } from "survey-core";
-import { Survey } from "survey-react-ui";
-import "survey-core/survey-core.min.css";
+import { CheckCircle2 } from "lucide-react";
 import { getServiceItems } from "@/lib/markdown";
 import AnimatedAsset from "@/components/AnimatedAsset";
 import {
