@@ -22,11 +22,6 @@ import "./i18n";
 
 const queryClient = new QueryClient();
 
-// ────────────────────────────────────────────────────────────────────────────
-// Cookie Consent Banner activation flag.
-// Set to `true` to render the GDPR / Google Consent Mode v2 banner site-wide.
-// Kept `false` while the banner remains in dormant infrastructure mode.
-// ────────────────────────────────────────────────────────────────────────────
 const isConsentBannerActive = true;
 
 const LocaleSync = ({ children }: { children: React.ReactNode }) => {
