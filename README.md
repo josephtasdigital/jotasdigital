@@ -2,7 +2,7 @@
 
 ## What technologies are used for this project?
 
-This project is built with:
+This portfolio website is developed with:
 
 - Vite
 - TypeScript
@@ -11,3 +11,5 @@ This project is built with:
 - Tailwind CSS
 
 Sveltia CMS is also integrated and running flawlessly.
+Form Submissions are handled by Formspree.io.
+
