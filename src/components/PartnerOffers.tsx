@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Loader2 } from "lucide-react";
 import { getPartnerOffers } from "@/lib/markdown";
+import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
 import {
   Dialog,
   DialogContent,
