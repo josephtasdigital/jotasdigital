@@ -233,7 +233,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                   className="w-full px-4 py-3 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors resize-y min-h-[120px]"
                 />
 
-                {error && <p className="text-sm text-destructive">{error}</p>}
+                {error && <p className="text-sm text-destructive">Something went wrong. Please try again.</p>}
 
                 <button
                   type="submit"
