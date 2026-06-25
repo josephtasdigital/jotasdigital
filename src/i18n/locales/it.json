@@ -1,93 +1,93 @@
 {
   "nav": {
     "services": "Servizi",
-    "work": "Lavori",
+    "work": "Progetti",
     "blog": "Blog",
-    "contact": "Contatto",
-    "auditCta": "Ottieni il tuo audit gratuito",
+    "contact": "Contatti",
+    "auditCta": "Offerta di audit / consulenza",
     "auditCtaShort": "Audit gratuito"
   },
+  "audit": {
+    "title": "Offerta di audit / consulenza",
+    "description": "Raccontami del tuo sito. Esaminerò il tuo setup di tracking e analytics e ti risponderò con una strategia su misura.",
+    "fieldName": "Il tuo nome",
+    "fieldEmail": "Indirizzo e-mail",
+    "fieldWebsite": "URL del sito web",
+    "fieldDetails": "Descrivi brevemente la tua sfida su dati o tracking",
+    "submit": "Richiedi il mio audit gratuito",
+    "submitting": "Invio in corso...",
+    "errorMessage": "Qualcosa è andato storto. Riprova o scrivimi direttamente via e-mail.",
+    "successHeading": "Richiesta ricevuta",
+    "successMessage": "Il tuo sito è ora sotto audit. Ti contatterò via e-mail non appena avrò completato l'analisi e definito una strategia con un'offerta adeguata.",
+    "linkedinPrompt": "Sarò felice di averti come contatto su LinkedIn",
+    "linkedinButton": "Collegati su LinkedIn",
+    "backHome": "Riportami alla pagina principale."
+  },
   "hero": {
-    "subtitle": "Ingegnere Dati & Specialista Analytics",
-    "title1": "Costruire",
-    "title2": "Fabbriche di Dati",
-    "description": "Costruisco sistemi di tracciamento indistruttibili. Aiuto le aziende a bypassare gli adblocker, correggere i dati GA4 e implementare il tagging lato server.",
-    "pill1": "TRACCIAMENTO LATO SERVER",
+    "subtitle": "Ingegnere di infrastrutture dati per il marketing",
+    "title1": "Realizzo tracking lato server e correggo GA4",
+    "title2": "per i brand che perdono dati di conversione",
+    "description": "Progetto sistemi di tracking pensati sulle tue esigenze. Riduco la perdita di dati aggirando gli adblocker, riparo i dati GA4 corrotti e implemento il tagging lato server, così le tue campagne marketing funzionano davvero.",
+    "pill1": "TRACKING LATO SERVER",
     "pill2": "ARCHITETTURA GA4",
-    "pill3": "API DI CONVERSIONE (CAPI)",
-    "cta": "Esplora i Lavori"
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "Scopri i miei progetti"
   },
   "whoami": {
-    "label": "// Chi Sono",
-    "heading": "Su di Me",
-    "bio1": "Sono un Ingegnere Dati e Specialista Analytics che progetta infrastrutture di tracciamento resilienti e lato server per brand che rifiutano di volare alla cieca. I miei sistemi bypassano gli adblocker, resistono alle restrizioni dei browser e forniscono i dati puliti di cui il vostro team marketing ha veramente bisogno.",
-    "bio2": "Dalla costruzione di container GTM personalizzati al deploy di pipeline di dati first-party su infrastruttura cloud, opero all'intersezione tra tecnologia di marketing e data engineering.",
+    "label": "// CHI SONO",
+    "heading": "Architetto dell'invisibile.",
+    "bio1": "Sono un Data Engineer con base in Normandia, Francia. Aiuto le aziende che perdono il 30% dei dati analytics a causa dell'Intelligent Tracking Prevention (ITP) e degli adblocker.",
+    "bio2": "Costruisco infrastrutture serverless su GCP usando JavaScript avanzato e SQL per catturare ogni click. La mia missione è semplice: riparare le tue pipeline di dati affinché il marketing funzioni davvero.",
     "highlight1": {
-      "title": "Infra Lato Server",
-      "desc": "Server di tracciamento su misura che superano i limiti lato client."
+      "title": "Tagging lato server",
+      "desc": "Instradamento dei dati attraverso container cloud sicuri per aggirare gli adblocker."
     },
     "highlight2": {
-      "title": "Pipeline Dati",
-      "desc": "Flussi ETL automatizzati da eventi grezzi a dashboard azionabili."
+      "title": "Infrastruttura GCP",
+      "desc": "Pipeline di dati solide e scalabili realizzate su Google Cloud."
     },
     "highlight3": {
-      "title": "Scala Globale",
-      "desc": "Deploy multi-regione per analytics di livello enterprise."
+      "title": "Integrazione GA4 e CAPI",
+      "desc": "Riparazione di analytics compromessi e progettazione di payload pubblicitari server-to-server senza errori."
     },
     "highlight4": {
-      "title": "Elaborazione in Tempo Reale",
-      "desc": "Elaborazione eventi sub-secondo per l'ottimizzazione live delle campagne."
+      "title": "Conformità privacy",
+      "desc": "Rispetto rigoroso del GDPR europeo e delle architetture di consenso conformi al DMA."
     }
   },
   "services": {
     "label": "// Servizi",
-    "heading": "Cosa Offro",
+    "heading": "Cosa offro",
     "formName": "Nome",
-    "formEmail": "Email",
+    "formEmail": "E-mail",
     "formSubmit": "Invia",
-    "modalTitle": "Interessato a {{service}}?",
-    "modalDescription": "Lascia i tuoi dati e ti contatterò per discutere di questo servizio.",
-    "modalSuccess": "Grazie per l'interesse in questo servizio, ti contatterò a breve per discuterne ulteriormente. Assicurati di controllare la cartella spam."
+    "modalTitle": "Ti interessa {{service}}?",
+    "modalDescription": "Lascia i tuoi contatti e ti scriverò per approfondire questo servizio.",
+    "modalSuccess": "Grazie per l'interesse: ti contatterò a breve per parlarne. Controlla anche la cartella spam."
   },
   "portfolio": {
     "label": "// Portfolio",
-    "heading": "Lavori Selezionati"
+    "heading": "Progetti selezionati"
   },
   "blog": {
     "label": "// Blog",
-    "heading": "Scrittura Tecnica"
+    "heading": "Articoli tecnici"
   },
   "contact": {
-    "label": "// Contatto",
-    "title": "Contattami",
-    "description": "La maggior parte delle aziende perde il 30% dei dati analytics a causa degli adblocker. Costruisco pipeline di tracciamento first-party lato server.",
+    "label": "// Contatti",
+    "title": "Mettiamoci in contatto",
+    "description": "Contattami direttamente per smettere di essere tra le aziende che perdono il 30% dei dati analytics a causa degli adblocker. Costruirò pipeline di tracking first-party e lato server capaci di catturare ogni click e superare il rumore. Ripariamo insieme i tuoi dati.",
     "formName": "Nome",
-    "formEmail": "Email",
-    "formMessage": "Parlami della tua sfida dati...",
-    "formSubmit": "Invia Messaggio",
-    "successTitle": "Ti ricontatterò molto presto",
-    "successNote": "Controlla la cartella spam se non hai ricevuto una conferma"
+    "formEmail": "E-mail",
+    "formMessage": "Raccontami la tua sfida sui dati...",
+    "formSubmit": "Invia messaggio",
+    "successTitle": "Ti risponderò molto presto",
+    "successNote": "Controlla la cartella spam se non ricevi nulla entro 24 ore."
   },
   "sandbox": {
-    "label": "// Laboratorio",
+    "label": "// Lab",
     "title": "Sandbox JavaScript",
-    "description": "Esperimenti in esecuzione live. Ogni scheda viene eseguita in un iframe isolato.",
+    "description": "Esperimenti eseguiti in tempo reale. Ogni card gira in un iframe isolato — clicca per rivelarla e attivarla.",
     "reveal": "Rivela"
-  },
-  "audit": {
-    "title": "Ottieni il tuo audit gratuito",
-    "description": "Parlami del tuo sito. Analizzerò il tuo setup di tracciamento e analytics e tornerò con una strategia su misura.",
-    "fieldName": "Il tuo nome",
-    "fieldEmail": "Indirizzo email",
-    "fieldWebsite": "URL del sito web",
-    "fieldDetails": "Descrivi brevemente la tua sfida data / tracciamento",
-    "submit": "Richiedi il mio audit gratuito",
-    "submitting": "Invio...",
-    "errorMessage": "Qualcosa è andato storto. Riprova o scrivimi direttamente.",
-    "successHeading": "Richiesta ricevuta",
-    "successMessage": "Il tuo sito è ora sotto audit, ti contatterò via email non appena avrò completato la revisione e preparato una strategia con un'offerta ragionevole.",
-    "linkedinPrompt": "Sarò felice di averti come contatto su LinkedIn",
-    "linkedinButton": "Connettiti su LinkedIn",
-    "backHome": "Torna alla pagina principale"
   }
 }
