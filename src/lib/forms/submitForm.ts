@@ -9,7 +9,7 @@ import { getAttribution } from "./attribution";
 
 declare global {
   interface Window {
-    dataLayer?: any[];
+    dataLayer: any[];
     BreadTracker?: {
       send: (event: string, payload: Record<string, unknown>) => void;
     };
