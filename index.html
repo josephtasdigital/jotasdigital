@@ -5,13 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-
+  <!--
+    Google Consent Mode v2 — DEFAULT state.
+    Must run BEFORE GTM/gtag.js so no tag reads consent before a default exists.
+    All advertising + analytics start DENIED; only security_storage is granted.
+    The React CookieConsent component later calls gtag('consent','update', ...).
+  -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+    window.__consentDefaultSet = true;
+  </script>
 
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://bread.josephtasdigital.com/27w9ou3dzx9v1my.js?awl='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KBTFXDBP');</script>
+
 
 
 
