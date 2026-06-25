@@ -1,63 +1,36 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { getSiteSettings } from "@/lib/markdown";
 import placeholderPortrait from "@/assets/logo-transparent.png";
+import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const settings = getSiteSettings();
   const contactPhoto = settings.contact_photo || placeholderPortrait;
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const { submitForm, isSubmitting, isSuccess } = useTrackedFormSubmission({
+    form_name: "contact_main",
+    form_id: "contact-section-form",
+    form_type: "contact",
+    form_location: "contact_section",
+    lead_type: "general-inquiry",
+    page_context: "home",
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    const fd = new FormData(e.currentTarget);
+    const name = String(fd.get("name") ?? "");
+    const email = String(fd.get("email") ?? "");
+    const message = String(fd.get("message") ?? "");
 
-    const formData = new FormData(e.currentTarget);
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
-
-    // Keep this securely fetched from the .env file!
-    const formspreeUrl = import.meta.env.VITE_FORMSPREE_URL;
-
-    try {
-      const response = await fetch(formspreeUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        // Execute the custom GTM lead event
-        // @ts-ignore
-        if (window.BreadTracker) {
-          // @ts-ignore
-          window.BreadTracker.send("generate_lead", {
-            user_data: {
-              email_address: payload.email,
-              address: { first_name: payload.name },
-            },
-          });
-        }
-      } else {
-        console.error("Formspree submission failed.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    await submitForm({
+      payload: { name, email, message, _subject: "New contact inquiry" },
+      user: { email, first_name: name },
+      formData: { message },
+    });
   };
 
   return (

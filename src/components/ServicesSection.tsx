@@ -1,9 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { CheckCircle2 } from "lucide-react";
 import { getServiceItems } from "@/lib/markdown";
 import AnimatedAsset from "@/components/AnimatedAsset";
+import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
 import {
   Dialog,
   DialogContent,
@@ -39,59 +40,54 @@ const ServicesSection = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleCardClick = useCallback((title: string, image?: string) => {
-    setSelectedService(title);
-    setSelectedImage(image || "");
-    setName("");
-    setEmail("");
-    setIsSubmitted(false);
-    setIsSubmitting(false);
-    setModalOpen(true);
-  }, []);
+  const formConfig = useMemo(
+    () => ({
+      form_name: "service_inquiry",
+      form_id: `service-modal-${selectedService || "none"}`,
+      form_type: "service" as const,
+      form_location: "services_modal",
+      lead_type: "service-inquiry",
+      service_name: selectedService,
+      popup_name: "services_modal",
+    }),
+    [selectedService],
+  );
+
+  const { submitForm, isSubmitting, isSuccess: isSubmitted, reset } =
+    useTrackedFormSubmission(formConfig);
+
+  const handleCardClick = useCallback(
+    (title: string, image?: string) => {
+      setSelectedService(title);
+      setSelectedImage(image || "");
+      setName("");
+      setEmail("");
+      reset();
+      setModalOpen(true);
+    },
+    [reset],
+  );
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
       if (!name.trim() || !email.trim()) return;
-      setIsSubmitting(true);
-
-      const payload = { name: name.trim(), email: email.trim(), service: selectedService };
-      const formspreeUrl = import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/xnjgavkv";
-
-      try {
-        const response = await fetch(formspreeUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-          setIsSubmitted(true);
-          // @ts-ignore
-          if (window.BreadTracker) {
-            // @ts-ignore
-            window.BreadTracker.send("generate_lead", {
-              user_data: {
-                email_address: payload.email,
-                address: { first_name: payload.name },
-              },
-              service_interest: selectedService,
-            });
-          }
-          setTimeout(() => setModalOpen(false), 3000);
-        } else {
-          console.error("Formspree service submission failed.");
-        }
-      } catch (error) {
-        console.error("Error submitting service form:", error);
-      } finally {
-        setIsSubmitting(false);
+      const result = await submitForm({
+        payload: {
+          name: name.trim(),
+          email: email.trim(),
+          service: selectedService,
+          _subject: `Service inquiry — ${selectedService}`,
+        },
+        user: { email: email.trim(), first_name: name.trim() },
+        formData: { selected_service: selectedService },
+      });
+      if (result.ok) {
+        setTimeout(() => setModalOpen(false), 3000);
       }
     },
-    [name, email, selectedService]
+    [name, email, selectedService, submitForm],
   );
 
   const grouped = new Map<string, GroupedTier>();

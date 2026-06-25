@@ -9,6 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
 
 interface AuditModalProps {
   open: boolean;
@@ -19,72 +20,42 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/joseph-tas-d152/";
 
 const AuditModal = ({ open, onOpenChange }: AuditModalProps) => {
   const { t } = useTranslation();
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", website: "", details: "" });
 
-  const reset = () => {
-    setSubmitted(false);
-    setSubmitting(false);
-    setError(null);
+  const { submitForm, isSubmitting: submitting, isSuccess: submitted, error, reset } =
+    useTrackedFormSubmission({
+      form_name: "audit_request",
+      form_id: "audit-modal-form",
+      form_type: "audit",
+      form_location: "audit_modal",
+      lead_type: "free-audit",
+      popup_name: "audit_modal",
+    });
+
+  const resetAll = () => {
     setForm({ name: "", email: "", website: "", details: "" });
+    reset();
   };
 
   const handleClose = (next: boolean) => {
-    if (!next) {
-      // Slight delay so the closing animation does not flicker the form state.
-      setTimeout(reset, 250);
-    }
+    if (!next) setTimeout(resetAll, 250);
     onOpenChange(next);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
-    setError(null);
-
-    const formspreeUrl =
-      import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/xnjgavkv";
-
-    const payload = {
-      _subject: "Free audit request",
-      source: "audit-modal",
-      name: form.name,
-      email: form.email,
-      website: form.website,
-      details: form.details,
-    };
-
-    try {
-      const res = await fetch(formspreeUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) throw new Error("Submission failed");
-
-      // @ts-ignore
-      if (window.BreadTracker) {
-        // @ts-ignore
-        window.BreadTracker.send("generate_lead", {
-          user_data: {
-            email_address: payload.email,
-            address: { first_name: payload.name },
-          },
-          lead_source: "free-audit",
-          website: payload.website,
-        });
-      }
-
-      setSubmitted(true);
-    } catch (err) {
-      console.error("Audit submission failed:", err);
-      setError(t("audit.errorMessage"));
-    } finally {
-      setSubmitting(false);
-    }
+    await submitForm({
+      payload: {
+        _subject: "Free audit request",
+        source: "audit-modal",
+        name: form.name,
+        email: form.email,
+        website: form.website,
+        details: form.details,
+      },
+      user: { email: form.email, first_name: form.name },
+      formData: { message: form.details, company: form.website },
+    });
   };
 
   return (
@@ -141,7 +112,7 @@ const AuditModal = ({ open, onOpenChange }: AuditModalProps) => {
               className="w-full px-4 py-3 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors resize-y min-h-[120px]"
             />
 
-            {error && <p className="text-sm text-destructive">{error}</p>}
+            {error && <p className="text-sm text-destructive">{t("audit.errorMessage")}</p>}
 
             <button
               type="submit"

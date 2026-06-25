@@ -1,7 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Loader2 } from "lucide-react";
 import { getPartnerOffers } from "@/lib/markdown";
+import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
 import {
   Dialog,
   DialogContent,
@@ -77,15 +78,26 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selected, setSelected] = useState<PartnerOffer | null>(null);
   const [form, setForm] = useState({ website: "", name: "", email: "", details: "" });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+  const formConfig = useMemo(
+    () => ({
+      form_name: "partner_offer_interest",
+      form_id: `partner-offer-${selected?.slug ?? "none"}`,
+      form_type: "partner_offer" as const,
+      form_location: "partner_offers_modal",
+      lead_type: "partner-offer-interest",
+      service_name: selected?.title,
+      popup_name: "partner_offers_modal",
+    }),
+    [selected],
+  );
+
+  const { submitForm, isSubmitting: submitting, isSuccess: submitted, error, reset } =
+    useTrackedFormSubmission(formConfig);
 
   const resetForm = () => {
     setForm({ website: "", name: "", email: "", details: "" });
-    setSubmitting(false);
-    setSubmitted(false);
-    setError(null);
+    reset();
   };
 
   const openModal = useCallback((offer: PartnerOffer) => {
@@ -100,31 +112,20 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
-    setError(null);
-
-    const formspreeUrl =
-      import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/xnjgavkv";
-
-    try {
-      const res = await fetch(formspreeUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `Partner offer interest — ${selected?.title ?? ""}`,
-          source: "partner-offers",
-          offer: selected?.title,
-          ...form,
-        }),
-      });
-      if (!res.ok) throw new Error("Submission failed");
-      setSubmitted(true);
-    } catch (err) {
-      console.error("Partner offer submission failed:", err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setSubmitting(false);
-    }
+    await submitForm({
+      payload: {
+        _subject: `Partner offer interest — ${selected?.title ?? ""}`,
+        source: "partner-offers",
+        offer: selected?.title,
+        ...form,
+      },
+      user: { email: form.email, first_name: form.name },
+      formData: {
+        company: form.website,
+        message: form.details,
+        selected_service: selected?.title,
+      },
+    });
   };
 
   return (
@@ -232,7 +233,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                   className="w-full px-4 py-3 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors resize-y min-h-[120px]"
                 />
 
-                {error && <p className="text-sm text-destructive">{error}</p>}
+                {error && <p className="text-sm text-destructive">Something went wrong. Please try again.</p>}
 
                 <button
                   type="submit"
