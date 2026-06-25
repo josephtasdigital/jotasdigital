@@ -3,12 +3,12 @@ import { ArrowDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
 import { getSiteSettings } from "@/lib/markdown";
-import placeholderPortrait from "@/assets/placeholder-portrait.png";
+import logoTransparent from "@/assets/logo-transparent.png";
 
 const HeroSection = () => {
   const { t } = useTranslation();
   const settings = getSiteSettings();
-  const heroPhoto = settings.hero_photo || placeholderPortrait;
+  const heroPhoto = settings.hero_photo || logoTransparent;
 
   const handleScrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
