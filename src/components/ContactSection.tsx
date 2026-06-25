@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { getSiteSettings } from "@/lib/markdown";
-import placeholderPortrait from "@/assets/placeholder-portrait.png";
+import placeholderPortrait from "@/assets/logo-transparent.png";
 
 const ContactSection = () => {
   const { t } = useTranslation();
