@@ -4,90 +4,90 @@
     "work": "作品",
     "blog": "博客",
     "contact": "联系",
-    "auditCta": "获取免费审计",
+    "auditCta": "审计 / 咨询服务",
     "auditCtaShort": "免费审计"
   },
+  "audit": {
+    "title": "审计 / 咨询服务",
+    "description": "请告诉我您的网站情况。我会审查您的跟踪和分析配置，并为您量身定制一套策略反馈给您。",
+    "fieldName": "您的姓名",
+    "fieldEmail": "电子邮箱",
+    "fieldWebsite": "网站地址",
+    "fieldDetails": "请简要描述您的数据或跟踪难题",
+    "submit": "申请我的免费审计",
+    "submitting": "发送中...",
+    "errorMessage": "出了点问题。请重试，或者直接发邮件给我。",
+    "successHeading": "已收到您的请求",
+    "successMessage": "您的网站现已进入审计阶段。完成分析并制定好附带合理报价的策略后，我会通过邮件与您联系。",
+    "linkedinPrompt": "很高兴能在 LinkedIn 上与您建立联系",
+    "linkedinButton": "在 LinkedIn 上联系",
+    "backHome": "返回主页。"
+  },
   "hero": {
-    "subtitle": "数据工程师 & 分析专家",
-    "title1": "构建",
-    "title2": "数据工厂",
-    "description": "我构建坚不可摧的追踪系统。我帮助企业绕过广告拦截器，修复损坏的GA4数据，并实施服务器端标签，让您的营销真正有效。",
-    "pill1": "服务器端追踪",
+    "subtitle": "营销数据基础设施工程师",
+    "title1": "我为流失转化数据的品牌",
+    "title2": "提供服务器端跟踪与 GA4 修复",
+    "description": "我根据您的需求量身打造跟踪系统：通过绕过广告拦截器减少数据丢失，修复损坏的 GA4 数据，并部署服务器端打标，让您的营销活动真正发挥作用。",
+    "pill1": "服务器端跟踪",
     "pill2": "GA4 架构",
-    "pill3": "转化 API (CAPI)",
-    "cta": "探索作品"
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "查看我的项目"
   },
   "whoami": {
     "label": "// 关于我",
-    "heading": "我是谁",
-    "bio1": "我是一名数据工程师和分析专家，为拒绝盲目飞行的品牌构建弹性的服务器端追踪基础设施。我的系统绕过广告拦截器，抵御浏览器限制，提供营销团队真正需要的干净数据。",
-    "bio2": "从构建自定义GTM容器到在云基础设施上部署第一方数据管道，我在营销技术和数据工程的交汇处运作——精准与规模并存。",
+    "heading": "构建看不见的架构。",
+    "bio1": "我是一名数据工程师，常驻法国诺曼底。我帮助那些因智能跟踪防护（ITP）和广告拦截器而流失约 30% 分析数据的公司。",
+    "bio2": "我使用 GCP、进阶 JavaScript 与 SQL 搭建无服务器架构，捕获每一次点击。我的使命很简单：修复您断裂的数据管线，让营销真正奏效。",
     "highlight1": {
-      "title": "服务器端基础设施",
-      "desc": "绕过客户端限制的定制追踪服务器。"
+      "title": "服务器端打标",
+      "desc": "通过安全的云容器转发数据，从而绕过广告拦截器。"
     },
     "highlight2": {
-      "title": "数据管道",
-      "desc": "从原始事件到可操作仪表板的自动ETL流程。"
+      "title": "GCP 基础设施",
+      "desc": "在 Google Cloud 上构建稳定且可扩展的数据管线。"
     },
     "highlight3": {
-      "title": "全球规模",
-      "desc": "提供企业级分析的多区域部署。"
+      "title": "GA4 与 CAPI 集成",
+      "desc": "修复损坏的分析数据，构建无缝的服务器到服务器广告数据传输。"
     },
     "highlight4": {
-      "title": "实时处理",
-      "desc": "用于实时活动优化的亚秒级事件处理。"
+      "title": "隐私合规",
+      "desc": "严格遵循欧盟 GDPR 及 DMA 同意状态架构。"
     }
   },
   "services": {
     "label": "// 服务",
-    "heading": "我提供的服务",
+    "heading": "我能交付什么",
     "formName": "姓名",
     "formEmail": "邮箱",
     "formSubmit": "发送",
     "modalTitle": "对 {{service}} 感兴趣？",
-    "modalDescription": "留下您的信息，我会联系您讨论此服务。",
-    "modalSuccess": "感谢您对此服务的兴趣，我会尽快与您联系进一步讨论。请务必检查您的垃圾邮件文件夹。"
+    "modalDescription": "请留下您的联系方式，我会主动与您沟通这项服务。",
+    "modalSuccess": "感谢您对该服务的关注，我很快会与您联系详谈。请记得查看您的垃圾邮件文件夹。"
   },
   "portfolio": {
     "label": "// 作品集",
-    "heading": "精选作品"
+    "heading": "精选案例"
   },
   "blog": {
     "label": "// 博客",
-    "heading": "技术写作"
+    "heading": "技术文章"
   },
   "contact": {
     "label": "// 联系",
-    "title": "联系我",
-    "description": "大多数公司因广告拦截器而损失30%的分析数据。我构建第一方、服务器端的追踪管道。",
+    "title": "保持联系",
+    "description": "直接联系我，结束因广告拦截器而流失 30% 分析数据的处境。我会为您构建第一方、服务器端的跟踪管线，捕获每一次点击并绕过干扰。让我们一起修复您的数据。",
     "formName": "姓名",
     "formEmail": "邮箱",
-    "formMessage": "告诉我您的数据挑战...",
+    "formMessage": "请描述您的数据难题...",
     "formSubmit": "发送消息",
-    "successTitle": "我会尽快联系您",
-    "successNote": "如果您未收到确认邮件，请检查垃圾邮件文件夹"
+    "successTitle": "我会尽快回复您",
+    "successNote": "如果 24 小时内仍未收到回复，请检查您的垃圾邮件文件夹。"
   },
   "sandbox": {
     "label": "// 实验室",
-    "title": "JavaScript 沙箱",
-    "description": "实时执行实验。每张卡片在隔离的iframe中运行。",
-    "reveal": "揭示"
-  },
-  "audit": {
-    "title": "获取您的免费审计",
-    "description": "告诉我您的网站情况。我将检查您的跟踪和分析设置,并提供量身定制的策略。",
-    "fieldName": "您的姓名",
-    "fieldEmail": "电子邮箱",
-    "fieldWebsite": "网站网址",
-    "fieldDetails": "简要描述您的数据 / 跟踪挑战",
-    "submit": "申请我的免费审计",
-    "submitting": "发送中...",
-    "errorMessage": "出现问题。请重试或直接给我发邮件。",
-    "successHeading": "请求已收到",
-    "successMessage": "您的网站正在审计中,完成审查并制定合理报价的策略后,我会通过邮件与您联系。",
-    "linkedinPrompt": "很高兴在 LinkedIn 上与您建立联系",
-    "linkedinButton": "在 LinkedIn 上联系",
-    "backHome": "返回主页"
+    "title": "JavaScript 沙盒",
+    "description": "实时执行的实验。每张卡片都在隔离的 iframe 中运行——点击即可展开并激活。",
+    "reveal": "展开"
   }
 }

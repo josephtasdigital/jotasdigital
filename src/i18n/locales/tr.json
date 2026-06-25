@@ -4,90 +4,90 @@
     "work": "Çalışmalar",
     "blog": "Blog",
     "contact": "İletişim",
-    "auditCta": "Ücretsiz denetim al",
+    "auditCta": "Denetim / danışmanlık teklifi",
     "auditCtaShort": "Ücretsiz denetim"
   },
+  "audit": {
+    "title": "Denetim / danışmanlık teklifi",
+    "description": "Bana sitenizden bahsedin. Tracking ve analytics kurulumunuzu inceleyip size özel bir strateji ile geri döneceğim.",
+    "fieldName": "Adınız",
+    "fieldEmail": "E-posta adresi",
+    "fieldWebsite": "Web sitesi adresi",
+    "fieldDetails": "Veri / tracking sorununuzu kısaca anlatın",
+    "submit": "Ücretsiz denetimimi talep et",
+    "submitting": "Gönderiliyor...",
+    "errorMessage": "Bir şeyler ters gitti. Lütfen tekrar deneyin veya doğrudan e-posta gönderin.",
+    "successHeading": "Talebiniz alındı",
+    "successMessage": "Siteniz şu anda denetim altında. İncelemeyi tamamlayıp size uygun bir teklifle birlikte stratejimi hazırladığımda e-posta ile ulaşacağım.",
+    "linkedinPrompt": "LinkedIn üzerinden bağlantı kurmaktan mutluluk duyarım",
+    "linkedinButton": "LinkedIn'de bağlan",
+    "backHome": "Beni ana sayfaya geri götür."
+  },
   "hero": {
-    "subtitle": "Veri Mühendisi & Analitik Uzmanı",
-    "title1": "Veri Fabrikaları",
-    "title2": "İnşa Ediyorum",
-    "description": "Yıkılmaz izleme sistemleri kuruyorum. İşletmelerin reklam engelleyicileri atlamasına, bozuk GA4 verilerini düzeltmesine ve Sunucu Tarafı etiketleme uygulamasına yardımcı oluyorum.",
-    "pill1": "SUNUCU TARAFI İZLEME",
+    "subtitle": "Pazarlama Veri Altyapısı Mühendisi",
+    "title1": "Conversion verisi kaybeden markalar için",
+    "title2": "sunucu taraflı tracking ve GA4 düzeltmeleri sunuyorum",
+    "description": "İhtiyaçlarınıza göre özel tracking sistemleri kuruyorum. Adblocker'ları aşarak veri kaybını azaltıyor, bozuk GA4 verilerini onarıyor ve sunucu taraflı etiketlemeyi devreye alıyorum; böylece pazarlama kampanyalarınız gerçekten çalışıyor.",
+    "pill1": "SUNUCU TARAFLI TRACKING",
     "pill2": "GA4 MİMARİSİ",
-    "pill3": "DÖNÜŞÜM API (CAPI)",
-    "cta": "Çalışmaları Keşfet"
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "Projelerimi keşfedin"
   },
   "whoami": {
-    "label": "// Ben Kimim",
-    "heading": "Hakkımda",
-    "bio1": "Fransa'nın Normandiya bölgesinde çalışan bir Veri Mühendisiyim. Çoğu şirket, analitik verilerinin %30'unu akıllı izleme engelleme (ITP) ve reklam engelleyicilere kaybediyor.",
-    "bio2": "Ben ise her tıklamayı yakalamak için GCP, gelişmiş JavaScript ve SQL kullanarak sunucusuz altyapılar oluşturuyorum. Görevim basitçe bozuk veri boru hatlarınızı düzeltmek, böylece pazarlama mekanizmanızın gerçekten çalışmasını sağlıyorum.",
+    "label": "// BEN KİMİM",
+    "heading": "Görünmeyenin mimarı.",
+    "bio1": "Fransa Normandiya'dan çalışan bir Veri Mühendisiyim. Intelligent Tracking Prevention (ITP) ve adblocker'lar yüzünden analytics verisinin %30'unu kaybeden şirketlere yardım ediyorum.",
+    "bio2": "Her tıklamayı yakalamak için GCP, ileri düzey JavaScript ve SQL ile sunucusuz altyapılar kuruyorum. Hedefim basit: bozuk veri hatlarınızı onarıp pazarlamanızın gerçekten çalışmasını sağlamak.",
     "highlight1": {
-      "title": "Sunucu Tarafı Etiketleme",
-      "desc": "Reklam engelleyicileri atlatmak için verileri güvenli bulut kapsayıcıları üzerinden yönlendirmek."
+      "title": "Sunucu taraflı etiketleme",
+      "desc": "Adblocker'ları aşmak için verileri güvenli bulut konteynerleri üzerinden yönlendirme."
     },
     "highlight2": {
-      "title": "GCP Altyapısı",
-      "desc": "Google Cloud üzerinde sağlam, ölçeklenebilir veri boru hatları oluşturmak."
+      "title": "GCP altyapısı",
+      "desc": "Google Cloud üzerinde sağlam ve ölçeklenebilir veri hatları."
     },
     "highlight3": {
-      "title": "GA4 ve CAPI Entegrasyonu",
-      "desc": "Bozuk analitik sistemlerini onarmak ve kusursuz sunucu-sunucu reklam yükleri oluşturmak."
+      "title": "GA4 ve CAPI entegrasyonu",
+      "desc": "Bozuk analytics'i onarma ve sunucudan sunucuya kusursuz reklam payload'ları kurma."
     },
     "highlight4": {
-      "title": "Gizlilik Uyumluluğu",
-      "desc": "Avrupa GDPR ve DMA rıza durumu mimarilerine sıkı sıkıya bağlı kalma."
+      "title": "Gizlilik uyumluluğu",
+      "desc": "Avrupa GDPR ve DMA uyumlu consent mimarilerine eksiksiz bağlılık."
     }
   },
   "services": {
     "label": "// Hizmetler",
     "heading": "Sunduklarım",
-    "formName": "İsim",
+    "formName": "Ad",
     "formEmail": "E-posta",
     "formSubmit": "Gönder",
-    "modalTitle": "{{service}} ile ilgileniyor musunuz?",
-    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti daha detaylı konuşmak için sizinle iletişime geçeyim.",
-    "modalSuccess": "Bu hizmete olan ilginiz için teşekkürler, en kısa sürede sizinle iletişime geçeceğim. Spam klasörünüzü kontrol etmeyi unutmayın."
+    "modalTitle": "{{service}} ilginizi çekti mi?",
+    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti konuşmak için size ulaşayım.",
+    "modalSuccess": "Bu hizmete gösterdiğiniz ilgi için teşekkürler; kısa süre içinde detayları konuşmak üzere size ulaşacağım. Spam klasörünü kontrol etmeyi unutmayın."
   },
   "portfolio": {
-    "label": "// Portföy",
-    "heading": "Başlıca Çalışmalar"
+    "label": "// Portfolyo",
+    "heading": "Seçilmiş çalışmalar"
   },
   "blog": {
     "label": "// Blog",
-    "heading": "Teknik Yazılar"
+    "heading": "Teknik yazılar"
   },
   "contact": {
     "label": "// İletişim",
-    "title": "İletişime Geçin",
-    "description": "Çoğu şirket reklam engelleyiciler yüzünden analitik verilerinin %30'unu kaybediyor. Birinci taraf, sunucu taraflı izleme boru hatları kuruyorum.",
-    "formName": "İsim",
+    "title": "İletişime geçin",
+    "description": "Adblocker'lar yüzünden analytics'inin %30'unu kaybeden şirketlerden biri olmaya bir son vermek için doğrudan bana ulaşın. Sizin için her tıklamayı yakalayan ve gürültüyü aşan first-party, sunucu taraflı tracking hatları kuracağım. Hadi bozuk verilerinizi birlikte onaralım.",
+    "formName": "Ad",
     "formEmail": "E-posta",
-    "formMessage": "Veri zorluğunuzdan bahsedin...",
-    "formSubmit": "Mesaj Gönder",
-    "successTitle": "Çok yakında size ulaşacağım",
-    "successNote": "Onay mesajı almadıysanız spam klasörünüzü kontrol edin"
+    "formMessage": "Veri sorununuzdan bahsedin...",
+    "formSubmit": "Mesaj gönder",
+    "successTitle": "Çok yakında size geri döneceğim",
+    "successNote": "24 saat içinde bir şey almadıysanız lütfen spam klasörünüzü kontrol edin."
   },
   "sandbox": {
-    "label": "// Laboratuvar",
+    "label": "// Lab",
     "title": "JavaScript Sandbox",
-    "description": "Canlı yürütme deneyleri. Her kart izole bir iframe içinde çalışır.",
+    "description": "Canlı çalışan deneyler. Her kart yalıtılmış bir iframe içinde çalışır — açmak ve etkinleştirmek için tıklayın.",
     "reveal": "Göster"
-  },
-  "audit": {
-    "title": "Ücretsiz denetiminizi alın",
-    "description": "Bana sitenizden bahsedin. Takip ve analiz kurulumunuzu inceleyip size özel bir strateji ile döneceğim.",
-    "fieldName": "Adınız",
-    "fieldEmail": "E-posta adresi",
-    "fieldWebsite": "Web sitesi URL'si",
-    "fieldDetails": "Veri / takip sorununuzu kısaca açıklayın",
-    "submit": "Ücretsiz denetimimi talep et",
-    "submitting": "Gönderiliyor...",
-    "errorMessage": "Bir şeyler ters gitti. Tekrar deneyin veya bana doğrudan e-posta gönderin.",
-    "successHeading": "Talep alındı",
-    "successMessage": "Web siteniz şu anda inceleme altında. İncelemeyi tamamlayıp makul bir teklifle strateji hazırladığımda size e-posta yoluyla ulaşacağım.",
-    "linkedinPrompt": "Sizi LinkedIn'de bağlantım olarak görmekten mutluluk duyarım",
-    "linkedinButton": "LinkedIn'de bağlan",
-    "backHome": "Ana sayfaya dön"
   }
 }

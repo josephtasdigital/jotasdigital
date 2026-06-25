@@ -1,93 +1,93 @@
 {
   "nav": {
     "services": "Services",
-    "work": "Travaux",
+    "work": "Réalisations",
     "blog": "Blog",
     "contact": "Contact",
-    "auditCta": "Obtenez votre audit gratuit",
+    "auditCta": "Offre d'audit / conseil",
     "auditCtaShort": "Audit gratuit"
   },
+  "audit": {
+    "title": "Offre d'audit / conseil",
+    "description": "Parlez-moi de votre site. J'examinerai votre configuration de tracking et d'analytics, puis je reviendrai vers vous avec une stratégie sur mesure.",
+    "fieldName": "Votre nom",
+    "fieldEmail": "Adresse e-mail",
+    "fieldWebsite": "URL du site web",
+    "fieldDetails": "Décrivez brièvement votre problématique data ou tracking",
+    "submit": "Demander mon audit gratuit",
+    "submitting": "Envoi en cours...",
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer ou m'écrire directement par e-mail.",
+    "successHeading": "Demande bien reçue",
+    "successMessage": "Votre site est maintenant en cours d'audit. Je vous contacterai par e-mail dès que j'aurai terminé l'analyse et défini une stratégie accompagnée d'une offre adaptée.",
+    "linkedinPrompt": "Je serai ravi de vous compter parmi mes contacts sur LinkedIn",
+    "linkedinButton": "Se connecter sur LinkedIn",
+    "backHome": "Me ramener à la page d'accueil."
+  },
   "hero": {
-    "subtitle": "Ingénieur Data & Spécialiste Analytics",
-    "title1": "Construire des",
-    "title2": "Usines de Data",
-    "description": "Je construis des systèmes de suivi indestructibles. J'aide les entreprises à contourner les bloqueurs de publicités, corriger les données GA4 cassées et implémenter le suivi côté serveur.",
-    "pill1": "SUIVI CÔTÉ SERVEUR",
+    "subtitle": "Ingénieur en infrastructure de données marketing",
+    "title1": "Je mets en place le tracking côté serveur et corrige GA4",
+    "title2": "pour les marques qui perdent leurs données de conversion",
+    "description": "Je conçois des systèmes de tracking adaptés à vos besoins. Je réduis la perte de données en contournant les bloqueurs de publicités, je répare les données GA4 cassées et je déploie le tagging côté serveur pour que vos campagnes marketing fonctionnent vraiment.",
+    "pill1": "TRACKING CÔTÉ SERVEUR",
     "pill2": "ARCHITECTURE GA4",
-    "pill3": "API DE CONVERSION (CAPI)",
-    "cta": "Explorer les Travaux"
+    "pill3": "CONVERSION API (CAPI)",
+    "cta": "Découvrir mes projets"
   },
   "whoami": {
-    "label": "// Qui Suis-Je",
-    "heading": "À Propos de Moi",
-    "bio1": "Je suis un Ingénieur Data & Spécialiste Analytics qui conçoit des infrastructures de suivi résilientes côté serveur pour les marques qui refusent de voler à l'aveugle. Mes systèmes contournent les bloqueurs de publicités, résistent aux restrictions des navigateurs et fournissent les données propres dont votre équipe marketing a véritablement besoin.",
-    "bio2": "De la construction de conteneurs GTM personnalisés au déploiement de pipelines de données first-party sur infrastructure cloud, j'opère à l'intersection de la technologie marketing et de l'ingénierie des données.",
+    "label": "// QUI SUIS-JE",
+    "heading": "Architecte de l'invisible.",
+    "bio1": "Je suis ingénieur data basé en Normandie, France. J'aide les entreprises qui perdent 30 % de leurs analytics à cause de l'Intelligent Tracking Prevention (ITP) et des bloqueurs de publicités.",
+    "bio2": "Je construis des infrastructures serverless avec GCP, du JavaScript avancé et SQL pour capturer chaque clic. Ma mission est simple : réparer vos pipelines de données afin que votre marketing fonctionne réellement.",
     "highlight1": {
-      "title": "Infra Côté Serveur",
-      "desc": "Serveurs de suivi sur mesure qui contournent les limitations côté client."
+      "title": "Tagging côté serveur",
+      "desc": "Acheminement des données via des conteneurs cloud sécurisés pour contourner les bloqueurs de publicités."
     },
     "highlight2": {
-      "title": "Pipelines de Données",
-      "desc": "Flux ETL automatisés des événements bruts aux tableaux de bord actionnables."
+      "title": "Infrastructure GCP",
+      "desc": "Pipelines de données robustes et évolutifs déployés sur Google Cloud."
     },
     "highlight3": {
-      "title": "Échelle Mondiale",
-      "desc": "Déploiements multi-régions pour des analytics de niveau entreprise."
+      "title": "Intégration GA4 et CAPI",
+      "desc": "Réparation des analytics cassés et conception de payloads publicitaires server-to-server sans faille."
     },
     "highlight4": {
-      "title": "Traitement en Temps Réel",
-      "desc": "Traitement d'événements en moins d'une seconde pour l'optimisation live des campagnes."
+      "title": "Conformité et vie privée",
+      "desc": "Respect strict du RGPD européen et des architectures de consentement liées au DMA."
     }
   },
   "services": {
     "label": "// Services",
-    "heading": "Ce Que Je Livre",
+    "heading": "Ce que je livre",
     "formName": "Nom",
-    "formEmail": "Email",
+    "formEmail": "E-mail",
     "formSubmit": "Envoyer",
     "modalTitle": "Intéressé par {{service}} ?",
-    "modalDescription": "Laissez vos coordonnées et je vous contacterai pour discuter de ce service.",
-    "modalSuccess": "Merci pour votre intérêt pour ce service, je vous contacterai sous peu pour en discuter davantage. Pensez à vérifier votre dossier spam."
+    "modalDescription": "Laissez-moi vos coordonnées et je vous recontacterai pour discuter de ce service.",
+    "modalSuccess": "Merci pour votre intérêt. Je vous recontacterai très vite pour en discuter. Pensez à vérifier votre dossier de courriers indésirables."
   },
   "portfolio": {
     "label": "// Portfolio",
-    "heading": "Travaux Sélectionnés"
+    "heading": "Réalisations sélectionnées"
   },
   "blog": {
     "label": "// Blog",
-    "heading": "Rédaction Technique"
+    "heading": "Articles techniques"
   },
   "contact": {
     "label": "// Contact",
-    "title": "Contactez-Moi",
-    "description": "La plupart des entreprises perdent 30% de leurs données analytiques à cause des bloqueurs de publicités. Je construis des pipelines de suivi first-party côté serveur.",
+    "title": "Entrons en contact",
+    "description": "Contactez-moi directement pour ne plus faire partie de ces entreprises qui perdent 30 % de leurs analytics à cause des bloqueurs de publicités. Je construirai pour vous des pipelines de tracking first-party côté serveur capables de capter chaque clic et de contourner le bruit. Réparons vos données ensemble.",
     "formName": "Nom",
-    "formEmail": "Email",
-    "formMessage": "Parlez-moi de votre défi data...",
-    "formSubmit": "Envoyer",
-    "successTitle": "Je vous recontacterai très bientôt",
-    "successNote": "Vérifiez votre dossier spam si vous n'avez pas reçu de confirmation"
+    "formEmail": "E-mail",
+    "formMessage": "Parlez-moi de votre problématique data...",
+    "formSubmit": "Envoyer le message",
+    "successTitle": "Je vous recontacte très vite",
+    "successNote": "Pensez à vérifier vos courriers indésirables si vous n'avez rien reçu sous 24 heures."
   },
   "sandbox": {
-    "label": "// Labo",
-    "title": "Bac à Sable JavaScript",
-    "description": "Expériences en exécution live. Chaque carte s'exécute dans un iframe isolé.",
+    "label": "// Lab",
+    "title": "Bac à sable JavaScript",
+    "description": "Expérimentations exécutées en direct. Chaque carte tourne dans une iframe isolée — cliquez pour la révéler et l'activer.",
     "reveal": "Révéler"
-  },
-  "audit": {
-    "title": "Obtenez votre audit gratuit",
-    "description": "Parlez-moi de votre site. Je vais analyser votre suivi et vos analytics, puis revenir avec une stratégie sur mesure.",
-    "fieldName": "Votre nom",
-    "fieldEmail": "Adresse e-mail",
-    "fieldWebsite": "URL du site web",
-    "fieldDetails": "Décrivez brièvement votre défi data / suivi",
-    "submit": "Demander mon audit gratuit",
-    "submitting": "Envoi...",
-    "errorMessage": "Une erreur s'est produite. Réessayez ou envoyez-moi un e-mail directement.",
-    "successHeading": "Demande reçue",
-    "successMessage": "Votre site est maintenant en cours d'audit. Je vous contacterai par e-mail dès que j'aurai terminé l'analyse et préparé une stratégie avec une offre raisonnable.",
-    "linkedinPrompt": "Je serai ravi de vous avoir comme contact sur LinkedIn",
-    "linkedinButton": "Se connecter sur LinkedIn",
-    "backHome": "Retour à la page principale"
   }
 }

@@ -1,53 +1,69 @@
 {
   "nav": {
     "services": "Leistungen",
-    "work": "Arbeiten",
+    "work": "Projekte",
     "blog": "Blog",
     "contact": "Kontakt",
-    "auditCta": "Kostenloses Audit anfordern",
-    "auditCtaShort": "Gratis-Audit"
+    "auditCta": "Audit- / Beratungsangebot",
+    "auditCtaShort": "Kostenloses Audit"
+  },
+  "audit": {
+    "title": "Audit- / Beratungsangebot",
+    "description": "Erzählen Sie mir von Ihrer Website. Ich prüfe Ihr Tracking- und Analytics-Setup und komme mit einer maßgeschneiderten Strategie auf Sie zurück.",
+    "fieldName": "Ihr Name",
+    "fieldEmail": "E-Mail-Adresse",
+    "fieldWebsite": "Website-URL",
+    "fieldDetails": "Beschreiben Sie kurz Ihre Daten- bzw. Tracking-Herausforderung",
+    "submit": "Mein kostenloses Audit anfragen",
+    "submitting": "Wird gesendet...",
+    "errorMessage": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.",
+    "successHeading": "Anfrage erhalten",
+    "successMessage": "Ihre Website wird nun auditiert. Sobald ich die Analyse abgeschlossen und eine Strategie mit einem fairen Angebot ausgearbeitet habe, melde ich mich per E-Mail bei Ihnen.",
+    "linkedinPrompt": "Ich würde mich freuen, Sie als Kontakt auf LinkedIn zu haben",
+    "linkedinButton": "Auf LinkedIn vernetzen",
+    "backHome": "Zurück zur Startseite."
   },
   "hero": {
-    "subtitle": "Dateningenieur & Analytics-Spezialist",
-    "title1": "Aufbau von",
-    "title2": "Datenfabriken",
-    "description": "Ich baue unzerstörbare Tracking-Systeme. Ich helfe Unternehmen, Adblocker zu umgehen, fehlerhafte GA4-Daten zu korrigieren und serverseitiges Tagging zu implementieren.",
+    "subtitle": "Engineer für Marketing-Daten-Infrastruktur",
+    "title1": "Ich liefere serverseitiges Tracking und GA4-Fixes",
+    "title2": "für Marken, die Conversion-Daten verlieren",
+    "description": "Ich baue Tracking-Systeme, die exakt auf Ihre Anforderungen zugeschnitten sind. Ich reduziere Ihren Datenverlust, indem ich Adblocker umgehe, kaputte GA4-Daten repariere und serverseitiges Tagging einführe — damit Ihre Marketingkampagnen wirklich funktionieren.",
     "pill1": "SERVERSEITIGES TRACKING",
     "pill2": "GA4-ARCHITEKTUR",
     "pill3": "CONVERSION API (CAPI)",
-    "cta": "Arbeiten Erkunden"
+    "cta": "Meine Projekte entdecken"
   },
   "whoami": {
-    "label": "// Wer bin ich",
-    "heading": "Über Mich",
-    "bio1": "Ich bin ein Dateningenieur & Analytics-Spezialist, der robuste, serverseitige Tracking-Infrastruktur für Marken entwickelt, die sich nicht im Blindflug befinden wollen. Meine Systeme umgehen Adblocker, überstehen Browser-Einschränkungen und liefern die sauberen Daten, die Ihr Marketing-Team wirklich braucht.",
-    "bio2": "Von benutzerdefinierten GTM-Containern bis hin zum Einsatz von First-Party-Datenpipelines auf Cloud-Infrastruktur – ich arbeite an der Schnittstelle von Marketing-Technologie und Data Engineering.",
+    "label": "// WER ICH BIN",
+    "heading": "Architekt des Unsichtbaren.",
+    "bio1": "Ich bin Data Engineer aus der Normandie in Frankreich und unterstütze Unternehmen, die durch Intelligent Tracking Prevention (ITP) und Adblocker rund 30 % ihrer Analytics-Daten verlieren.",
+    "bio2": "Ich entwickle serverlose Infrastrukturen mit GCP, fortgeschrittenem JavaScript und SQL, um jeden Klick zu erfassen. Meine Mission ist einfach: Ihre kaputten Datenpipelines reparieren, damit Ihr Marketing tatsächlich funktioniert.",
     "highlight1": {
-      "title": "Serverseitige Infra",
-      "desc": "Maßgeschneiderte Tracking-Server, die clientseitige Einschränkungen umgehen."
+      "title": "Serverseitiges Tagging",
+      "desc": "Datenrouting über sichere Cloud-Container, um Adblocker zu umgehen."
     },
     "highlight2": {
-      "title": "Datenpipelines",
-      "desc": "Automatisierte ETL-Flows von Rohereignissen zu handlungsfähigen Dashboards."
+      "title": "GCP-Infrastruktur",
+      "desc": "Robuste, skalierbare Datenpipelines auf der Google Cloud."
     },
     "highlight3": {
-      "title": "Globale Skalierung",
-      "desc": "Multi-Region-Deployments für Enterprise-Analytics."
+      "title": "GA4- und CAPI-Integration",
+      "desc": "Reparatur defekter Analytics und Aufbau fehlerfreier Server-to-Server-Werbe-Payloads."
     },
     "highlight4": {
-      "title": "Echtzeitverarbeitung",
-      "desc": "Ereignisverarbeitung unter einer Sekunde für Live-Kampagnenoptimierung."
+      "title": "Datenschutz-Compliance",
+      "desc": "Strikte Einhaltung der europäischen DSGVO und der DMA-konformen Consent-Architekturen."
     }
   },
   "services": {
     "label": "// Leistungen",
-    "heading": "Was Ich Liefere",
+    "heading": "Was ich liefere",
     "formName": "Name",
     "formEmail": "E-Mail",
     "formSubmit": "Senden",
     "modalTitle": "Interesse an {{service}}?",
-    "modalDescription": "Hinterlassen Sie Ihre Daten und ich melde mich, um diesen Service zu besprechen.",
-    "modalSuccess": "Danke für Ihr Interesse an diesem Service. Ich werde mich in Kürze bei Ihnen melden. Bitte überprüfen Sie auch Ihren Spam-Ordner."
+    "modalDescription": "Hinterlassen Sie Ihre Daten, und ich melde mich, um diese Leistung mit Ihnen zu besprechen.",
+    "modalSuccess": "Vielen Dank für Ihr Interesse an dieser Leistung. Ich melde mich in Kürze, um die Details zu besprechen. Bitte prüfen Sie auch Ihren Spam-Ordner."
   },
   "portfolio": {
     "label": "// Portfolio",
@@ -55,39 +71,23 @@
   },
   "blog": {
     "label": "// Blog",
-    "heading": "Technisches Schreiben"
+    "heading": "Fachliche Beiträge"
   },
   "contact": {
     "label": "// Kontakt",
-    "title": "Kontakt Aufnehmen",
-    "description": "Die meisten Unternehmen verlieren 30% ihrer Analytics-Daten durch Adblocker. Ich baue First-Party, serverseitige Tracking-Pipelines.",
+    "title": "Lassen Sie uns sprechen",
+    "description": "Kontaktieren Sie mich direkt, damit Sie nicht länger zu den Unternehmen gehören, die 30 % ihrer Analytics-Daten an Adblocker verlieren. Ich baue für Sie First-Party-, serverseitige Tracking-Pipelines auf, die jeden Klick erfassen und das Rauschen umgehen. Lassen Sie uns Ihre Daten reparieren.",
     "formName": "Name",
     "formEmail": "E-Mail",
     "formMessage": "Erzählen Sie mir von Ihrer Daten-Herausforderung...",
-    "formSubmit": "Nachricht Senden",
-    "successTitle": "Ich melde mich sehr bald",
-    "successNote": "Überprüfen Sie Ihren Spam-Ordner, falls Sie keine Bestätigung erhalten haben"
+    "formSubmit": "Nachricht senden",
+    "successTitle": "Ich melde mich sehr bald bei Ihnen",
+    "successNote": "Bitte prüfen Sie Ihren Spam-Ordner, falls Sie innerhalb von 24 Stunden nichts erhalten haben."
   },
   "sandbox": {
-    "label": "// Labor",
+    "label": "// Lab",
     "title": "JavaScript-Sandbox",
-    "description": "Live-Ausführungsexperimente. Jede Karte läuft in einem isolierten iframe.",
-    "reveal": "Enthüllen"
-  },
-  "audit": {
-    "title": "Kostenloses Audit anfordern",
-    "description": "Erzählen Sie mir von Ihrer Website. Ich überprüfe Ihr Tracking- und Analytics-Setup und melde mich mit einer maßgeschneiderten Strategie zurück.",
-    "fieldName": "Ihr Name",
-    "fieldEmail": "E-Mail-Adresse",
-    "fieldWebsite": "Website-URL",
-    "fieldDetails": "Beschreiben Sie kurz Ihre Daten- / Tracking-Herausforderung",
-    "submit": "Mein kostenloses Audit anfordern",
-    "submitting": "Wird gesendet...",
-    "errorMessage": "Etwas ist schiefgelaufen. Bitte erneut versuchen oder mich direkt per E-Mail kontaktieren.",
-    "successHeading": "Anfrage erhalten",
-    "successMessage": "Ihre Website wird jetzt geprüft. Ich melde mich per E-Mail, sobald die Analyse abgeschlossen ist und eine Strategie mit einem fairen Angebot bereitsteht.",
-    "linkedinPrompt": "Ich freue mich, Sie als Kontakt auf LinkedIn zu haben",
-    "linkedinButton": "Auf LinkedIn vernetzen",
-    "backHome": "Zurück zur Hauptseite"
+    "description": "Live ausgeführte Experimente. Jede Karte läuft in einem isolierten iframe — anklicken, um sie freizuschalten und zu aktivieren.",
+    "reveal": "Anzeigen"
   }
 }
