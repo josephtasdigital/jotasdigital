@@ -172,14 +172,14 @@ const CookieConsent = () => {
                       </p>
                     </div>
                     <Switch
-                      checked={consent.analytics_storage === "granted"}
+                      checked={isCategoryGranted(consent, "analytics")}
                       onCheckedChange={toggleAnalytics}
                     />
                   </div>
 
                   <div className="h-px bg-border/40" />
 
-                  {/* Marketing / Ads */}
+                  {/* Marketing / Ads — single toggle today, drives 3 explicit signals */}
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-foreground">Marketing Ads</p>
@@ -188,10 +188,11 @@ const CookieConsent = () => {
                       </p>
                     </div>
                     <Switch
-                      checked={consent.ad_storage === "granted"}
+                      checked={isCategoryGranted(consent, "marketing")}
                       onCheckedChange={toggleMarketing}
                     />
                   </div>
+
                 </div>
 
                 <div className="flex gap-2">
