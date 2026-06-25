@@ -17,8 +17,13 @@ import SandboxInternal from "./pages/SandboxInternal";
 
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
+import { initAttribution } from "@/lib/forms/attribution";
 
 import "./i18n";
+
+if (typeof window !== "undefined") {
+  initAttribution();
+}
 
 const queryClient = new QueryClient();
 
