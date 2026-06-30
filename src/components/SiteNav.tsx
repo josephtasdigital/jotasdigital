@@ -44,9 +44,11 @@ const SiteNav = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md" data-gtm="site-header">
-      <nav className="max-w-6xl mx-auto px-6 h-20 md:h-28 lg:h-32 flex items-center justify-between" aria-label="Main navigation">
+      <nav className="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between" aria-label="Main navigation">
         <Link to={homePath} className="flex items-center gap-2" data-gtm="logo">
-          <img src={logoTransparent} alt="JosephTasDigital" className="h-16 md:h-24 lg:h-32 xl:h-36 w-auto object-contain" width={2200} height={850} />
+          <div className="h-8 md:h-10 w-auto flex-shrink-0">
+            <img src="https://placehold.co/2200x850/png" alt="Logo Placeholder" className="h-full w-auto object-contain" />
+          </div>
         </Link>
 
         {/* Desktop */}
