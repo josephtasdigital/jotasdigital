@@ -15,6 +15,7 @@ const SiteNav = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const locale = getLocaleFromPath(location.pathname);
+  const settings = getSiteSettings();
 
   const navItems = [
     { label: t("nav.services"), href: "#services" },
