@@ -97,5 +97,8 @@ collections:
           - {label: "Hero Section Photo", name: "hero_photo", widget: "image"}
           - {label: "Contact Section Photo", name: "contact_photo", widget: "image"}
           - {label: "Header Logo", name: "header_logo", widget: "image", required: false}
-          - {label: "Logo Width (CSS, e.g. 160px or auto)", name: "logo_width", widget: "string", required: false}
-          - {label: "Logo Height (CSS, e.g. 40px)", name: "logo_height", widget: "string", required: false}
+          - {label: "Logo Width (CSS, e.g. 160px or auto)", name: "logo_width", widget: "string", default: "auto", required: false}
+          - {label: "Logo Height (CSS, e.g. 40px)", name: "logo_height", widget: "string", default: "40px", required: false}
+
+    
+
