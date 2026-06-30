@@ -7,6 +7,7 @@ import logoTransparent from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import AuditModal from "@/components/AuditModal";
 import { getLocaleFromPath, localePath } from "@/i18n";
+import { getSiteSettings } from "@/lib/markdown";
 
 const SiteNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ const SiteNav = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const locale = getLocaleFromPath(location.pathname);
+  const settings = getSiteSettings();
 
   const navItems = [
     { label: t("nav.services"), href: "#services" },
@@ -46,9 +48,12 @@ const SiteNav = () => {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md" data-gtm="site-header">
       <nav className="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between" aria-label="Main navigation">
         <Link to={homePath} className="flex items-center gap-2" data-gtm="logo">
-          <div className="h-8 md:h-10 w-auto flex-shrink-0">
-            <img src="https://placehold.co/2200x850/png" alt="Logo Placeholder" className="h-full w-auto object-contain" />
-          </div>
+          <img
+            src={settings.header_logo || logoTransparent}
+            alt="Site logo"
+            className="object-contain flex-shrink-0"
+            style={{ width: settings.logo_width || 'auto', height: settings.logo_height || '40px' }}
+          />
         </Link>
 
         {/* Desktop */}
