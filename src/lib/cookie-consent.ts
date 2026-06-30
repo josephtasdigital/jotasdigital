@@ -31,15 +31,17 @@ export interface NormalizedConsent {
   ad_personalization: boolean;
 }
 
-/** UI categories → which Google signals they control. */
+/**
+ * UI categories → Google signals.
+ * Each visible toggle maps to exactly ONE Google Consent Mode v2 signal.
+ * No category grants more than one signal. No "marketing master" shortcut.
+ */
 export const CATEGORY_MAP = {
   essential: [] as const, // non-editable, no Google signals to flip
   analytics: ['analytics_storage'] as const,
-  // Single "Marketing Ads" toggle currently maps to all three ad signals,
-  // but each signal is still stored independently. To split the UI later,
-  // introduce new categories (e.g. `ad_personalization: ['ad_personalization']`)
-  // and remove them from `marketing` — no other code needs to change.
-  marketing: ['ad_storage', 'ad_user_data', 'ad_personalization'] as const,
+  ad_storage: ['ad_storage'] as const,
+  ad_user_data: ['ad_user_data'] as const,
+  ad_personalization: ['ad_personalization'] as const,
 } satisfies Record<string, readonly (keyof ConsentState)[]>;
 
 export type ConsentCategory = keyof typeof CATEGORY_MAP;

@@ -63,8 +63,14 @@ const CookieConsent = () => {
   const toggleAnalytics = (checked: boolean) =>
     setConsent((prev) => applyCategory(prev, "analytics", checked));
 
-  const toggleMarketing = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "marketing", checked));
+  const toggleAdStorage = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_storage", checked));
+
+  const toggleAdUserData = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_user_data", checked));
+
+  const toggleAdPersonalization = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_personalization", checked));
 
 
 
@@ -179,19 +185,52 @@ const CookieConsent = () => {
 
                   <div className="h-px bg-border/40" />
 
-                  {/* Marketing / Ads — single toggle today, drives 3 explicit signals */}
+                  {/* Ad Storage — controls only ad_storage */}
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-foreground">Marketing Ads</p>
+                      <p className="text-sm font-medium text-foreground">Ad Storage</p>
                       <p className="text-xs text-muted-foreground">
-                        Used for ad personalization and measurement
+                        Allows storage related to advertising (e.g. ad cookies)
                       </p>
                     </div>
                     <Switch
-                      checked={isCategoryGranted(consent, "marketing")}
-                      onCheckedChange={toggleMarketing}
+                      checked={isCategoryGranted(consent, "ad_storage")}
+                      onCheckedChange={toggleAdStorage}
                     />
                   </div>
+
+                  <div className="h-px bg-border/40" />
+
+                  {/* Ad User Data — controls only ad_user_data */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Ad User Data</p>
+                      <p className="text-xs text-muted-foreground">
+                        Sending of user data to Google for advertising purposes
+                      </p>
+                    </div>
+                    <Switch
+                      checked={isCategoryGranted(consent, "ad_user_data")}
+                      onCheckedChange={toggleAdUserData}
+                    />
+                  </div>
+
+                  <div className="h-px bg-border/40" />
+
+                  {/* Ad Personalization — controls only ad_personalization */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Ad Personalization</p>
+                      <p className="text-xs text-muted-foreground">
+                        Personalized advertising (e.g. remarketing)
+                      </p>
+                    </div>
+                    <Switch
+                      checked={isCategoryGranted(consent, "ad_personalization")}
+                      onCheckedChange={toggleAdPersonalization}
+                    />
+                  </div>
+
 
                 </div>
 
