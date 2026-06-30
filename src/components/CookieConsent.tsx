@@ -63,8 +63,14 @@ const CookieConsent = () => {
   const toggleAnalytics = (checked: boolean) =>
     setConsent((prev) => applyCategory(prev, "analytics", checked));
 
-  const toggleMarketing = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "marketing", checked));
+  const toggleAdStorage = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_storage", checked));
+
+  const toggleAdUserData = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_user_data", checked));
+
+  const toggleAdPersonalization = (checked: boolean) =>
+    setConsent((prev) => applyCategory(prev, "ad_personalization", checked));
 
 
 
