@@ -7,6 +7,7 @@ import logoTransparent from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import AuditModal from "@/components/AuditModal";
 import { getLocaleFromPath, localePath } from "@/i18n";
+import { getSiteSettings } from "@/lib/markdown";
 
 const SiteNav = () => {
   const [isOpen, setIsOpen] = useState(false);
