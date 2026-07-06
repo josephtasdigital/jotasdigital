@@ -221,4 +221,4 @@ export function pushConsentUpdate(state: ConsentState): void {
   if (DEBUG) console.info('[consent] update', state);
 }
 
-}
+
