@@ -32,11 +32,19 @@ const CookieConsent = () => {
       const t = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(t);
     }
-    // Returning visitor: re-hydrate UI + replay saved choice as an update.
+    // Returning visitor: hydrate UI from storage. The inline bootstrap in
+    // index.html already replayed the saved choice as `consent update` on
+    // the same tick as `consent default`, so we intentionally do NOT push
+    // again here — that would be a duplicate update. If for any reason the
+    // bootstrap did not run (e.g. storage read failed), fall back to a
+    // one-time replay so gtag still receives the saved state.
     const saved = getConsentState();
     setConsent(saved);
-    pushConsentUpdate(saved);
+    if (typeof window !== 'undefined' && !window.__consentInitialUpdatePushed) {
+      pushConsentUpdate(saved);
+    }
   }, []);
+
 
   const handleAcceptAll = () => {
     commit(ALL_GRANTED);
