@@ -147,8 +147,11 @@ export function fromNormalized(n: NormalizedConsent): ConsentState {
     ad_storage: n.ad_storage ? 'granted' : 'denied',
     ad_user_data: n.ad_user_data ? 'granted' : 'denied',
     ad_personalization: n.ad_personalization ? 'granted' : 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
   };
 }
+
 
 /**
  * Flip every Google signal owned by a UI category. Other signals are left
