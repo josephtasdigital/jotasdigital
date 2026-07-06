@@ -4,13 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!--
+    Google Consent Mode v2 bootstrap.
+    Runs synchronously BEFORE the GTM loader so the container sees a valid
+    default (and, for returning visitors, the restored choice) from tick zero.
+    Single source of truth for stored consent: localStorage['bread_consent_state'].
+  -->
+  <script>
+    (function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = window.gtag || gtag;
 
+      // 1) Legal baseline — required by CMv2. A default MUST exist before any update.
+      //    ad/analytics = denied; functionality/security = granted (strictly necessary).
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      window.__consentDefaultSet = true;
+
+      // 2) Returning visitor: restore stored choice on the SAME synchronous tick,
+      //    so no tag ever observes the transient "all denied" state. The default
+      //    above is the baseline; this update is non-destructive because it fires
+      //    before GTM boots and before any tag reads consent.
+      try {
+        var raw = window.localStorage.getItem('bread_consent_state');
+        if (raw) {
+          var saved = JSON.parse(raw);
+          if (saved && typeof saved === 'object') {
+            gtag('consent', 'update', {
+              ad_storage: saved.ad_storage || 'denied',
+              ad_user_data: saved.ad_user_data || 'denied',
+              ad_personalization: saved.ad_personalization || 'denied',
+              analytics_storage: saved.analytics_storage || 'denied',
+              functionality_storage: saved.functionality_storage || 'granted',
+              security_storage: saved.security_storage || 'granted'
+            });
+            window.__consentInitialUpdatePushed = true;
+          }
+        }
+      } catch (e) { /* storage unavailable — banner will handle it at runtime */ }
+    })();
+  </script>
 
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://bread.josephtasdigital.com/27w9ou3dzx9v1my.js?awl='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KBTFXDBP');</script>
+
 
 
 

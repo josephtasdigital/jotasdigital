@@ -20,6 +20,8 @@ export interface ConsentState {
   ad_storage: ConsentSignal;
   ad_user_data: ConsentSignal;
   ad_personalization: ConsentSignal;
+  functionality_storage: ConsentSignal;
+  security_storage: ConsentSignal;
 }
 
 /** Normalized UI-facing model (what toggles bind to). `essential` is always true. */
@@ -35,6 +37,8 @@ export interface NormalizedConsent {
  * UI categories → Google signals.
  * Each visible toggle maps to exactly ONE Google Consent Mode v2 signal.
  * No category grants more than one signal. No "marketing master" shortcut.
+ * `functionality_storage` and `security_storage` are strictly necessary and
+ * always granted — intentionally not user-editable, so no UI category owns them.
  */
 export const CATEGORY_MAP = {
   essential: [] as const, // non-editable, no Google signals to flip
@@ -55,6 +59,8 @@ export const DEFAULT_CONSENT: ConsentState = {
   ad_storage: 'denied',
   ad_user_data: 'denied',
   ad_personalization: 'denied',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
 };
 
 export const ALL_GRANTED: ConsentState = {
@@ -62,7 +68,10 @@ export const ALL_GRANTED: ConsentState = {
   ad_storage: 'granted',
   ad_user_data: 'granted',
   ad_personalization: 'granted',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
 };
+
 
 // ---------- persistence ----------
 
@@ -138,8 +147,11 @@ export function fromNormalized(n: NormalizedConsent): ConsentState {
     ad_storage: n.ad_storage ? 'granted' : 'denied',
     ad_user_data: n.ad_user_data ? 'granted' : 'denied',
     ad_personalization: n.ad_personalization ? 'granted' : 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
   };
 }
+
 
 /**
  * Flip every Google signal owned by a UI category. Other signals are left
@@ -171,7 +183,10 @@ declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
+    /** Set by the inline bootstrap in index.html once `consent default` has fired. */
     __consentDefaultSet?: boolean;
+    /** Set by the inline bootstrap if a stored choice was replayed as `consent update`. */
+    __consentInitialUpdatePushed?: boolean;
   }
 }
 
@@ -197,9 +212,13 @@ export function pushConsentUpdate(state: ConsentState): void {
       ad_storage: state.ad_storage,
       ad_user_data: state.ad_user_data,
       ad_personalization: state.ad_personalization,
+      functionality_storage: state.functionality_storage,
+      security_storage: state.security_storage,
     });
   }
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: 'consent_updated', consent: { ...state } });
   if (DEBUG) console.info('[consent] update', state);
 }
+
+
