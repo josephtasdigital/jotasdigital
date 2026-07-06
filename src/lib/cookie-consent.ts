@@ -20,6 +20,8 @@ export interface ConsentState {
   ad_storage: ConsentSignal;
   ad_user_data: ConsentSignal;
   ad_personalization: ConsentSignal;
+  functionality_storage: ConsentSignal;
+  security_storage: ConsentSignal;
 }
 
 /** Normalized UI-facing model (what toggles bind to). `essential` is always true. */
@@ -35,6 +37,8 @@ export interface NormalizedConsent {
  * UI categories → Google signals.
  * Each visible toggle maps to exactly ONE Google Consent Mode v2 signal.
  * No category grants more than one signal. No "marketing master" shortcut.
+ * `functionality_storage` and `security_storage` are strictly necessary and
+ * always granted — intentionally not user-editable, so no UI category owns them.
  */
 export const CATEGORY_MAP = {
   essential: [] as const, // non-editable, no Google signals to flip
@@ -55,6 +59,8 @@ export const DEFAULT_CONSENT: ConsentState = {
   ad_storage: 'denied',
   ad_user_data: 'denied',
   ad_personalization: 'denied',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
 };
 
 export const ALL_GRANTED: ConsentState = {
@@ -62,7 +68,10 @@ export const ALL_GRANTED: ConsentState = {
   ad_storage: 'granted',
   ad_user_data: 'granted',
   ad_personalization: 'granted',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
 };
+
 
 // ---------- persistence ----------
 
