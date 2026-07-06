@@ -183,7 +183,10 @@ declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
+    /** Set by the inline bootstrap in index.html once `consent default` has fired. */
     __consentDefaultSet?: boolean;
+    /** Set by the inline bootstrap if a stored choice was replayed as `consent update`. */
+    __consentInitialUpdatePushed?: boolean;
   }
 }
 
@@ -209,9 +212,13 @@ export function pushConsentUpdate(state: ConsentState): void {
       ad_storage: state.ad_storage,
       ad_user_data: state.ad_user_data,
       ad_personalization: state.ad_personalization,
+      functionality_storage: state.functionality_storage,
+      security_storage: state.security_storage,
     });
   }
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: 'consent_updated', consent: { ...state } });
   if (DEBUG) console.info('[consent] update', state);
+}
+
 }
