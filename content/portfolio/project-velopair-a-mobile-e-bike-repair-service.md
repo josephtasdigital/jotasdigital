@@ -7,4 +7,4 @@ gallery:
   - /img/JosephTasDigital__1_-removebg-preview (1).png
 ---
 
-This mock project was created for learning purpose, Velopair is a fictional brand created by me without having the name rights.
+Portfolio Project 2 - Velopair.eu.cc
