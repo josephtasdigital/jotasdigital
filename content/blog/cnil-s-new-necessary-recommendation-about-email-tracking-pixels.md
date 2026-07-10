@@ -3,7 +3,7 @@ title: CNIL's new (necessary)recommendation about email tracking pixels
 date: 2026-07-10T12:39
 ---
 
-![cnil-img](/img/Post%20%282%29.png "cnil-post-img")
+![](/img/Post%20(2).png)
 
 Things might be changing for those who have actively running Shopify or any type of e-commerce store located in France that targets massive email lists with email marketing pixels, and I'm here to simplify it and share some checklists.
 
