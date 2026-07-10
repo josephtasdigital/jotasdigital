@@ -97,7 +97,26 @@ function parseFrontmatter(raw: string): { data: Record<string, any>; content: st
       val = val.slice(1, -1);
     }
     if (val.startsWith("[") && val.endsWith("]")) {
-      val = val.slice(1, -1).split(",").map((s: string) => s.trim().replace(/^["']|["']$/g, ""));
+      // Split on commas, but not commas inside quoted strings
+      const inner = val.slice(1, -1);
+      const items: string[] = [];
+      let buf = "";
+      let quote: '"' | "'" | null = null;
+      for (const ch of inner) {
+        if (quote) {
+          if (ch === quote) quote = null;
+          else buf += ch;
+        } else if (ch === '"' || ch === "'") {
+          quote = ch;
+        } else if (ch === ",") {
+          items.push(buf.trim());
+          buf = "";
+        } else {
+          buf += ch;
+        }
+      }
+      if (buf.trim()) items.push(buf.trim());
+      val = items.map((s) => s.replace(/^["']|["']$/g, ""));
     }
     data[key] = val;
     i++;

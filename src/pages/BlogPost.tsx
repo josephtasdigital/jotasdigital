@@ -10,13 +10,16 @@ function renderMarkdown(raw: string) {
   const lines = raw.split("\n");
   const elements: React.ReactNode[] = [];
   let key = 0;
+  let lastWasBlank = false;
 
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed) {
-      elements.push(<br key={key++} />);
+      if (!lastWasBlank) elements.push(<br key={key++} />);
+      lastWasBlank = true;
       continue;
     }
+    lastWasBlank = false;
 
     // Images: ![alt](src) — URL allows balanced parens so filenames like "Post (2).png" work
     const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(((?:[^()\s]|\([^()]*\))+)(?:\s+"[^"]*")?\)$/);

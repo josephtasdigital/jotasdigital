@@ -20,8 +20,8 @@ collections:
       - {label: "Asset Type", name: "type", widget: "select", options: ["Image Set", "PDF Document", "PowerPoint Embed"]}
       - {label: "Thumbnail Image", name: "thumbnail_image_url", widget: "image", required: false}
       - {label: "Main Showcase File", name: "featured_image", widget: "file"}
-      - {label: "Additional Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
-      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Additional Gallery", name: "gallery", widget: "list", required: false, field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Description", name: "body", widget: "markdown", required: false}
 
   # --- COLLECTION 2: SERVICES ---
   - name: "services"
