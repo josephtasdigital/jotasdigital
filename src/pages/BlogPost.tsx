@@ -18,8 +18,8 @@ function renderMarkdown(raw: string) {
       continue;
     }
 
-    // Images: ![alt](src)
-    const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    // Images: ![alt](src) — URL allows balanced parens so filenames like "Post (2).png" work
+    const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(((?:[^()\s]|\([^()]*\))+)(?:\s+"[^"]*")?\)$/);
     if (imgMatch) {
       elements.push(
         <img
