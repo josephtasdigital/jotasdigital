@@ -57,7 +57,12 @@ function renderMarkdown(raw: string) {
 function renderInline(text: string): React.ReactNode[] {
   // Split on inline images, bold, italic, links
   const parts: React.ReactNode[] = [];
-  const regex = /!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)]+)\)|\*\*(.+?)\*\*|\*(.+?)\*/g;
+  // URL portion allows balanced parens: e.g. /img/Post%20(2).png
+  const URL_PART = String.raw`(?:[^()\s]|\([^()]*\))+`;
+  const regex = new RegExp(
+    String.raw`!\[([^\]]*)\]\((${URL_PART})\)|\[([^\]]+)\]\((${URL_PART})\)|\*\*(.+?)\*\*|\*(.+?)\*`,
+    "g"
+  );
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let k = 0;
