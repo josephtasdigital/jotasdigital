@@ -5,25 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!--
-    Google Consent Mode v2 bootstrap.
+    Google Consent Mode v2 default.
     Runs synchronously BEFORE the GTM loader so the container sees a valid
-    default (and, for returning visitors, the restored choice) from tick zero.
-    Single source of truth for stored consent: localStorage['bread_consent_state'].
+    denied baseline from tick zero. Klaro (loaded below) is the single
+    source of truth for the UI and persists the user's choice in
+    localStorage['klaro']; its analytics-service callback replays the
+    stored choice on every page load as a `consent update`.
   -->
   <script>
-    // Google Consent Mode v2 bootstrap. Runs synchronously BEFORE GTM loads.
-    // 1) Set default: everything denied except strictly-necessary. This is the
-    //    legal baseline required by CMv2.
-    // 2) If the visitor already made a choice (stored in localStorage), replay
-    //    it as `consent update` on the same tick — so returning visitors are
-    //    never briefly downgraded to all-denied. Saved choice is NEVER
-    //    overwritten by the default.
-    // Single source of truth: localStorage['bread_consent_state'].
     (function () {
       window.dataLayer = window.dataLayer || [];
       function gtag(){ window.dataLayer.push(arguments); }
       window.gtag = window.gtag || gtag;
-
       gtag('consent', 'default', {
         ad_storage: 'denied',
         ad_user_data: 'denied',
@@ -33,30 +26,22 @@
         security_storage: 'granted',
         wait_for_update: 500
       });
-      window.__consentDefaultSet = true;
-
-      try {
-        var raw = window.localStorage.getItem('bread_consent_state');
-        if (raw) {
-          var saved = JSON.parse(raw) || {};
-          gtag('consent', 'update', {
-            ad_storage: saved.ad_storage === 'granted' ? 'granted' : 'denied',
-            ad_user_data: saved.ad_user_data === 'granted' ? 'granted' : 'denied',
-            ad_personalization: saved.ad_personalization === 'granted' ? 'granted' : 'denied',
-            analytics_storage: saved.analytics_storage === 'granted' ? 'granted' : 'denied',
-            functionality_storage: 'granted',
-            security_storage: 'granted'
-          });
-        }
-      } catch (e) { /* storage unavailable — banner will handle it at runtime */ }
     })();
   </script>
 
+  <!-- Klaro consent manager: config first (defines window.klaroConfig),
+       then the Klaro library, which auto-boots against that config. -->
+  <script defer src="/klaro-config.js"></script>
+  <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" />
+  <script defer src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
+
+  <!-- GTM — untouched. GA4 tags inside GTM should require analytics_storage only. -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://bread.josephtasdigital.com/27w9ou3dzx9v1my.js?awl='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KBTFXDBP');</script>
+
 
 
 

@@ -16,7 +16,8 @@ import SandboxTest from "./pages/SandboxTest";
 import SandboxInternal from "./pages/SandboxInternal";
 
 import NotFound from "./pages/NotFound";
-import CookieConsent from "./components/CookieConsent";
+// Consent UI is provided by Klaro (see index.html + public/klaro-config.js).
+
 import { initAttribution } from "@/lib/forms/attribution";
 
 import "./i18n";
@@ -27,7 +28,7 @@ if (typeof window !== "undefined") {
 
 const queryClient = new QueryClient();
 
-const isConsentBannerActive = true;
+
 
 const LocaleSync = ({ children }: { children: React.ReactNode }) => {
   const { lang } = useParams<{ lang?: string }>();
@@ -80,13 +81,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <AppRoutes />
-            {/*
-              Cookie Consent Banner — DORMANT.
-              GDPR / Google Consent Mode v2 compliant banner is built and wired
-              (Accept All / Deny All / Customize → gtag('consent','update',...)).
-              To activate site-wide, flip the flag below to `true`.
-            */}
-            {isConsentBannerActive && <CookieConsent />}
+
           </BrowserRouter>
         </TooltipProvider>
       </DevModeProvider>
