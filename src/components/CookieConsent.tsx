@@ -5,82 +5,52 @@ import { Switch } from "@/components/ui/switch";
 import {
   type ConsentState,
   DEFAULT_CONSENT,
-  ALL_GRANTED,
+  ANALYTICS_GRANTED,
   getConsentState,
   setConsentState,
-  hasConsentCookie,
-  applyCategory,
-  isCategoryGranted,
+  hasConsentChoice,
   pushConsentUpdate,
 } from "@/lib/cookie-consent";
 
+/**
+ * Cookie banner UI.
+ *
+ * This site uses GA4 for analytics only, so the only user-editable signal is
+ * `analytics_storage`. Ad_* signals stay denied. The inline bootstrap in
+ * index.html already sets `consent default` and replays any saved choice as
+ * `consent update` on page load, so this component:
+ *   - shows the banner only when no saved choice exists
+ *   - pushes exactly one `consent update` per user action
+ *   - never re-pushes on mount
+ */
 const CookieConsent = () => {
   const [visible, setVisible] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
-  const [consent, setConsent] = useState<ConsentState>({ ...DEFAULT_CONSENT });
+  const [consent, setConsent] = useState<ConsentState>(() => getConsentState());
 
-  // Centralized commit: persist + push to Google Consent Mode (single source of truth).
   const commit = (next: ConsentState) => {
     setConsentState(next);
+    setConsent(next);
     pushConsentUpdate(next);
+    setVisible(false);
+    setShowCustomize(false);
   };
 
   useEffect(() => {
-    if (!hasConsentCookie()) {
-      // No saved choice — default consent (denied) was already set in index.html.
-      // Show banner; do not push any update until the user decides.
-      const t = setTimeout(() => setVisible(true), 1200);
-      return () => clearTimeout(t);
-    }
-    // Returning visitor: hydrate UI from storage. The inline bootstrap in
-    // index.html already replayed the saved choice as `consent update` on
-    // the same tick as `consent default`, so we intentionally do NOT push
-    // again here — that would be a duplicate update. If for any reason the
-    // bootstrap did not run (e.g. storage read failed), fall back to a
-    // one-time replay so gtag still receives the saved state.
-    const saved = getConsentState();
-    setConsent(saved);
-    if (typeof window !== 'undefined' && !window.__consentInitialUpdatePushed) {
-      pushConsentUpdate(saved);
-    }
+    if (hasConsentChoice()) return; // saved choice already applied by bootstrap
+    const t = setTimeout(() => setVisible(true), 1200);
+    return () => clearTimeout(t);
   }, []);
 
+  const handleAcceptAll = () => commit(ANALYTICS_GRANTED);
+  const handleDenyAll = () => commit({ ...DEFAULT_CONSENT });
+  const handleSaveCustom = () => commit(consent);
 
-  const handleAcceptAll = () => {
-    commit(ALL_GRANTED);
-    setConsent(ALL_GRANTED);
-    setVisible(false);
-    setShowCustomize(false);
-  };
-
-  const handleDenyAll = () => {
-    commit({ ...DEFAULT_CONSENT });
-    setConsent({ ...DEFAULT_CONSENT });
-    setVisible(false);
-    setShowCustomize(false);
-  };
-
-  const handleSaveCustom = () => {
-    commit(consent);
-    setVisible(false);
-    setShowCustomize(false);
-  };
-
-  // Each UI toggle delegates to applyCategory, which flips only the Google
-  // signals declared in CATEGORY_MAP for that category. No cross-talk.
   const toggleAnalytics = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "analytics", checked));
-
-  const toggleAdStorage = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "ad_storage", checked));
-
-  const toggleAdUserData = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "ad_user_data", checked));
-
-  const toggleAdPersonalization = (checked: boolean) =>
-    setConsent((prev) => applyCategory(prev, "ad_personalization", checked));
-
-
+    setConsent((prev) => ({
+      ...prev,
+      analytics_storage: checked ? "granted" : "denied",
+    }));
 
   return (
     <AnimatePresence>
@@ -106,20 +76,20 @@ const CookieConsent = () => {
                       Cookie Preferences
                     </h3>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-                      We use cookies to analyze traffic and personalize ads. You choose what's allowed.
+                      We use analytics cookies to understand how visitors use the site. You choose what's allowed.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <button
                         onClick={handleAcceptAll}
                         className="rounded-md bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
                       >
-                        Accept All
+                        Accept
                       </button>
                       <button
                         onClick={handleDenyAll}
                         className="rounded-md border border-border px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-secondary"
                       >
-                        Deny All
+                        Deny
                       </button>
                       <button
                         onClick={() => setShowCustomize(true)}
@@ -177,69 +147,19 @@ const CookieConsent = () => {
 
                   <div className="h-px bg-border/40" />
 
-                  {/* Analytics */}
+                  {/* Analytics — the only user-editable signal */}
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-foreground">Analytics</p>
                       <p className="text-xs text-muted-foreground">
-                        Helps us understand how visitors use the site
+                        Helps us understand how visitors use the site (GA4)
                       </p>
                     </div>
                     <Switch
-                      checked={isCategoryGranted(consent, "analytics")}
+                      checked={consent.analytics_storage === "granted"}
                       onCheckedChange={toggleAnalytics}
                     />
                   </div>
-
-                  <div className="h-px bg-border/40" />
-
-                  {/* Ad Storage — controls only ad_storage */}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Ad Storage</p>
-                      <p className="text-xs text-muted-foreground">
-                        Allows storage related to advertising (e.g. ad cookies)
-                      </p>
-                    </div>
-                    <Switch
-                      checked={isCategoryGranted(consent, "ad_storage")}
-                      onCheckedChange={toggleAdStorage}
-                    />
-                  </div>
-
-                  <div className="h-px bg-border/40" />
-
-                  {/* Ad User Data — controls only ad_user_data */}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Ad User Data</p>
-                      <p className="text-xs text-muted-foreground">
-                        Sending of user data to Google for advertising purposes
-                      </p>
-                    </div>
-                    <Switch
-                      checked={isCategoryGranted(consent, "ad_user_data")}
-                      onCheckedChange={toggleAdUserData}
-                    />
-                  </div>
-
-                  <div className="h-px bg-border/40" />
-
-                  {/* Ad Personalization — controls only ad_personalization */}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Ad Personalization</p>
-                      <p className="text-xs text-muted-foreground">
-                        Personalized advertising (e.g. remarketing)
-                      </p>
-                    </div>
-                    <Switch
-                      checked={isCategoryGranted(consent, "ad_personalization")}
-                      onCheckedChange={toggleAdPersonalization}
-                    />
-                  </div>
-
-
                 </div>
 
                 <div className="flex gap-2">
