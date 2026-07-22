@@ -11,13 +11,19 @@
     Single source of truth for stored consent: localStorage['bread_consent_state'].
   -->
   <script>
+    // Google Consent Mode v2 bootstrap. Runs synchronously BEFORE GTM loads.
+    // 1) Set default: everything denied except strictly-necessary. This is the
+    //    legal baseline required by CMv2.
+    // 2) If the visitor already made a choice (stored in localStorage), replay
+    //    it as `consent update` on the same tick — so returning visitors are
+    //    never briefly downgraded to all-denied. Saved choice is NEVER
+    //    overwritten by the default.
+    // Single source of truth: localStorage['bread_consent_state'].
     (function () {
       window.dataLayer = window.dataLayer || [];
       function gtag(){ window.dataLayer.push(arguments); }
       window.gtag = window.gtag || gtag;
 
-      // 1) Legal baseline — required by CMv2. A default MUST exist before any update.
-      //    ad/analytics = denied; functionality/security = granted (strictly necessary).
       gtag('consent', 'default', {
         ad_storage: 'denied',
         ad_user_data: 'denied',
@@ -29,25 +35,18 @@
       });
       window.__consentDefaultSet = true;
 
-      // 2) Returning visitor: restore stored choice on the SAME synchronous tick,
-      //    so no tag ever observes the transient "all denied" state. The default
-      //    above is the baseline; this update is non-destructive because it fires
-      //    before GTM boots and before any tag reads consent.
       try {
         var raw = window.localStorage.getItem('bread_consent_state');
         if (raw) {
-          var saved = JSON.parse(raw);
-          if (saved && typeof saved === 'object') {
-            gtag('consent', 'update', {
-              ad_storage: saved.ad_storage || 'denied',
-              ad_user_data: saved.ad_user_data || 'denied',
-              ad_personalization: saved.ad_personalization || 'denied',
-              analytics_storage: saved.analytics_storage || 'denied',
-              functionality_storage: saved.functionality_storage || 'granted',
-              security_storage: saved.security_storage || 'granted'
-            });
-            window.__consentInitialUpdatePushed = true;
-          }
+          var saved = JSON.parse(raw) || {};
+          gtag('consent', 'update', {
+            ad_storage: saved.ad_storage === 'granted' ? 'granted' : 'denied',
+            ad_user_data: saved.ad_user_data === 'granted' ? 'granted' : 'denied',
+            ad_personalization: saved.ad_personalization === 'granted' ? 'granted' : 'denied',
+            analytics_storage: saved.analytics_storage === 'granted' ? 'granted' : 'denied',
+            functionality_storage: 'granted',
+            security_storage: 'granted'
+          });
         }
       } catch (e) { /* storage unavailable — banner will handle it at runtime */ }
     })();
