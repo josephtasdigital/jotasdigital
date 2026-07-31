@@ -37,7 +37,8 @@ const LanguageSwitcher = () => {
         aria-label="Switch language"
       >
         <Globe className="w-4 h-4" />
-        <span className="hidden sm:inline">{currentLocale?.flag}</span>
+        {/* Locale code instead of a flag emoji — flags render as tofu boxes on Windows/Linux */}
+        <span className="hidden sm:inline">{(currentLocale?.code ?? current).toUpperCase()}</span>
       </button>
 
       {open && (
@@ -52,7 +53,7 @@ const LanguageSwitcher = () => {
                   : "text-muted-foreground hover:text-foreground hover:bg-card"
               }`}
             >
-              <span>{locale.flag}</span>
+              <span className="font-display text-xs w-6 text-primary/80">{locale.code.toUpperCase()}</span>
               <span>{locale.label}</span>
             </button>
           ))}

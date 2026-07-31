@@ -1,6 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import SiteNav from "@/components/SiteNav";
 import Scene3DBackground from "@/components/Scene3DBackground";
+import ScrollProgress from "@/components/ScrollProgress";
+import CursorSpotlight from "@/components/CursorSpotlight";
+import Reveal from "@/components/Reveal";
 import HeroSection from "@/components/HeroSection";
 import WhoAmISection from "@/components/WhoAmISection";
 import WorkflowToolStack from "@/components/WorkflowToolStack";
@@ -30,15 +33,17 @@ const Index = () => {
         <meta property="og:url" content="https://jotasdigital.lovable.app/" />
       </Helmet>
       <Scene3DBackground />
+      <CursorSpotlight />
+      <ScrollProgress />
       <SiteNav />
       <HeroSection />
-      <WhoAmISection />
-      <WorkflowToolStack />
-      <ServicesSection />
-      <PartnerOffers />
-      <PortfolioSection />
-      <BlogSection />
-      <ContactSection />
+      <Reveal><WhoAmISection /></Reveal>
+      <Reveal><WorkflowToolStack /></Reveal>
+      <Reveal><ServicesSection /></Reveal>
+      <Reveal><PartnerOffers /></Reveal>
+      <Reveal><PortfolioSection /></Reveal>
+      <Reveal><BlogSection /></Reveal>
+      <Reveal><ContactSection /></Reveal>
       <Footer />
     </main>
   );
