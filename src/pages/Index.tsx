@@ -1,6 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import SiteNav from "@/components/SiteNav";
 import Scene3DBackground from "@/components/Scene3DBackground";
+import ScrollProgress from "@/components/ScrollProgress";
+import CursorSpotlight from "@/components/CursorSpotlight";
+import Reveal from "@/components/Reveal";
 import HeroSection from "@/components/HeroSection";
 import WhoAmISection from "@/components/WhoAmISection";
 import WorkflowToolStack from "@/components/WorkflowToolStack";
