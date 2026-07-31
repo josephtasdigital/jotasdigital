@@ -33,15 +33,17 @@ const Index = () => {
         <meta property="og:url" content="https://jotasdigital.lovable.app/" />
       </Helmet>
       <Scene3DBackground />
+      <CursorSpotlight />
+      <ScrollProgress />
       <SiteNav />
       <HeroSection />
-      <WhoAmISection />
-      <WorkflowToolStack />
-      <ServicesSection />
-      <PartnerOffers />
-      <PortfolioSection />
-      <BlogSection />
-      <ContactSection />
+      <Reveal><WhoAmISection /></Reveal>
+      <Reveal><WorkflowToolStack /></Reveal>
+      <Reveal><ServicesSection /></Reveal>
+      <Reveal><PartnerOffers /></Reveal>
+      <Reveal><PortfolioSection /></Reveal>
+      <Reveal><BlogSection /></Reveal>
+      <Reveal><ContactSection /></Reveal>
       <Footer />
     </main>
   );
