@@ -35,7 +35,7 @@
   },
 "whoami": {
   "label": "// WHO I AM",
-  "heading": "Fixing tracking data where it actually breaks.",
+  "heading": "Fixing tracking data where it actually breaks",
   "bio1": "I'm a tracking specialist based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
   "bio2": "Instead of just pasting basic GTM scripts, I write custom JavaScript data layers, plug into payment webhooks like Stripe, and route clean server-side data using Addingwell and Sirdata.",
   "highlight1": {
@@ -56,7 +56,6 @@
   }
   },
   "services": {
-    "label": "// SERVICES",
     "heading": "SERVICES",
     "formName": "Name",
     "formEmail": "Email",
@@ -70,8 +69,8 @@
     "heading": "Selected Work & Case Studies"
   },
   "blog": {
-    "label": "// TECHNICAL WRITING",
-    "heading": "Articles & Architecture Logs"
+    "label": "// BLOG",
+    "heading": "Articles"
   },
   "contact": {
     "label": "// CONTACT",
