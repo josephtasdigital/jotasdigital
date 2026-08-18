@@ -24,7 +24,7 @@
     "backHome": "Return to main page"
   },
   "hero": {
-    "subtitle": "Marketing Data Infrastructure Engineer",
+    "subtitle": "Marketing Data Infrastructure Engineer / Tracking Specialist",
     "title1": "Server-Side Tracking & Conversion Architecture for",
     "title2": "E-commerce brands and performance agencies",
     "description": "I build resilient data pipelines that bridge backend checkouts, payment webhooks, and analytics. Transforming raw events into clean Data Layers, CAPI payloads, and reliable GA4 tracking.",
@@ -36,7 +36,7 @@
 "whoami": {
   "label": "// WHO I AM",
   "heading": "Fixing tracking data where it actually breaks.",
-  "bio1": "I'm a data engineer based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
+  "bio1": "I'm a tracking specialist based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
   "bio2": "Instead of just pasting basic GTM scripts, I write custom JavaScript data layers, plug into payment webhooks like Stripe, and route clean server-side data using Addingwell and Sirdata.",
   "highlight1": {
     "title": "Full Conversion Flow",
