@@ -4,90 +4,90 @@
     "work": "Work",
     "blog": "Blog",
     "contact": "Contact",
-    "auditCta": "Audit / Advice offer",
-    "auditCtaShort": "Free audit"
+    "auditCta": "Technical Audit",
+    "auditCtaShort": "Audit"
   },
   "audit": {
-    "title": "Audit / Advice offer",
-    "description": "Tell me about your site. I'll review your tracking and analytics setup and come back with a tailored strategy.",
+    "title": "Data Infrastructure Audit",
+    "description": "Provide your domain and stack details. I will audit your event pipeline, consent architecture, and CAPI signals, then return with a technical diagnostic report.",
     "fieldName": "Your name",
     "fieldEmail": "Email address",
     "fieldWebsite": "Website URL",
-    "fieldDetails": "Briefly describe your data/tracking challenge",
-    "submit": "Request my free audit",
-    "submitting": "Sending...",
-    "errorMessage": "Something went wrong. Please try again or email me directly.",
-    "successHeading": "Request received",
-    "successMessage": "Your website is now under audit. I will reach out to you via your email once I finish reviewing and implementing a strategy with a reasonable offer.",
-    "linkedinPrompt": "I'll be happy to have you as a connection through LinkedIn",
+    "fieldDetails": "Describe your tracking or conversion challenge",
+    "submit": "Request Audit",
+    "submitting": "Processing...",
+    "errorMessage": "Transmission error. Please try again or reach out directly.",
+    "successHeading": "Audit Request Received",
+    "successMessage": "Your tracking stack is queued for review. I will examine your event data layers and send over a diagnostic breakdown.",
+    "linkedinPrompt": "Let's connect professionally on LinkedIn",
     "linkedinButton": "Connect on LinkedIn",
-    "backHome": "Take me back to the main page."
+    "backHome": "Return to main page"
   },
   "hero": {
     "subtitle": "Marketing Data Infrastructure Engineer",
-    "title1": "I provide Server-side tracking and GA4 fixes",
-    "title2": "for brands losing conversion data",
-    "description": "I build tracking systems tailored for your needs. I reduce your data loss by bypass adblockers, fix the broken GA4 data, and I implement Server-Side tagging so your marketing campaigns actually works.",
+    "title1": "Server-Side Tracking & Conversion Architecture",
+    "title2": "For e-commerce brands and performance agencies",
+    "description": "I build resilient data pipelines that bridge backend checkouts, payment webhooks, and analytics. Transforming raw events into clean Data Layers, CAPI payloads, and reliable GA4 tracking.",
     "pill1": "SERVER-SIDE TRACKING",
-    "pill2": "GA4 ARCHITECTURE",
-    "pill3": "CONVERSION API (CAPI)",
-    "cta": "Explore my Projects"
+    "pill2": "DATA LAYER & CAPI",
+    "pill3": "ADDINGWELL & SIRDATA",
+    "cta": "View Selected Work"
   },
   "whoami": {
-    "label": "// WHO AM I",
-    "heading": "Architecting the unseen.",
-    "bio1": "I am a Data Engineer operating out of Normandie, France. Helping companies are bleeding 30% of their analytics to intelligent tracking prevention (ITP) and adblockers.",
-    "bio2": "I build serverless infrastructures using GCP, advanced JavaScript, and SQL to capture every click. My mission is simple: fix your broken data pipelines so your marketing actually works.",
+    "label": "// ABOUT MY PRACTICE",
+    "heading": "Engineering clean data pipelines.",
+    "bio1": "Based in Normandy, France, I specialize in rebuilding broken tracking infrastructures for e-commerce brands and providing on-demand technical support for growth agencies.",
+    "bio2": "Beyond basic GTM setups, I write JavaScript data layers, handle payment webhooks (Stripe), and engineer first-party server containers using Addingwell, Sirdata, and cloud architectures.",
     "highlight1": {
-      "title": "Server-Side Tagging",
-      "desc": "Routing data through secure cloud containers to bypass adblockers."
+      "title": "Full Conversion Architecture",
+      "desc": "Connecting backend checkout events and payment systems directly to CAPI and analytics."
     },
     "highlight2": {
-      "title": "GCP Infrastructure",
-      "desc": "Building robust, scalable data pipelines on Google Cloud."
+      "title": "JavaScript & Data Layers",
+      "desc": "Parsing DOM objects and transforming raw JSON webhooks into structured data layers."
     },
     "highlight3": {
-      "title": "GA4 & CAPI Integration",
-      "desc": "Repairing broken analytics and engineering flawless server-to-server advertising payloads."
+      "title": "Modern Privacy Stack",
+      "desc": "Compliant Consent Mode v2 architectures built on Sirdata and Addingwell first-party proxies."
     },
     "highlight4": {
-      "title": "Privacy Compliance",
-      "desc": "Strict adherence to European GDPR and DMA consent state architectures."
+      "title": "Agency Partnership",
+      "desc": "Acting as an on-demand, white-label data engineer for performance marketing teams."
     }
   },
   "services": {
-    "label": "// Services",
-    "heading": "What I Deliver",
+    "label": "// SERVICES",
+    "heading": "Technical Capabilities",
     "formName": "Name",
     "formEmail": "Email",
-    "formSubmit": "Send",
-    "modalTitle": "Interested in {{service}}?",
-    "modalDescription": "Leave your details and I'll reach out to discuss this service.",
-    "modalSuccess": "Thanks for your interest in this service, I will reach out to you shortly to discuss further. Be sure to check your spam folder."
+    "formSubmit": "Send Request",
+    "modalTitle": "Discuss {{service}}",
+    "modalDescription": "Leave your details and I will reach out to evaluate your current setup.",
+    "modalSuccess": "Message received. I will review your stack requirements and respond shortly."
   },
   "portfolio": {
-    "label": "// Portfolio",
-    "heading": "Selected Work"
+    "label": "// PORTFOLIO",
+    "heading": "Selected Work & Case Studies"
   },
   "blog": {
-    "label": "// Blog",
-    "heading": "Technical Writing"
+    "label": "// TECHNICAL WRITING",
+    "heading": "Articles & Architecture Logs"
   },
   "contact": {
-    "label": "// Contact",
-    "title": "Get In Touch",
-    "description": "Contact me directly to put an end to being one of those companies that are losing 30% of their analytics to adblockers. I will build first-party, server-side tracking pipelines for you that will capture every click and bypass the noise. Let's fix your broken data.",
+    "label": "// CONTACT",
+    "title": "Start a Project",
+    "description": "Ready to stabilize your tracking infrastructure? Whether you need a complete CAPI overhaul, Stripe event mapping, or an on-demand data engineer for your agency, let's connect.",
     "formName": "Name",
     "formEmail": "Email",
-    "formMessage": "Tell me about your data challenge...",
+    "formMessage": "Tell me about your technical stack and data challenge...",
     "formSubmit": "Send Message",
-    "successTitle": "I'll get back to you very soon",
-    "successNote": "Check your spam folder if you haven't received anything within 24 hours."
+    "successTitle": "Message Received",
+    "successNote": "I will get back to you within 24 hours."
   },
   "sandbox": {
-    "label": "// Lab",
+    "label": "// LAB",
     "title": "JavaScript Sandbox",
-    "description": "Live-execution experiments. Each card runs in an isolated iframe — click to reveal and activate.",
-    "reveal": "Reveal"
+    "description": "Live DOM parsing and data transformation scripts running in isolated execution environments.",
+    "reveal": "Inspect Script"
   }
 }
