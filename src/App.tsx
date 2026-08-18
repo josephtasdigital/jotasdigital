@@ -53,6 +53,7 @@ const LocaleSync = ({ children }: { children: React.ReactNode }) => {
 };
 
 const AppRoutes = () => (
+  <Suspense fallback={null}>
   <Routes>
     {/* Default English routes */}
     <Route path="/" element={<LocaleSync><Index /></LocaleSync>} />
@@ -70,6 +71,7 @@ const AppRoutes = () => (
 
     <Route path="*" element={<NotFound />} />
   </Routes>
+  </Suspense>
 );
 
 const App = () => (
