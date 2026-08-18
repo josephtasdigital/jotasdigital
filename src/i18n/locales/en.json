@@ -25,39 +25,39 @@
   },
   "hero": {
     "subtitle": "Marketing Data Infrastructure Engineer",
-    "title1": "Server-Side Tracking & Conversion Architecture",
-    "title2": "For e-commerce brands and performance agencies",
+    "title1": "Server-Side Tracking & Conversion Architecture for",
+    "title2": "E-commerce brands and performance agencies",
     "description": "I build resilient data pipelines that bridge backend checkouts, payment webhooks, and analytics. Transforming raw events into clean Data Layers, CAPI payloads, and reliable GA4 tracking.",
     "pill1": "SERVER-SIDE TRACKING",
     "pill2": "DATA LAYER & CAPI",
     "pill3": "ADDINGWELL & SIRDATA",
     "cta": "View Selected Work"
   },
-  "whoami": {
-    "label": "// ABOUT MY PRACTICE",
-    "heading": "Engineering clean data pipelines.",
-    "bio1": "Based in Normandy, France, I specialize in rebuilding broken tracking infrastructures for e-commerce brands and providing on-demand technical support for growth agencies.",
-    "bio2": "Beyond basic GTM setups, I write JavaScript data layers, handle payment webhooks (Stripe), and engineer first-party server containers using Addingwell, Sirdata, and cloud architectures.",
-    "highlight1": {
-      "title": "Full Conversion Architecture",
-      "desc": "Connecting backend checkout events and payment systems directly to CAPI and analytics."
-    },
-    "highlight2": {
-      "title": "JavaScript & Data Layers",
-      "desc": "Parsing DOM objects and transforming raw JSON webhooks into structured data layers."
-    },
-    "highlight3": {
-      "title": "Modern Privacy Stack",
-      "desc": "Compliant Consent Mode v2 architectures built on Sirdata and Addingwell first-party proxies."
-    },
-    "highlight4": {
-      "title": "Agency Partnership",
-      "desc": "Acting as an on-demand, white-label data engineer for performance marketing teams."
-    }
+"whoami": {
+  "label": "// WHO I AM",
+  "heading": "Fixing tracking data where it actually breaks.",
+  "bio1": "I'm a data engineer based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
+  "bio2": "Instead of just pasting basic GTM scripts, I write custom JavaScript data layers, plug into payment webhooks like Stripe, and route clean server-side data using Addingwell and Sirdata.",
+  "highlight1": {
+    "title": "Full Conversion Flow",
+    "desc": "Wiring backend checkouts and payment systems directly into CAPI and analytics."
+  },
+  "highlight2": {
+    "title": "JavaScript & Data Layers",
+    "desc": "Parsing DOM elements and turning raw JSON webhooks into structured data layers."
+  },
+  "highlight3": {
+    "title": "Modern Privacy Stack",
+    "desc": "Compliant Consent Mode v2 builds using Sirdata and Addingwell proxies."
+  },
+  "highlight4": {
+    "title": "Agency Partner",
+    "desc": "Stepping in as an on-demand, white-label data engineer for performance teams."
+  }
   },
   "services": {
     "label": "// SERVICES",
-    "heading": "Technical Capabilities",
+    "heading": "SERVICES",
     "formName": "Name",
     "formEmail": "Email",
     "formSubmit": "Send Request",
