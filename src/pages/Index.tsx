@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import { Suspense, lazy } from "react";
 import SiteNav from "@/components/SiteNav";
-import Scene3DBackground from "@/components/Scene3DBackground";
+// three.js + r3f are heavy; load them after the page is interactive.
+const Scene3DBackground = lazy(() => import("@/components/Scene3DBackground"));
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorSpotlight from "@/components/CursorSpotlight";
 import Reveal from "@/components/Reveal";
@@ -32,7 +34,9 @@ const Index = () => {
         />
         <meta property="og:url" content="https://jotasdigital.lovable.app/" />
       </Helmet>
-      <Scene3DBackground />
+      <Suspense fallback={null}>
+        <Scene3DBackground />
+      </Suspense>
       <CursorSpotlight />
       <ScrollProgress />
       <SiteNav />

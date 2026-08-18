@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Early connection setup for third-party origins (consent CDN + tracking) -->
+  <link rel="preconnect" href="https://cdn.kiprotect.com" crossorigin />
+  <link rel="preconnect" href="https://bread.josephtasdigital.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.kiprotect.com" />
+  <link rel="dns-prefetch" href="https://bread.josephtasdigital.com" />
+
   <!--
     Google Consent Mode v2 default.
     Runs synchronously BEFORE the GTM loader so the container sees a valid
