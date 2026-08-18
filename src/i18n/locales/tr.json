@@ -1,93 +1,92 @@
 {
   "nav": {
     "services": "Hizmetler",
-    "work": "Çalışmalar",
+    "work": "Projeler",
     "blog": "Blog",
     "contact": "İletişim",
-    "auditCta": "Denetim / danışmanlık teklifi",
-    "auditCtaShort": "Ücretsiz denetim"
+    "auditCta": "Teknik Denetim",
+    "auditCtaShort": "Denetim"
   },
   "audit": {
-    "title": "Denetim / danışmanlık teklifi",
-    "description": "Bana sitenizden bahsedin. Tracking ve analytics kurulumunuzu inceleyip size özel bir strateji ile geri döneceğim.",
-    "fieldName": "Adınız",
-    "fieldEmail": "E-posta adresi",
-    "fieldWebsite": "Web sitesi adresi",
-    "fieldDetails": "Veri / tracking sorununuzu kısaca anlatın",
-    "submit": "Ücretsiz denetimimi talep et",
-    "submitting": "Gönderiliyor...",
-    "errorMessage": "Bir şeyler ters gitti. Lütfen tekrar deneyin veya doğrudan e-posta gönderin.",
-    "successHeading": "Talebiniz alındı",
-    "successMessage": "Siteniz şu anda denetim altında. İncelemeyi tamamlayıp size uygun bir teklifle birlikte stratejimi hazırladığımda e-posta ile ulaşacağım.",
-    "linkedinPrompt": "LinkedIn üzerinden bağlantı kurmaktan mutluluk duyarım",
-    "linkedinButton": "LinkedIn'de bağlan",
-    "backHome": "Beni ana sayfaya geri götür."
+    "title": "Veri Altyapısı Denetimi",
+    "description": "Domain ve teknoloji altyapınızın detaylarını paylaşın. Etkinlik hattınızı (event pipeline), rıza mimarinizi ve CAPI sinyallerinizi inceleyip teknik bir teşhis raporuyla dönüş yapayım.",
+    "fieldName": "Adınız Soyadınız",
+    "fieldEmail": "E-posta Adresiniz",
+    "fieldWebsite": "Web Sitesi URL'si",
+    "fieldDetails": "Kısaca takip veya dönüşüm sorununuzdan bahsedin",
+    "submit": "Denetim Talebi Gönder",
+    "submitting": "İşleniyor...",
+    "errorMessage": "Gönderim hatası. Lütfen tekrar deneyin veya doğrudan iletişime geçin.",
+    "successHeading": "Denetleme Talebi Alındı",
+    "successMessage": "Takip altyapınız inceleme sırasına alındı. Etkinlik Data Layer yapılarınızı analiz edip teknik teşhis raporunu ileteceğim.",
+    "linkedinPrompt": "LinkedIn'de profesyonel ağıma katılın",
+    "linkedinButton": "LinkedIn'de Bağlantı Kur",
+    "backHome": "Ana Sayfaya Dön"
   },
   "hero": {
-    "subtitle": "Pazarlama Veri Altyapısı Mühendisi",
-    "title1": "Conversion verisi kaybeden markalar için",
-    "title2": "sunucu taraflı tracking ve GA4 düzeltmeleri sunuyorum",
-    "description": "İhtiyaçlarınıza göre özel tracking sistemleri kuruyorum. Adblocker'ları aşarak veri kaybını azaltıyor, bozuk GA4 verilerini onarıyor ve sunucu taraflı etiketlemeyi devreye alıyorum; böylece pazarlama kampanyalarınız gerçekten çalışıyor.",
-    "pill1": "SUNUCU TARAFLI TRACKING",
-    "pill2": "GA4 MİMARİSİ",
-    "pill3": "CONVERSION API (CAPI)",
-    "cta": "Projelerimi keşfedin"
+    "subtitle": "Pazarlama Veri Altyapısı Mühendisi / Takip Uzmanı",
+    "title1": "E-ticaret markaları ve performans marketing ajansları için",
+    "title2": "Server-Side Tracking ve Reklam dönüşüm Mimarisi:",
+    "description": "Backend checkout adımlarını, ödeme webhook'larını ve analitik sistemlerini birbirine bağlayan veri hatları kuruyorum. Ham etkinlikleri temiz Data Layer yapılarına, CAPI payload'larına ve güvenilir GA4 takibine dönüştürüyorum.",
+    "pill1": "SERVER-SIDE TRACKING",
+    "pill2": "DATA LAYER & CAPI",
+    "pill3": "ADDINGWELL & SIRDATA",
+    "cta": "Öne Çıkan Çalışmalarımı Gör"
   },
   "whoami": {
     "label": "// BEN KİMİM",
-    "heading": "Görünmeyenin mimarı.",
-    "bio1": "Fransa Normandiya'dan çalışan bir Veri Mühendisiyim. Intelligent Tracking Prevention (ITP) ve adblocker'lar yüzünden analytics verisinin %30'unu kaybeden şirketlere yardım ediyorum.",
-    "bio2": "Her tıklamayı yakalamak için GCP, ileri düzey JavaScript ve SQL ile sunucusuz altyapılar kuruyorum. Hedefim basit: bozuk veri hatlarınızı onarıp pazarlamanızın gerçekten çalışmasını sağlamak.",
+    "heading": "Reklam takip verinizi tam kırıldığı noktada onarıyorum",
+    "bio1": "Fransa, Normandiya'da ikamet eden bir dönüşüm takip uzmanıyım. E-ticaret markalarının kayıp dönüşüm sinyallerini geri kazanmalarına yardımcı oluyor, growth ajanslarına ihtiyaç anında teknik ortaklık sağlıyorum.",
+    "bio2": "Yalnızca standart GTM tag kurulumu yerine, özel JavaScript Data Layer yapıları yazıyor, Stripe gibi ödeme webhook'larına entegre oluyor ve Addingwell ile Sirdata kullanarak sunucu taraflı veriyi temiz bir şekilde yönlendiriyorum.",
     "highlight1": {
-      "title": "Sunucu taraflı etiketleme",
-      "desc": "Adblocker'ları aşmak için verileri güvenli bulut konteynerleri üzerinden yönlendirme."
+      "title": "Uçtan Uca Dönüşüm Akışı",
+      "desc": "Backend checkout ve ödeme sistemlerini doğrudan CAPI ve analytics'e bağlıyorum."
     },
     "highlight2": {
-      "title": "GCP altyapısı",
-      "desc": "Google Cloud üzerinde sağlam ve ölçeklenebilir veri hatları."
+      "title": "JavaScript & Data Layer",
+      "desc": "DOM elementlerini ayrıştırıp (parsing) ham JSON webhook'larını yapılandırılmış veri katmanlarına dönüştürme."
     },
     "highlight3": {
-      "title": "GA4 ve CAPI entegrasyonu",
-      "desc": "Bozuk analytics'i onarma ve sunucudan sunucuya kusursuz reklam payload'ları kurma."
+      "title": "Modern Gizlilik Mimarisi",
+      "desc": "Sirdata ve Addingwell proxy'leri ile mevzuata uygun Consent Mode v2 kurulumları."
     },
     "highlight4": {
-      "title": "Gizlilik uyumluluğu",
-      "desc": "Avrupa GDPR ve DMA uyumlu consent mimarilerine eksiksiz bağlılık."
+      "title": "Ajans Ortaklığı",
+      "desc": "Performans marketing ekipleri için ihtiyaç anında white-label veri mühendisi desteği."
     }
   },
   "services": {
-    "label": "// Hizmetler",
-    "heading": "Sunduklarım",
-    "formName": "Ad",
+    "heading": "HİZMETLER",
+    "formName": "İsim",
     "formEmail": "E-posta",
-    "formSubmit": "Gönder",
-    "modalTitle": "{{service}} ilginizi çekti mi?",
-    "modalDescription": "Bilgilerinizi bırakın, bu hizmeti konuşmak için size ulaşayım.",
-    "modalSuccess": "Bu hizmete gösterdiğiniz ilgi için teşekkürler; kısa süre içinde detayları konuşmak üzere size ulaşacağım. Spam klasörünü kontrol etmeyi unutmayın."
+    "formSubmit": "Talep Gönder",
+    "modalTitle": "{{service}} Hizmetini Görüşün",
+    "modalDescription": "İletişim bilgilerinizi bırakın, mevcut altyapınızı değerlendirmek üzere sizinle iletişime geçeyim.",
+    "modalSuccess": "Mesajınız alındı. Teknolojik gereksinimlerinizi inceleyip kısa süre içinde dönüş yapacağım."
   },
   "portfolio": {
-    "label": "// Portfolyo",
-    "heading": "Seçilmiş çalışmalar"
+    "label": "// PORTFOLYO",
+    "heading": "Öne Çıkan Çalışmalar ve Vaka Analizleri"
   },
   "blog": {
-    "label": "// Blog",
-    "heading": "Teknik yazılar"
+    "label": "// BLOG",
+    "heading": "Makaleler"
   },
   "contact": {
-    "label": "// İletişim",
-    "title": "İletişime geçin",
-    "description": "Adblocker'lar yüzünden analytics'inin %30'unu kaybeden şirketlerden biri olmaya bir son vermek için doğrudan bana ulaşın. Sizin için her tıklamayı yakalayan ve gürültüyü aşan first-party, sunucu taraflı tracking hatları kuracağım. Hadi bozuk verilerinizi birlikte onaralım.",
-    "formName": "Ad",
+    "label": "// İLETİŞİM",
+    "title": "Projeye Başlayalım",
+    "description": "Reklam takip altyapınızı stabilize etmeye hazır mısınız? İster kapsamlı bir CAPI revizyonu, ister Stripe etkinlik eşlemesi veya ajansınız için teknik bir reklam veri mühendisi arıyor olun, iletişime geçelim.",
+    "formName": "İsim",
     "formEmail": "E-posta",
-    "formMessage": "Veri sorununuzdan bahsedin...",
-    "formSubmit": "Mesaj gönder",
-    "successTitle": "Çok yakında size geri döneceğim",
-    "successNote": "24 saat içinde bir şey almadıysanız lütfen spam klasörünüzü kontrol edin."
+    "formMessage": "Kullandığınız mevcut teknoloji altyapısından ve yaşadığınız veri sorunundan bahsedin...",
+    "formSubmit": "Mesaj Gönder",
+    "successTitle": "Mesajınız Alındı",
+    "successNote": "24 saat içinde size dönüş yapacağım."
   },
   "sandbox": {
-    "label": "// Lab",
+    "label": "// LAB",
     "title": "JavaScript Sandbox",
-    "description": "Canlı çalışan deneyler. Her kart yalıtılmış bir iframe içinde çalışır — açmak ve etkinleştirmek için tıklayın.",
-    "reveal": "Göster"
+    "description": "İzole yürütme ortamlarında çalışan canlı DOM parsing ve veri dönüştürme betikleri.",
+    "reveal": "Kodu İncele"
   }
 }
