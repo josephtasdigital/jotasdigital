@@ -4,18 +4,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { DevModeProvider } from "./contexts/DevModeContext";
 import { getLocaleFromPath, supportedLocales } from "./i18n";
 import Index from "./pages/Index";
-// Secondary routes are code-split so the landing page ships less JS.
-const BlogPost = lazy(() => import("./pages/BlogPost"));
-const PortfolioItem = lazy(() => import("./pages/PortfolioItem"));
-const Playground = lazy(() => import("./pages/Playground"));
-const SandboxTest = lazy(() => import("./pages/SandboxTest"));
-const SandboxInternal = lazy(() => import("./pages/SandboxInternal"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+import BlogPost from "./pages/BlogPost";
+import PortfolioItem from "./pages/PortfolioItem";
+import Playground from "./pages/Playground";
+import SandboxTest from "./pages/SandboxTest";
+import SandboxInternal from "./pages/SandboxInternal";
+import NotFound from "./pages/NotFound";
 // Consent UI is provided by Klaro (see index.html + public/klaro-config.js).
 
 import { initAttribution } from "@/lib/forms/attribution";
@@ -53,7 +52,6 @@ const LocaleSync = ({ children }: { children: React.ReactNode }) => {
 };
 
 const AppRoutes = () => (
-  <Suspense fallback={null}>
   <Routes>
     {/* Default English routes */}
     <Route path="/" element={<LocaleSync><Index /></LocaleSync>} />
@@ -71,7 +69,6 @@ const AppRoutes = () => (
 
     <Route path="*" element={<NotFound />} />
   </Routes>
-  </Suspense>
 );
 
 const App = () => (
