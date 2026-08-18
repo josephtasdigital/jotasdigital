@@ -1,73 +1,72 @@
 {
   "nav": {
-    "services": "服务",
-    "work": "作品",
+    "services": "服务内容",
+    "work": "项目案例",
     "blog": "博客",
-    "contact": "联系",
-    "auditCta": "审计 / 咨询服务",
-    "auditCtaShort": "免费审计"
+    "contact": "联系方式",
+    "auditCta": "技术审计",
+    "auditCtaShort": "审计"
   },
   "audit": {
-    "title": "审计 / 咨询服务",
-    "description": "请告诉我您的网站情况。我会审查您的跟踪和分析配置，并为您量身定制一套策略反馈给您。",
+    "title": "数据基础设施审计",
+    "description": "请输入您的域名和技术栈详情。我将对您的事件数据流、同意机制架构（Consent Architecture）以及 CAPI 信号进行深度审计，并为您提供一份技术诊断报告。",
     "fieldName": "您的姓名",
     "fieldEmail": "电子邮箱",
-    "fieldWebsite": "网站地址",
-    "fieldDetails": "请简要描述您的数据或跟踪难题",
-    "submit": "申请我的免费审计",
-    "submitting": "发送中...",
-    "errorMessage": "出了点问题。请重试，或者直接发邮件给我。",
-    "successHeading": "已收到您的请求",
-    "successMessage": "您的网站现已进入审计阶段。完成分析并制定好附带合理报价的策略后，我会通过邮件与您联系。",
-    "linkedinPrompt": "很高兴能在 LinkedIn 上与您建立联系",
-    "linkedinButton": "在 LinkedIn 上联系",
-    "backHome": "返回主页。"
+    "fieldWebsite": "网站 URL",
+    "fieldDetails": "简述您面临的追踪或转化数据难题",
+    "submit": "申请技术审计",
+    "submitting": "正在处理...",
+    "errorMessage": "发送失败。请重试或直接与我联系。",
+    "successHeading": "已收到审计申请",
+    "successMessage": "您的追踪技术栈已排期评估。我将排查您的事件数据层（Data Layer），并为您发送诊断分析报告。",
+    "linkedinPrompt": "欢迎在 LinkedIn 上与我建立专业联系",
+    "linkedinButton": "在 LinkedIn 上建立联系",
+    "backHome": "返回首页"
   },
   "hero": {
-    "subtitle": "营销数据基础设施工程师",
-    "title1": "我为流失转化数据的品牌",
-    "title2": "提供服务器端跟踪与 GA4 修复",
-    "description": "我根据您的需求量身打造跟踪系统：通过绕过广告拦截器减少数据丢失，修复损坏的 GA4 数据，并部署服务器端打标，让您的营销活动真正发挥作用。",
-    "pill1": "服务器端跟踪",
-    "pill2": "GA4 架构",
-    "pill3": "CONVERSION API (CAPI)",
-    "cta": "查看我的项目"
+    "subtitle": "营销数据基础设施工程师 / 追踪架构专家",
+    "title1": "服务端追踪与转化架构，专为",
+    "title2": "电商品牌与效果营销代理商打造",
+    "description": "我致力于构建稳定可靠的数据管道，无缝打通后端结账、支付 Webhook 与数据分析系统。将原始事件转化为干净的 Data Layer、CAPI 载荷以及精准的 GA4 追踪。",
+    "pill1": "服务端追踪",
+    "pill2": "DATA LAYER & CAPI",
+    "pill3": "ADDINGWELL & SIRDATA",
+    "cta": "查看精选案例"
   },
   "whoami": {
     "label": "// 关于我",
-    "heading": "构建看不见的架构。",
-    "bio1": "我是一名数据工程师，常驻法国诺曼底。我帮助那些因智能跟踪防护（ITP）和广告拦截器而流失约 30% 分析数据的公司。",
-    "bio2": "我使用 GCP、进阶 JavaScript 与 SQL 搭建无服务器架构，捕获每一次点击。我的使命很简单：修复您断裂的数据管线，让营销真正奏效。",
+    "heading": "在数据断流的真正源头修复追踪",
+    "bio1": "我是一名现居法国诺曼底的追踪架构专家。我帮助电商品牌找回丢失的转化信号，并为增长型营销代理商提供按需的技术支持。",
+    "bio2": "不仅限于嵌入基础的 GTM 脚本，我还会编写定制化 JavaScript 数据层，对接 Stripe 等支付 Webhook，并利用 Addingwell 和 Sirdata 进行干净的服务端数据路由。",
     "highlight1": {
-      "title": "服务器端打标",
-      "desc": "通过安全的云容器转发数据，从而绕过广告拦截器。"
+      "title": "全链路转化流",
+      "desc": "将后端结账与支付系统直接直连至 CAPI 和分析工具。"
     },
     "highlight2": {
-      "title": "GCP 基础设施",
-      "desc": "在 Google Cloud 上构建稳定且可扩展的数据管线。"
+      "title": "JavaScript & 数据层",
+      "desc": "解析 DOM 元素，将原始 JSON Webhook 转化为结构化的 Data Layer。"
     },
     "highlight3": {
-      "title": "GA4 与 CAPI 集成",
-      "desc": "修复损坏的分析数据，构建无缝的服务器到服务器广告数据传输。"
+      "title": "现代隐私架构",
+      "desc": "基于 Sirdata 和 Addingwell 代理构建符合 GDPR 规范的 Consent Mode v2 方案。"
     },
     "highlight4": {
-      "title": "隐私合规",
-      "desc": "严格遵循欧盟 GDPR 及 DMA 同意状态架构。"
+      "title": "代理商技术伙伴",
+      "desc": "以白标（White-label）数据工程师身份，随时为效果营销团队提供按需支持。"
     }
   },
   "services": {
-    "label": "// 服务",
-    "heading": "我能交付什么",
+    "heading": "服务内容",
     "formName": "姓名",
-    "formEmail": "邮箱",
-    "formSubmit": "发送",
-    "modalTitle": "对 {{service}} 感兴趣？",
-    "modalDescription": "请留下您的联系方式，我会主动与您沟通这项服务。",
-    "modalSuccess": "感谢您对该服务的关注，我很快会与您联系详谈。请记得查看您的垃圾邮件文件夹。"
+    "formEmail": "电子邮箱",
+    "formSubmit": "提交申请",
+    "modalTitle": "探讨 {{service}} 方案",
+    "modalDescription": "留下您的联系方式，我会与您取得联系并评估您现有的技术栈。",
+    "modalSuccess": "已收到您的信息。我会评估您的技术栈需求并尽快回复。"
   },
   "portfolio": {
     "label": "// 作品集",
-    "heading": "精选案例"
+    "heading": "精选项目与案例研究"
   },
   "blog": {
     "label": "// 博客",
@@ -75,19 +74,19 @@
   },
   "contact": {
     "label": "// 联系",
-    "title": "保持联系",
-    "description": "直接联系我，结束因广告拦截器而流失 30% 分析数据的处境。我会为您构建第一方、服务器端的跟踪管线，捕获每一次点击并绕过干扰。让我们一起修复您的数据。",
+    "title": "发起合作",
+    "description": "准备好加固您的数据追踪基础设施了吗？无论您需要全面的 CAPI 架构重构、Stripe 事件映射，还是为代理商寻找一位按需调用的数据工程师，随时与我联系。",
     "formName": "姓名",
-    "formEmail": "邮箱",
-    "formMessage": "请描述您的数据难题...",
+    "formEmail": "电子邮箱",
+    "formMessage": "请简述您的技术栈与数据难题...",
     "formSubmit": "发送消息",
-    "successTitle": "我会尽快回复您",
-    "successNote": "如果 24 小时内仍未收到回复，请检查您的垃圾邮件文件夹。"
+    "successTitle": "消息已收到",
+    "successNote": "我会在 24 小时内回复您。"
   },
   "sandbox": {
     "label": "// 实验室",
     "title": "JavaScript 沙盒",
-    "description": "实时执行的实验。每张卡片都在隔离的 iframe 中运行——点击即可展开并激活。",
-    "reveal": "展开"
+    "description": "在隔离执行环境中运行的实时 DOM 解析与数据转换脚本。",
+    "reveal": "查看脚本"
   }
 }
