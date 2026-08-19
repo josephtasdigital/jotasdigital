@@ -56,6 +56,7 @@
     }
   },
   "services": {
+    "label": "// SERVICES",
     "heading": "SERVICES",
     "formName": "Nom",
     "formEmail": "E-mail",
@@ -82,11 +83,5 @@
     "formSubmit": "Envoyer le message",
     "successTitle": "Message reçu",
     "successNote": "Je vous recontacterai sous 24 heures."
-  },
-  "sandbox": {
-    "label": "// LAB",
-    "title": "Sandbox JavaScript",
-    "description": "Scripts de parsing DOM et de transformation de données exécutés en direct dans des environnements isolés.",
-    "reveal": "Inspecter le script"
   }
 }
