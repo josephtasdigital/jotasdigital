@@ -83,5 +83,20 @@
     "formSubmit": "Invia messaggio",
     "successTitle": "Ti risponderò molto presto",
     "successNote": "Controlla la cartella spam se non ricevi nulla entro 24 ore."
+  },
+  "partners": {
+    "label": "// PARTNER",
+    "heading": "Offerte partner",
+    "modalIntro": "È la soluzione giusta per la tua attività? Inserisci qui sotto il tuo sito ufficiale, aggiungi i dettagli che vuoi e ti risponderò il prima possibile con consigli personalizzati.",
+    "website": "URL del sito web",
+    "name": "Nome",
+    "email": "Indirizzo e-mail (personale / professionale)",
+    "details": "Dettagli",
+    "send": "Invia",
+    "sending": "Invio in corso...",
+    "error": "Qualcosa è andato storto. Riprova.",
+    "success": "Fatto, siamo già in contatto?",
+    "return": "Torna alla pagina principale",
+    "fallbackTitle": "Offerta partner"
   }
 }

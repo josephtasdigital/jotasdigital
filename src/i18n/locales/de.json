@@ -83,5 +83,20 @@
     "formSubmit": "Nachricht senden",
     "successTitle": "Nachricht erhalten",
     "successNote": "Ich melde mich innerhalb von 24 Stunden bei Ihnen."
+  },
+  "partners": {
+    "label": "// PARTNER",
+    "heading": "Partnerangebote",
+    "modalIntro": "Passt das zu Ihrem Unternehmen? Geben Sie unten Ihre offizielle Website ein, ergänzen Sie beliebige Details und ich melde mich schnellstmöglich mit persönlicher Beratung zurück.",
+    "website": "Website-URL",
+    "name": "Name",
+    "email": "E-Mail-Adresse (privat / geschäftlich)",
+    "details": "Details",
+    "send": "Senden",
+    "sending": "Wird gesendet...",
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "success": "Erledigt – sind wir schon vernetzt?",
+    "return": "Zurück zur Startseite",
+    "fallbackTitle": "Partnerangebot"
   }
 }

@@ -83,5 +83,20 @@
     "formSubmit": "发送消息",
     "successTitle": "消息已收到",
     "successNote": "我会在 24 小时内回复您。"
+  },
+  "partners": {
+    "label": "// 合作伙伴",
+    "heading": "合作伙伴优惠",
+    "modalIntro": "这是否适合您的业务？请在下方填写您的官方网站，并补充任何细节，我会尽快回复并提供个性化建议。",
+    "website": "网站网址",
+    "name": "姓名",
+    "email": "电子邮箱（个人 / 商务）",
+    "details": "详细信息",
+    "send": "发送",
+    "sending": "发送中...",
+    "error": "出现错误，请重试。",
+    "success": "完成了，我们已经建立联系了吗？",
+    "return": "返回主页",
+    "fallbackTitle": "合作伙伴优惠"
   }
 }

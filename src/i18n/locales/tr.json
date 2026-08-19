@@ -83,5 +83,20 @@
     "formSubmit": "Mesaj Gönder",
     "successTitle": "Mesajınız Alındı",
     "successNote": "24 saat içinde size dönüş yapacağım."
+  },
+  "partners": {
+    "label": "// PARTNERLER",
+    "heading": "Partner Teklifleri",
+    "modalIntro": "İşletmeniz için doğru çözüm mü? Aşağıya resmi web sitenizi yazın, istediğiniz detayları ekleyin; size en kısa sürede kişiselleştirilmiş tavsiyelerimle döneceğim.",
+    "website": "Web sitesi adresi",
+    "name": "Ad",
+    "email": "E-posta adresi (kişisel / kurumsal)",
+    "details": "Detaylar",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "error": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+    "success": "Tamamdır, henüz bağlantı kurduk mu?",
+    "return": "Ana sayfaya dön",
+    "fallbackTitle": "Partner teklifi"
   }
 }
