@@ -83,5 +83,20 @@
     "formSubmit": "Send Message",
     "successTitle": "Message Received",
     "successNote": "I will get back to you within 24 hours."
+  },
+  "partners": {
+    "label": "// PARTNERS",
+    "heading": "Partner Offers",
+    "modalIntro": "Is that the right fit for your business? Type your official website below, add any details you want, and I will get back to you as fast as possible with personalized advice.",
+    "website": "Website URL",
+    "name": "Name",
+    "email": "Email address (personal / professional)",
+    "details": "Details",
+    "send": "Send",
+    "sending": "Sending...",
+    "error": "Something went wrong. Please try again.",
+    "success": "Done, have we connected yet?",
+    "return": "Return to Main Page",
+    "fallbackTitle": "Partner Offer"
   }
 }

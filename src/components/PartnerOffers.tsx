@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Linkedin, Loader2 } from "lucide-react";
 import { getPartnerOffers } from "@/lib/markdown";
 import { useTrackedFormSubmission } from "@/hooks/use-tracked-form";
@@ -60,6 +61,7 @@ interface PartnerOffersProps {
 }
 
 const PartnerOffers = ({ offers }: PartnerOffersProps) => {
+  const { t } = useTranslation();
   // Mirror Services pattern: CMS items via markdown loader, fall back to demo.
   const cmsItems = getPartnerOffers().map<PartnerOffer>((i) => ({
     slug: i.slug,
@@ -136,8 +138,8 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
         data-gtm="partner-offers-section"
       >
         <div className="section-container">
-          <span className="section-label">// Partners</span>
-          <h2 className="section-title">Partner Offers</h2>
+          <span className="section-label">{t("partners.label")}</span>
+          <h2 className="section-title">{t("partners.heading")}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((offer, i) => (
@@ -149,7 +151,8 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.06, duration: 0.45 }}
-                className="group relative text-left border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
+                className="group relative text-left border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer motion-safe:animate-float-slow hover:[animation-play-state:paused]"
+                style={{ animationDelay: `${i * 0.4}s` }}
                 data-gtm={`partner-offer-${i}`}
               >
                 <div className="relative overflow-hidden rounded-2xl">
@@ -183,16 +186,14 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
         >
           <DialogHeader>
             <DialogTitle className="font-display text-foreground text-lg">
-              {selected?.title ?? "Partner Offer"}
+              {selected?.title ?? t("partners.fallbackTitle")}
             </DialogTitle>
           </DialogHeader>
 
           {!submitted ? (
             <>
               <p className="font-body text-sm text-foreground/90 leading-relaxed">
-                Is that right fit for your business? To find out, type your official
-                website below, add any details you would want and I will reach back
-                to you as fast as possible with my personalized advice.
+                {t("partners.modalIntro")}
               </p>
 
               <form
@@ -203,7 +204,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 <input
                   type="url"
                   required
-                  placeholder="Website URL"
+                  placeholder={t("partners.website")}
                   value={form.website}
                   onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
                   className="w-full h-12 px-4 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors"
@@ -211,7 +212,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 <input
                   type="text"
                   required
-                  placeholder="Name"
+                  placeholder={t("partners.name")}
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                   className="w-full h-12 px-4 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors"
@@ -219,7 +220,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 <input
                   type="email"
                   required
-                  placeholder="Email address (personal / professional)"
+                  placeholder={t("partners.email")}
                   value={form.email}
                   onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                   className="w-full h-12 px-4 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors"
@@ -227,13 +228,13 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 <textarea
                   required
                   rows={4}
-                  placeholder="Details"
+                  placeholder={t("partners.details")}
                   value={form.details}
                   onChange={(e) => setForm((f) => ({ ...f, details: e.target.value }))}
                   className="w-full px-4 py-3 bg-background/60 border border-border rounded-sm text-foreground placeholder:text-muted-foreground/70 font-body text-sm focus:outline-none focus:border-primary transition-colors resize-y min-h-[120px]"
                 />
 
-                {error && <p className="text-sm text-destructive">Something went wrong. Please try again.</p>}
+                {error && <p className="text-sm text-destructive">{t("partners.error")}</p>}
 
                 <button
                   type="submit"
@@ -242,7 +243,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                   className="w-full h-12 relative overflow-hidden rounded-sm font-display text-sm uppercase tracking-widest text-primary-foreground bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] transition-all duration-300 hover:bg-[position:100%_0] hover:shadow-[0_0_28px_rgba(0,229,255,0.55)] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
-                  {submitting ? "Sending..." : "Send"}
+                  {submitting ? t("partners.sending") : t("partners.send")}
                 </button>
               </form>
             </>
@@ -250,7 +251,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
             <div className="mt-2 space-y-6">
               <div className="flex items-center gap-3">
                 <p className="font-body text-base text-foreground/90">
-                  Done, have we connected yet?
+                  {t("partners.success")}
                 </p>
                 <a
                   href={LINKEDIN_URL}
@@ -270,7 +271,7 @@ const PartnerOffers = ({ offers }: PartnerOffersProps) => {
                 data-gtm="partner-offer-close"
                 className="w-full h-12 font-display text-sm uppercase tracking-widest border-primary/40 hover:bg-primary/10 hover:border-primary"
               >
-                Return to Main Page
+                {t("partners.return")}
               </Button>
             </div>
           )}

@@ -95,6 +95,10 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -102,7 +106,9 @@ export default {
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "scan-line": "scan-line 8s linear infinite",
         marquee: "marquee 40s linear infinite",
+        "float-slow": "float-slow 6s ease-in-out infinite",
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -83,5 +83,20 @@
     "formSubmit": "Envoyer le message",
     "successTitle": "Message reçu",
     "successNote": "Je vous recontacterai sous 24 heures."
+  },
+  "partners": {
+    "label": "// PARTENAIRES",
+    "heading": "Offres partenaires",
+    "modalIntro": "Est-ce adapté à votre activité ? Indiquez ci-dessous votre site officiel, ajoutez les détails souhaités et je reviendrai vers vous au plus vite avec des conseils personnalisés.",
+    "website": "URL du site web",
+    "name": "Nom",
+    "email": "Adresse e-mail (personnelle / professionnelle)",
+    "details": "Détails",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "success": "C'est fait, sommes-nous déjà connectés ?",
+    "return": "Retour à la page d'accueil",
+    "fallbackTitle": "Offre partenaire"
   }
 }
