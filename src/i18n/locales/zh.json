@@ -56,6 +56,7 @@
     }
   },
   "services": {
+    "label": "// 服务",
     "heading": "服务内容",
     "formName": "姓名",
     "formEmail": "电子邮箱",
@@ -82,11 +83,5 @@
     "formSubmit": "发送消息",
     "successTitle": "消息已收到",
     "successNote": "我会在 24 小时内回复您。"
-  },
-  "sandbox": {
-    "label": "// 实验室",
-    "title": "JavaScript 沙盒",
-    "description": "在隔离执行环境中运行的实时 DOM 解析与数据转换脚本。",
-    "reveal": "查看脚本"
   }
 }

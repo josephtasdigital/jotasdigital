@@ -56,6 +56,7 @@
     }
   },
   "services": {
+    "label": "// HİZMETLER",
     "heading": "HİZMETLER",
     "formName": "İsim",
     "formEmail": "E-posta",
@@ -82,11 +83,5 @@
     "formSubmit": "Mesaj Gönder",
     "successTitle": "Mesajınız Alındı",
     "successNote": "24 saat içinde size dönüş yapacağım."
-  },
-  "sandbox": {
-    "label": "// LAB",
-    "title": "JavaScript Sandbox",
-    "description": "İzole yürütme ortamlarında çalışan canlı DOM parsing ve veri dönüştürme betikleri.",
-    "reveal": "Kodu İncele"
   }
 }

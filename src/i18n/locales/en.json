@@ -33,29 +33,30 @@
     "pill3": "ADDINGWELL & SIRDATA",
     "cta": "View Selected Work"
   },
-"whoami": {
-  "label": "// WHO I AM",
-  "heading": "Fixing tracking data where it actually breaks",
-  "bio1": "I'm a tracking specialist based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
-  "bio2": "Instead of just pasting basic GTM scripts, I write custom JavaScript data layers, plug into payment webhooks like Stripe, and route clean server-side data using Addingwell and Sirdata.",
-  "highlight1": {
-    "title": "Full Conversion Flow",
-    "desc": "Wiring backend checkouts and payment systems directly into CAPI and analytics."
-  },
-  "highlight2": {
-    "title": "JavaScript & Data Layers",
-    "desc": "Parsing DOM elements and turning raw JSON webhooks into structured data layers."
-  },
-  "highlight3": {
-    "title": "Modern Privacy Stack",
-    "desc": "Compliant Consent Mode v2 builds using Sirdata and Addingwell proxies."
-  },
-  "highlight4": {
-    "title": "Agency Partner",
-    "desc": "Stepping in as an on-demand, white-label data engineer for performance teams."
-  }
+  "whoami": {
+    "label": "// WHO I AM",
+    "heading": "Fixing tracking data where it actually breaks",
+    "bio1": "I'm a tracking specialist based in Normandy, France. I help e-commerce brands recover lost conversion signals and act as an on-demand technical partner for growth agencies.",
+    "bio2": "Instead of just pasting basic GTM scripts, I write custom JavaScript data layers, plug into payment webhooks like Stripe, and route clean server-side data using Addingwell and Sirdata.",
+    "highlight1": {
+      "title": "Full Conversion Flow",
+      "desc": "Wiring backend checkouts and payment systems directly into CAPI and analytics."
+    },
+    "highlight2": {
+      "title": "JavaScript & Data Layers",
+      "desc": "Parsing DOM elements and turning raw JSON webhooks into structured data layers."
+    },
+    "highlight3": {
+      "title": "Modern Privacy Stack",
+      "desc": "Compliant Consent Mode v2 builds using Sirdata and Addingwell proxies."
+    },
+    "highlight4": {
+      "title": "Agency Partner",
+      "desc": "Stepping in as an on-demand, white-label data engineer for performance teams."
+    }
   },
   "services": {
+    "label": "// SERVICES",
     "heading": "SERVICES",
     "formName": "Name",
     "formEmail": "Email",
@@ -82,11 +83,5 @@
     "formSubmit": "Send Message",
     "successTitle": "Message Received",
     "successNote": "I will get back to you within 24 hours."
-  },
-  "sandbox": {
-    "label": "// LAB",
-    "title": "JavaScript Sandbox",
-    "description": "Live DOM parsing and data transformation scripts running in isolated execution environments.",
-    "reveal": "Inspect Script"
   }
 }
