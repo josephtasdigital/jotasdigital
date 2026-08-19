@@ -135,7 +135,8 @@ const ServicesSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-40px" }}
                         transition={{ delay: ti * 0.1 + si * 0.06, duration: 0.45 }}
-                        className="group relative border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer"
+                        className="group relative border border-transparent rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-card/50 bg-card/30 cursor-pointer motion-safe:animate-float-slow hover:[animation-play-state:paused]"
+                        style={{ animationDelay: `${(ti * 3 + si) * 0.35}s` }}
                         data-gtm={`service-${tier.tier}-${si}`}
                         onClick={() => handleCardClick(item.frontmatter.title, item.frontmatter.service_image)}
                       >
