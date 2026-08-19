@@ -1,93 +1,92 @@
 {
   "nav": {
     "services": "Services",
-    "work": "Réalisations",
+    "work": "Projets",
     "blog": "Blog",
     "contact": "Contact",
-    "auditCta": "Offre d'audit / conseil",
-    "auditCtaShort": "Audit gratuit"
+    "auditCta": "Audit Technique",
+    "auditCtaShort": "Audit"
   },
   "audit": {
-    "title": "Offre d'audit / conseil",
-    "description": "Parlez-moi de votre site. J'examinerai votre configuration de tracking et d'analytics, puis je reviendrai vers vous avec une stratégie sur mesure.",
+    "title": "Audit d'Infrastructure Data",
+    "description": "Renseignez votre domaine et les détails de votre stack. J'analyserai votre pipeline d'événements, votre architecture de consentement et vos signaux CAPI, puis je vous fournirai un rapport de diagnostic technique.",
     "fieldName": "Votre nom",
     "fieldEmail": "Adresse e-mail",
     "fieldWebsite": "URL du site web",
-    "fieldDetails": "Décrivez brièvement votre problématique data ou tracking",
-    "submit": "Demander mon audit gratuit",
-    "submitting": "Envoi en cours...",
-    "errorMessage": "Une erreur est survenue. Veuillez réessayer ou m'écrire directement par e-mail.",
-    "successHeading": "Demande bien reçue",
-    "successMessage": "Votre site est maintenant en cours d'audit. Je vous contacterai par e-mail dès que j'aurai terminé l'analyse et défini une stratégie accompagnée d'une offre adaptée.",
-    "linkedinPrompt": "Je serai ravi de vous compter parmi mes contacts sur LinkedIn",
+    "fieldDetails": "Décrivez votre défi de tracking ou de conversion",
+    "submit": "Demander un audit",
+    "submitting": "Traitement en cours...",
+    "errorMessage": "Erreur de transmission. Veuillez réessayer ou me contacter directement.",
+    "successHeading": "Demande d'audit reçue",
+    "successMessage": "Votre stack de tracking est en attente d'analyse. Je vais examiner vos Data Layers d'événements et vous envoyer un bilan diagnostique.",
+    "linkedinPrompt": "Connectons-nous sur LinkedIn",
     "linkedinButton": "Se connecter sur LinkedIn",
-    "backHome": "Me ramener à la page d'accueil."
+    "backHome": "Retour à la page d'accueil"
   },
   "hero": {
-    "subtitle": "Ingénieur en infrastructure de données marketing",
-    "title1": "Je mets en place le tracking côté serveur et corrige GA4",
-    "title2": "pour les marques qui perdent leurs données de conversion",
-    "description": "Je conçois des systèmes de tracking adaptés à vos besoins. Je réduis la perte de données en contournant les bloqueurs de publicités, je répare les données GA4 cassées et je déploie le tagging côté serveur pour que vos campagnes marketing fonctionnent vraiment.",
-    "pill1": "TRACKING CÔTÉ SERVEUR",
-    "pill2": "ARCHITECTURE GA4",
-    "pill3": "CONVERSION API (CAPI)",
-    "cta": "Découvrir mes projets"
+    "subtitle": "Ingénieur Infrastructure Data Marketing / Spécialiste Tracking",
+    "title1": "Server-Side Tracking & Architecture de Conversion pour",
+    "title2": "Marques E-commerce et agences de performance",
+    "description": "Je construis des pipelines de données résilients qui relient les checkouts backend, les webhooks de paiement et l'analytics. Transformation des événements bruts en Data Layers propres, payloads CAPI et tracking GA4 fiable.",
+    "pill1": "SERVER-SIDE TRACKING",
+    "pill2": "DATA LAYER & CAPI",
+    "pill3": "ADDINGWELL & SIRDATA",
+    "cta": "Voir les projets"
   },
   "whoami": {
-    "label": "// QUI SUIS-JE",
-    "heading": "Architecte de l'invisible.",
-    "bio1": "Je suis ingénieur data basé en Normandie, France. J'aide les entreprises qui perdent 30 % de leurs analytics à cause de l'Intelligent Tracking Prevention (ITP) et des bloqueurs de publicités.",
-    "bio2": "Je construis des infrastructures serverless avec GCP, du JavaScript avancé et SQL pour capturer chaque clic. Ma mission est simple : réparer vos pipelines de données afin que votre marketing fonctionne réellement.",
+    "label": "// QUI JE SUIS",
+    "heading": "Réparer les données de tracking là où elles cassent vraiment",
+    "bio1": "Je suis un spécialiste du tracking basé en Normandie, en France. J'aide les marques e-commerce à récupérer leurs signaux de conversion perdus et j'interviens comme partenaire technique à la demande pour les agences de croissance.",
+    "bio2": "Plutôt que de simplement coller des scripts GTM basiques, je développe des Data Layers JavaScript sur-mesure, je me connecte aux webhooks de paiement comme Stripe et je route des données serveur propres via Addingwell et Sirdata.",
     "highlight1": {
-      "title": "Tagging côté serveur",
-      "desc": "Acheminement des données via des conteneurs cloud sécurisés pour contourner les bloqueurs de publicités."
+      "title": "Flux de Conversion Complet",
+      "desc": "Raccordement direct du backend et des paiements vers CAPI et vos outils analytics."
     },
     "highlight2": {
-      "title": "Infrastructure GCP",
-      "desc": "Pipelines de données robustes et évolutifs déployés sur Google Cloud."
+      "title": "JavaScript & Data Layers",
+      "desc": "Parsing d'éléments DOM et conversion des webhooks JSON en Data Layers structurés."
     },
     "highlight3": {
-      "title": "Intégration GA4 et CAPI",
-      "desc": "Réparation des analytics cassés et conception de payloads publicitaires server-to-server sans faille."
+      "title": "Stack Privacy Moderne",
+      "desc": "Configurations Consent Mode v2 conformes basées sur des proxys Sirdata et Addingwell."
     },
     "highlight4": {
-      "title": "Conformité et vie privée",
-      "desc": "Respect strict du RGPD européen et des architectures de consentement liées au DMA."
+      "title": "Partenaire Agence",
+      "desc": "Intervention en marque blanche comme ingénieur data dédié selon vos besoins."
     }
   },
   "services": {
-    "label": "// Services",
-    "heading": "Ce que je livre",
+    "heading": "SERVICES",
     "formName": "Nom",
     "formEmail": "E-mail",
-    "formSubmit": "Envoyer",
-    "modalTitle": "Intéressé par {{service}} ?",
-    "modalDescription": "Laissez-moi vos coordonnées et je vous recontacterai pour discuter de ce service.",
-    "modalSuccess": "Merci pour votre intérêt. Je vous recontacterai très vite pour en discuter. Pensez à vérifier votre dossier de courriers indésirables."
+    "formSubmit": "Envoyer la demande",
+    "modalTitle": "Discuter de {{service}}",
+    "modalDescription": "Laissez vos coordonnées et je vous contacterai pour évaluer votre configuration actuelle.",
+    "modalSuccess": "Message reçu. J'analyserai vos besoins techniques et je vous répondrai rapidement."
   },
   "portfolio": {
-    "label": "// Portfolio",
-    "heading": "Réalisations sélectionnées"
+    "label": "// PORTFOLIO",
+    "heading": "Projets Sélectionnés & Cas d'Étude"
   },
   "blog": {
-    "label": "// Blog",
-    "heading": "Articles techniques"
+    "label": "// BLOG",
+    "heading": "Articles"
   },
   "contact": {
-    "label": "// Contact",
-    "title": "Entrons en contact",
-    "description": "Contactez-moi directement pour ne plus faire partie de ces entreprises qui perdent 30 % de leurs analytics à cause des bloqueurs de publicités. Je construirai pour vous des pipelines de tracking first-party côté serveur capables de capter chaque clic et de contourner le bruit. Réparons vos données ensemble.",
+    "label": "// CONTACT",
+    "title": "Lancer un projet",
+    "description": "Prêt à stabiliser votre infrastructure de tracking ? Que vous ayez besoin d'une refonte CAPI complète, d'un mapping d'événements Stripe ou d'un ingénieur data à la demande pour votre agence, échangeons.",
     "formName": "Nom",
     "formEmail": "E-mail",
-    "formMessage": "Parlez-moi de votre problématique data...",
+    "formMessage": "Parlez-moi de votre stack technique et de vos enjeux data...",
     "formSubmit": "Envoyer le message",
-    "successTitle": "Je vous recontacte très vite",
-    "successNote": "Pensez à vérifier vos courriers indésirables si vous n'avez rien reçu sous 24 heures."
+    "successTitle": "Message reçu",
+    "successNote": "Je vous recontacterai sous 24 heures."
   },
   "sandbox": {
-    "label": "// Lab",
-    "title": "Bac à sable JavaScript",
-    "description": "Expérimentations exécutées en direct. Chaque carte tourne dans une iframe isolée — cliquez pour la révéler et l'activer.",
-    "reveal": "Révéler"
+    "label": "// LAB",
+    "title": "Sandbox JavaScript",
+    "description": "Scripts de parsing DOM et de transformation de données exécutés en direct dans des environnements isolés.",
+    "reveal": "Inspecter le script"
   }
 }
