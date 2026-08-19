@@ -4,90 +4,89 @@
     "work": "Projekte",
     "blog": "Blog",
     "contact": "Kontakt",
-    "auditCta": "Audit- / Beratungsangebot",
-    "auditCtaShort": "Kostenloses Audit"
+    "auditCta": "Technisches Audit",
+    "auditCtaShort": "Audit"
   },
   "audit": {
-    "title": "Audit- / Beratungsangebot",
-    "description": "Erzählen Sie mir von Ihrer Website. Ich prüfe Ihr Tracking- und Analytics-Setup und komme mit einer maßgeschneiderten Strategie auf Sie zurück.",
+    "title": "Daten-Infrastruktur-Audit",
+    "description": "Geben Sie Ihre Domain und Ihren Stack an. Ich überprüfe Ihre Event-Pipeline, Consent-Architektur und CAPI-Signale und liefere einen technischen Diagnosebericht.",
     "fieldName": "Ihr Name",
     "fieldEmail": "E-Mail-Adresse",
     "fieldWebsite": "Website-URL",
-    "fieldDetails": "Beschreiben Sie kurz Ihre Daten- bzw. Tracking-Herausforderung",
-    "submit": "Mein kostenloses Audit anfragen",
-    "submitting": "Wird gesendet...",
-    "errorMessage": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie mir direkt eine E-Mail.",
-    "successHeading": "Anfrage erhalten",
-    "successMessage": "Ihre Website wird nun auditiert. Sobald ich die Analyse abgeschlossen und eine Strategie mit einem fairen Angebot ausgearbeitet habe, melde ich mich per E-Mail bei Ihnen.",
-    "linkedinPrompt": "Ich würde mich freuen, Sie als Kontakt auf LinkedIn zu haben",
+    "fieldDetails": "Beschreiben Sie Ihre Tracking- oder Conversion-Herausforderung",
+    "submit": "Audit anfragen",
+    "submitting": "Wird verarbeitet...",
+    "errorMessage": "Übertragungsfehler. Bitte versuchen Sie es erneut oder schreiben Sie mir direkt.",
+    "successHeading": "Audit-Anfrage erhalten",
+    "successMessage": "Ihr Tracking-Stack ist für die Analyse vorgemerkt. Ich werde Ihre Event-Data-Layer prüfen und Ihnen einen Diagnosebericht zusenden.",
+    "linkedinPrompt": "Lassen Sie uns gerne auf LinkedIn vernetzen",
     "linkedinButton": "Auf LinkedIn vernetzen",
-    "backHome": "Zurück zur Startseite."
+    "backHome": "Zurück zur Startseite"
   },
   "hero": {
-    "subtitle": "Engineer für Marketing-Daten-Infrastruktur",
-    "title1": "Ich liefere serverseitiges Tracking und GA4-Fixes",
-    "title2": "für Marken, die Conversion-Daten verlieren",
-    "description": "Ich baue Tracking-Systeme, die exakt auf Ihre Anforderungen zugeschnitten sind. Ich reduziere Ihren Datenverlust, indem ich Adblocker umgehe, kaputte GA4-Daten repariere und serverseitiges Tagging einführe — damit Ihre Marketingkampagnen wirklich funktionieren.",
-    "pill1": "SERVERSEITIGES TRACKING",
-    "pill2": "GA4-ARCHITEKTUR",
-    "pill3": "CONVERSION API (CAPI)",
-    "cta": "Meine Projekte entdecken"
+    "subtitle": "Marketing Data Infrastructure Engineer / Tracking-Spezialist",
+    "title1": "Server-Side Tracking & Conversion-Architektur für",
+    "title2": "E-Commerce-Marken und Performance-Agenturen",
+    "description": "Ich baue belastbare Datenpipelines, die Backend-Checkouts, Zahlungs-Webhooks und Analytics verbinden. Wandlung von Rohdaten-Events in saubere Data Layer, CAPI-Payloads und verlässliches GA4-Tracking.",
+    "pill1": "SERVER-SIDE TRACKING",
+    "pill2": "DATA LAYER & CAPI",
+    "pill3": "ADDINGWELL & SIRDATA",
+    "cta": "Ausgewählte Arbeiten ansehen"
   },
   "whoami": {
     "label": "// WER ICH BIN",
-    "heading": "Architekt des Unsichtbaren.",
-    "bio1": "Ich bin Data Engineer aus der Normandie in Frankreich und unterstütze Unternehmen, die durch Intelligent Tracking Prevention (ITP) und Adblocker rund 30 % ihrer Analytics-Daten verlieren.",
-    "bio2": "Ich entwickle serverlose Infrastrukturen mit GCP, fortgeschrittenem JavaScript und SQL, um jeden Klick zu erfassen. Meine Mission ist einfach: Ihre kaputten Datenpipelines reparieren, damit Ihr Marketing tatsächlich funktioniert.",
+    "heading": "Tracking-Daten reparieren, wo sie wirklich brechen",
+    "bio1": "Ich bin Tracking-Spezialist aus der Normandie (Frankreich). Ich helfe E-Commerce-Marken, verlorene Conversion-Signale zurückzugewinnen, und unterstütze Wachstumsaagenturen als flexibler technischer Partner.",
+    "bio2": "Anstatt nur einfache GTM-Skripte einzufügen, schreibe ich maßgeschneiderte JavaScript Data Layer, binde Zahlungs-Webhooks wie Stripe an und leite saubere serverseitige Daten über Addingwell und Sirdata weiter.",
     "highlight1": {
-      "title": "Serverseitiges Tagging",
-      "desc": "Datenrouting über sichere Cloud-Container, um Adblocker zu umgehen."
+      "title": "Vollständiger Conversion-Fluss",
+      "desc": "Direkte Anbindung von Backend-Checkouts und Zahlungssystemen an CAPI und Analytics."
     },
     "highlight2": {
-      "title": "GCP-Infrastruktur",
-      "desc": "Robuste, skalierbare Datenpipelines auf der Google Cloud."
+      "title": "JavaScript & Data Layer",
+      "desc": "Parsing von DOM-Elementen und Transformation von JSON-Webhooks in strukturierte Data Layer."
     },
     "highlight3": {
-      "title": "GA4- und CAPI-Integration",
-      "desc": "Reparatur defekter Analytics und Aufbau fehlerfreier Server-to-Server-Werbe-Payloads."
+      "title": "Moderner Privacy-Stack",
+      "desc": "Konforme Consent Mode v2-Setups auf Basis von Sirdata und Addingwell Proxies."
     },
     "highlight4": {
-      "title": "Datenschutz-Compliance",
-      "desc": "Strikte Einhaltung der europäischen DSGVO und der DMA-konformen Consent-Architekturen."
+      "title": "Agentur-Partner",
+      "desc": "Einsatz als flexibler White-Label-Data-Engineer für Performance-Teams."
     }
   },
   "services": {
-    "label": "// Leistungen",
-    "heading": "Was ich liefere",
+    "heading": "LEISTUNGEN",
     "formName": "Name",
     "formEmail": "E-Mail",
-    "formSubmit": "Senden",
-    "modalTitle": "Interesse an {{service}}?",
-    "modalDescription": "Hinterlassen Sie Ihre Daten, und ich melde mich, um diese Leistung mit Ihnen zu besprechen.",
-    "modalSuccess": "Vielen Dank für Ihr Interesse an dieser Leistung. Ich melde mich in Kürze, um die Details zu besprechen. Bitte prüfen Sie auch Ihren Spam-Ordner."
+    "formSubmit": "Anfrage senden",
+    "modalTitle": "{{service}} besprechen",
+    "modalDescription": "Hinterlassen Sie Ihre Kontaktdaten, und ich melde mich, um Ihr aktuelles Setup zu analysieren.",
+    "modalSuccess": "Nachricht erhalten. Ich prüfe Ihre Anforderungen und melde mich in Kürze."
   },
   "portfolio": {
-    "label": "// Portfolio",
-    "heading": "Ausgewählte Arbeiten"
+    "label": "// PORTFOLIO",
+    "heading": "Ausgewählte Arbeiten & Case Studies"
   },
   "blog": {
-    "label": "// Blog",
-    "heading": "Fachliche Beiträge"
+    "label": "// BLOG",
+    "heading": "Artikel"
   },
   "contact": {
-    "label": "// Kontakt",
-    "title": "Lassen Sie uns sprechen",
-    "description": "Kontaktieren Sie mich direkt, damit Sie nicht länger zu den Unternehmen gehören, die 30 % ihrer Analytics-Daten an Adblocker verlieren. Ich baue für Sie First-Party-, serverseitige Tracking-Pipelines auf, die jeden Klick erfassen und das Rauschen umgehen. Lassen Sie uns Ihre Daten reparieren.",
+    "label": "// KONTAKT",
+    "title": "Projekt starten",
+    "description": "Bereit, Ihre Tracking-Infrastruktur zu stabilisieren? Ob CAPI-Überholung, Stripe-Event-Mapping oder flexibler Data Engineer für Ihre Agentur — lassen Sie uns sprechen.",
     "formName": "Name",
     "formEmail": "E-Mail",
-    "formMessage": "Erzählen Sie mir von Ihrer Daten-Herausforderung...",
+    "formMessage": "Beschreiben Sie Ihre technische Architektur und Herausforderung...",
     "formSubmit": "Nachricht senden",
-    "successTitle": "Ich melde mich sehr bald bei Ihnen",
-    "successNote": "Bitte prüfen Sie Ihren Spam-Ordner, falls Sie innerhalb von 24 Stunden nichts erhalten haben."
+    "successTitle": "Nachricht erhalten",
+    "successNote": "Ich melde mich innerhalb von 24 Stunden bei Ihnen."
   },
   "sandbox": {
-    "label": "// Lab",
+    "label": "// LAB",
     "title": "JavaScript-Sandbox",
-    "description": "Live ausgeführte Experimente. Jede Karte läuft in einem isolierten iframe — anklicken, um sie freizuschalten und zu aktivieren.",
-    "reveal": "Anzeigen"
+    "description": "Live-DOM-Parsing und Daten-Transformationsskripte in isolierten Ausführungsumgebungen.",
+    "reveal": "Skript prüfen"
   }
 }
