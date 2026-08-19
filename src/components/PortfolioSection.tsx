@@ -1,4 +1,3 @@
-import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileImage, FileText, Presentation } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -45,27 +44,12 @@ const PortfolioSection = () => {
   const mdItems = getPortfolioItems();
   const items = mdItems.length > 0 ? mdItems : fallbackItems;
   const [api, setApi] = useState<CarouselApi>();
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!api) return;
-    setActiveIndex(api.selectedScrollSnap());
-  }, [api]);
-
-  useEffect(() => {
-    if (!api) return;
-    onSelect();
-    api.on("select", onSelect);
-    return () => { api.off("select", onSelect); };
-  }, [api, onSelect]);
-
-  const activeTitle = items[activeIndex]?.frontmatter.title ?? t("portfolio.heading");
 
   return (
     <section id="work" className="border-t border-border" data-gtm="portfolio-section">
       <div className="section-container">
         <span className="section-label">{t("portfolio.label")}</span>
-        <h2 className="section-title transition-all duration-300">{activeTitle}</h2>
+        <h2 className="section-title transition-all duration-300">{t("portfolio.heading")}</h2>
 
         <div className="relative px-12">
           <Carousel opts={{ align: "start", loop: true }} setApi={setApi} className="w-full">
